@@ -1,0 +1,15 @@
+[data-theme="light"] {
+  --bg-color: #d6d6d6;
+  --primary-color: #1307c4;
+  --secondary-color: #2e31bb;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #d6d6d6;
+    --primary-color: #1307c4;
+    --secondary-color: #2e31bb;
+    color-scheme: light;
+  }
+}

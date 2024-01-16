@@ -1,0 +1,42 @@
+{
+  "name": "adv-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "pnpm dev",
+    "build": "webpack --env production --config webpack.config.ts",
+    "dev": "webpack serve --env development port=8080 --config webpack.config.ts --open",
+    "build:prod": "webpack --env production --config webpack.config.ts",
+    "build:dev": "webpack --env development --config webpack.config.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.8",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/webpack": "^5.28.5",
+    "css-loader": "^6.9.0",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.7.7",
+    "sass": "^1.69.7",
+    "sass-loader": "^13.3.3",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.2"
+  }
+}
