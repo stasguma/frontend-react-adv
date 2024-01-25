@@ -1,0 +1,11 @@
+@use "sass:color";
+
+:root, [data-theme="light"] {
+  --bg-color: hsl(0deg 100% 96%);
+  --bg-inverted-color: hsl(210deg, 30%, 8%);
+  --primary-color: hsl(245deg, 100%, 60%);
+  --primary-inverted-color: hsl(230deg, 100%, 69%);
+  --secondary-color: hsl(333deg, 100%, 45%);
+  --secondary-inverted-color: hsl(333deg, 100%, 52%);
+  color-scheme: light;
+}

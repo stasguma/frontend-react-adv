@@ -1,13 +1,12 @@
-import webpack from "webpack";
-import webpackDevServer from "webpack-dev-server";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import type webpack from 'webpack';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
-import { devServer } from "./devServer";
-import { loaders } from "./loaders";
-import { resolvers } from "./resolvers";
-import { plugins } from "./plugins";
+import { devServer } from './devServer';
+import { loaders } from './loaders';
+import { resolvers } from './resolvers';
+import { plugins } from './plugins';
 
-import { IBuildOptions } from "./types/config";
+import { type IBuildOptions } from './types/config';
 
 export const buildWebpackConfig = function (
   options: IBuildOptions
@@ -16,21 +15,21 @@ export const buildWebpackConfig = function (
 
   return {
     mode,
-    devtool: isDev ? "inline-source-map" : "none",
+    devtool: isDev ? 'inline-source-map' : 'none',
     devServer: isDev ? devServer(options) : undefined,
     entry: paths.entry,
     output: {
       path: paths.output,
-      filename: isDev ? "[name].bundle.js" : "[name].[contenthash].bundle.js",
+      filename: isDev ? '[name].bundle.js' : '[name].[contenthash].bundle.js',
       clean: true,
     },
     module: {
       rules: loaders(options),
     },
-    resolve: resolvers(),
+    resolve: resolvers(options),
     plugins: plugins(options),
     optimization: {
-      runtimeChunk: "single",
+      runtimeChunk: 'single',
       minimizer: [new CssMinimizerPlugin()],
     },
   };

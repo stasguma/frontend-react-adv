@@ -1,0 +1,124 @@
+@use "@/app/styles/variables/easings" as easings;
+
+:global {
+  .sun-and-moon {
+    & > :is(.moon, .sun, .sun-beams) {
+      transform-origin: center center;
+    }
+
+    & > :is(.moon, .sun) {
+      fill: var(--icon-fill);
+    }
+
+    & > .sun-beams {
+      stroke: var(--icon-fill);
+      stroke-width: 2px;
+    }
+
+    // Animation
+
+    & > .sun {
+      transition: transform 0.5s easings.$ease-elastic-3;
+    }
+
+    & > .sun-beams {
+      transition: transform 0.5s easings.$ease-elastic-4, opacity 0.5s easings.$ease-3;
+    }
+    .moon > circle {
+      transform: translateX(-7px);
+      transition: transform 0.25s easings.$ease-out-5;
+
+      @supports (cx: 1) {
+        transform: translateX(0);
+        cx: 24;
+        cy: 10;
+        transition: cx 0.25s easings.$ease-out-5, cy 0.25s easings.$ease-out-5;
+      }
+    }
+  }
+}
+
+.theme-toggle {
+  --size: 2rem;
+  --icon-fill: hsl(0, 0%, 70%);
+  --icon-fill-hover: hsl(0, 0%, 50%);
+
+  inline-size: var(--size);
+  block-size: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  -webkit-tap-highlight-color: transparent;
+
+  outline-offset: 5px;
+
+  & > svg {
+    inline-size: 100%;
+    block-size: 100%;
+    stroke-linecap: round;
+  }
+
+  // @media (hover: none) {
+  //   --size: 48px;
+  // }
+
+  &:is(:hover, :focus-visible) {
+    :global {
+      .sun-and-moon {
+        & > :is(.moon, .sun) {
+          fill: var(--icon-fill-hover);
+        }
+
+        & > .sun-beams {
+          stroke: var(--icon-fill-hover);
+        }
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .theme-toggle {
+    --icon-fill: hsl(0 0% 85%);
+    --icon-fill-hover: hsl(0 0% 80%);
+  }
+
+  :global {
+    .sun-and-moon {
+      & > .sun {
+        transform: scale(1.75);
+      }
+
+      & > .sun-beams {
+        opacity: 0;
+      }
+
+      & > .moon > circle {
+        transform: translateX(-7px);
+
+        @supports (cx: 1) {
+          transform: translateX(0);
+          cx: 16;
+          cy: 9;
+        }
+      }
+
+      // Animation
+      & > .sun {
+        transform: scale(1.75);
+        transition-timing-function: easings.$ease-3;
+        transition-duration: 0.25s;
+      }
+
+      & > .sun-beams {
+        transform: rotateZ(-25deg);
+        transition-duration: 0.15s;
+      }
+
+      & > .moon > circle {
+        transition-delay: 0.25s;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}

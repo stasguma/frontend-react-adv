@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./build/",
-    // "baseUrl": "./",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
@@ -11,7 +14,8 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["ES2022"]
+    "lib": ["DOM", "ES2022"],
+    "strictNullChecks": true
   },
   "ts-node": {
     "compilerOptions": {

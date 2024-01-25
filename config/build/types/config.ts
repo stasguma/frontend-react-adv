@@ -1,10 +1,10 @@
 export interface IBuildEnvironment {
   development?: boolean;
   production?: boolean;
-  port: number;
+  port?: number;
 }
 
-export type TBuildMode = "development" | "production";
+export type TBuildMode = 'development' | 'production';
 
 export interface IBuildOptions {
   mode: TBuildMode;
@@ -18,4 +18,5 @@ export interface IBuildPaths {
   output: string;
   htmlTemplate: string;
   devServer: string;
+  src: string;
 }

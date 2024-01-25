@@ -1,0 +1,17 @@
+:root {
+  --font-family: Consolas, "Times New Roman", sans-serif;
+
+  --font-size-m: 16px;
+  --font-line-m: 24px;
+  --font-m: var(--font-line-m) / var(--font-line-m) var(--font-family);
+
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+
+  --navbar-height: 70px;
+
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
+
+  color-scheme: light dark;
+}

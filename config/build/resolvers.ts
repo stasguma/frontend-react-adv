@@ -1,7 +1,19 @@
-import webpack from "webpack";
+import type webpack from 'webpack';
 
-export const resolvers = function (): webpack.ResolveOptions {
+import { type IBuildOptions } from './types/config';
+
+export const resolvers = function (
+  options: IBuildOptions
+): webpack.ResolveOptions {
+  const { paths } = options;
+
   return {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
+    preferAbsolute: true,
+    modules: [paths.src, 'node_modules'],
+    mainFiles: ['index'],
+    alias: {
+      '@': paths.src,
+    },
   };
 };

@@ -9,19 +9,30 @@
     "dev": "webpack serve --env development port=8080 --config webpack.config.ts --open",
     "build:prod": "webpack --env production --config webpack.config.ts",
     "build:dev": "webpack --env development --config webpack.config.ts",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.5.4",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.10.8",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/webpack": "^5.28.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
     "css-loader": "^6.9.0",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.33.2",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.7",
     "sass": "^1.69.7",
@@ -35,8 +46,12 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "i18next": "^23.7.18",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-http-backend": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^14.0.1",
     "react-router-dom": "^6.21.2"
   }
 }

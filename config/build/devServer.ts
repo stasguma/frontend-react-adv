@@ -1,6 +1,6 @@
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
+import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
-import { IBuildOptions } from "./types/config";
+import { type IBuildOptions } from './types/config';
 
 export const devServer = function ({
   paths,
