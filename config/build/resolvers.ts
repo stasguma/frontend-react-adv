@@ -9,6 +9,11 @@ export const resolvers = function (
 
   return {
     extensions: ['.tsx', '.ts', '.js'],
+    // extensionAlias: {
+    //   ".js": [".js", ".ts"],
+    //   ".cjs": [".cjs", ".cts"],
+    //   ".mjs": [".mjs", ".mts"]
+    //  },
     preferAbsolute: true,
     modules: [paths.src, 'node_modules'],
     mainFiles: ['index'],

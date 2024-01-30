@@ -11,7 +11,7 @@ interface IProps {
   className?: string;
 }
 
-export const ThemeSwitcher: FC<IProps> = (props) => {
+export const ThemeSwitcher: FC<IProps> = () => {
   const { toggleTheme } = useTheme();
 
   return (

@@ -1,11 +1,12 @@
 @use "sass:color";
 
 [data-theme="dark"] {
-  --bg-color: hsl(210deg, 30%, 8%);
+  --bg-color: hsl(210deg 30% 8%);
   --bg-inverted-color: hsl(0deg 100% 96%);
-  --primary-color: hsl(230deg, 100%, 69%);
-  --primary-inverted-color: hsl(245deg, 100%, 60%);
-  --secondary-color: hsl(333deg, 100%, 52%);
-  --secondary-inverted-color: hsl(333deg, 100%, 45%);
+  --primary-color: hsl(230deg 100% 69%);
+  --primary-inverted-color: hsl(245deg 100% 60%);
+  --secondary-color: hsl(333deg 100% 52%);
+  --secondary-inverted-color: hsl(333deg 100% 45%);
+
   color-scheme: dark;
 }

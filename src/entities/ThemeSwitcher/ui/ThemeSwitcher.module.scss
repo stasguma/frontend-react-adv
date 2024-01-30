@@ -16,14 +16,16 @@
     }
 
     // Animation
-
+    
     & > .sun {
       transition: transform 0.5s easings.$ease-elastic-3;
     }
 
+    /* stylelint-disable-next-line */
     & > .sun-beams {
       transition: transform 0.5s easings.$ease-elastic-4, opacity 0.5s easings.$ease-3;
     }
+
     .moon > circle {
       transform: translateX(-7px);
       transition: transform 0.25s easings.$ease-out-5;
@@ -40,17 +42,17 @@
 
 .theme-toggle {
   --size: 2rem;
-  --icon-fill: hsl(0, 0%, 70%);
-  --icon-fill-hover: hsl(0, 0%, 50%);
+  --icon-fill: hsl(0deg 0% 70%);
+  --icon-fill-hover: hsl(0deg 0% 50%);
 
+  aspect-ratio: 1;
   inline-size: var(--size);
   block-size: var(--size);
-  aspect-ratio: 1;
+
   border-radius: 50%;
+  outline-offset: 5px;
 
   -webkit-tap-highlight-color: transparent;
-
-  outline-offset: 5px;
 
   & > svg {
     inline-size: 100%;
@@ -59,7 +61,7 @@
   }
 
   // @media (hover: none) {
-  //   --size: 48px;
+  //   --size: 48px;--size--size--size--size--size--size--size--size--size--size--size--size--size--size--size
   // }
 
   &:is(:hover, :focus-visible) {
@@ -79,46 +81,43 @@
 
 [data-theme="dark"] {
   .theme-toggle {
-    --icon-fill: hsl(0 0% 85%);
-    --icon-fill-hover: hsl(0 0% 80%);
-  }
+    --icon-fill: hsl(0deg 0% 85%);
+    --icon-fill-hover: hsl(0deg 0% 80%);
 
-  :global {
-    .sun-and-moon {
-      & > .sun {
-        transform: scale(1.75);
-      }
+    :global {
+      .sun-and-moon {
+        & > .sun {
+          transform: scale(1.75);
 
-      & > .sun-beams {
-        opacity: 0;
-      }
-
-      & > .moon > circle {
-        transform: translateX(-7px);
-
-        @supports (cx: 1) {
-          transform: translateX(0);
-          cx: 16;
-          cy: 9;
+          // animation
+          transition-timing-function: easings.$ease-3;
+          transition-duration: 0.25s;
         }
-      }
-
-      // Animation
-      & > .sun {
-        transform: scale(1.75);
-        transition-timing-function: easings.$ease-3;
-        transition-duration: 0.25s;
-      }
-
-      & > .sun-beams {
-        transform: rotateZ(-25deg);
-        transition-duration: 0.15s;
-      }
-
-      & > .moon > circle {
-        transition-delay: 0.25s;
-        transition-duration: 0.5s;
+  
+        & > .sun-beams {
+          opacity: 0;
+          
+          // animation
+          /* stylelint-disable-next-line */
+          transform: rotateZ(-25deg);
+          transition-duration: 0.15s;
+        }
+  
+        & > .moon > circle {
+          transform: translateX(-7px);
+          
+          // animation
+          transition-delay: 0.25s;
+          transition-duration: 0.5s;
+  
+          @supports (cx: 1) {
+            transform: translateX(0);
+            cx: 16;
+            cy: 9;
+          }
+        }
       }
     }
   }
+  
 }

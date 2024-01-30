@@ -3,7 +3,7 @@ type TBooleanValueObject = Record<string, boolean>;
 const hasOwn = Object.hasOwn;
 
 export function classNames(...args: Array<string | TBooleanValueObject | undefined>): string {
-  let classes: string = '';
+  let classes = '';
 
   for (const arg of args) {
     // console.log(arg);
@@ -19,7 +19,7 @@ function parseValue(val: string | TBooleanValueObject | undefined): string {
     return val;
   }
 
-  let classes: string = '';
+  let classes = '';
 
   if (Object.prototype.toString.call(val) === '[object Object]') {
     for (const key in val) {

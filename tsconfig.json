@@ -19,7 +19,13 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+      "module": "CommonJS",
+      "moduleResolution": "NodeNext",
+    },
+    "esm": true,
+    // "experimentalSpecifierResolution": "node"
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

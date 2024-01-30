@@ -3,21 +3,25 @@
 .sidebar {
   display: flex;
   flex-flow: column;
-  
+
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
-  
+
   background: var(--bg-inverted-color);
+
   transition: width 0.3s easings.$ease-2;
+
   &__content {
     flex: 1 1 0%;
   }
+
   &__footer {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding-block: 10px;
   }
+
   &__lang {
     margin-left: 15px;
   }

@@ -26,7 +26,10 @@ export const Button: FC<IProps> = (props) => {
   } = props;
   return (
     <button
-      className={classNames(classes.btn, className)}
+      className={classNames(classes.btn, {
+        [classes['btn-primary']]: variant === EButtonVariants.PRIMARY,
+        [classes['btn-secondary']]: variant === EButtonVariants.SECONDARY,
+      }, className)}
       disabled={disabled}
       type={type}
       {...otherProps}

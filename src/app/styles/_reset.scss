@@ -1,26 +1,29 @@
 * {
   margin: 0;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 /* HTML5 hidden-attribute fix for newer browsers */
 *[hidden] {
   display: none;
 }
 
 html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
+
 html:focus-within {
   scroll-behavior: smooth;
 }
+
 body {
   min-height: 100vh;
-  text-rendering: optimizeSpeed;
   line-height: 1.5;
+  text-rendering: optimizespeed;
+
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,45 +35,55 @@ ol[role="list"] {
 blockquote, q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote::before, blockquote::after,
+q::before, q::after {
   content: "";
   content: none;
 }
+
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
 }
 
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+
 input, button, textarea, select {
   font: inherit;
 }
+
 textarea:not([rows]) {
   min-height: 10em;
 }
+
 p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
   hyphens: auto;
+  overflow-wrap: break-word;
 }
+
 //  Need to test, might be removed later
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
+
 h1, h2, h3, h4,
 button, input, label {
   line-height: 1.1;
 }
+
 a:not([class]) {
+  color: currentcolor;
   text-decoration-skip-ink: auto;
-  color: currentColor;
 }
+
 :target {
   scroll-margin-block: 1rlh;
 }
+/* stylelint-disable-next-line */
 #root, #__next {
   isolation: isolate;
 }
@@ -79,9 +92,9 @@ a:not([class]) {
   *,
   *::before,
   *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

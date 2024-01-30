@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 interface IProps {};
 
-const HomePage: FC<IProps> = (props) => {
+const HomePage: FC<IProps> = () => {
   return <div>Home</div>;
 };
 
