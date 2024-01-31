@@ -1,4 +1,6 @@
 {
-  "sidebar": "sidebar",
-  "language": "english"
+  "sidebar": "Sidebar",
+  "language": "English",
+  "reload": "Reload",
+  "errorBoundaryText": "Something went wrong. Please, reload the page!"
 }

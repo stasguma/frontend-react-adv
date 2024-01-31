@@ -80,7 +80,7 @@ export default [
       '@typescript-eslint/strict-boolean-expressions': ['error', {
         allowNullableBoolean: true,
       }],
-
+      '@typescript-eslint/consistent-type-imports': ['error'],
     },
   },
   {

@@ -1,0 +1,15 @@
+.page-error {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  background: var(--bg-color);
+
+  &__text {
+    font: 30px / 2 var(--font-family);
+    color: var(--c-text);
+  }
+}
