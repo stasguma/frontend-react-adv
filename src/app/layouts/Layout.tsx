@@ -5,20 +5,21 @@ import classes from './Layout.module.scss';
 
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
+import { PageLoader } from '@/widgets/PageLoader';
 
 const Layout: FC = () => {
   return (
     <>
-      <Suspense fallback={<div>loading...</div>}>
-        <Navbar />
-        <div className={classes['page-wrapper']}>
-          <Sidebar />
-          <main>
+      <Navbar />
+      <div className={classes['page-wrapper']}>
+        <Sidebar />
+        <main>
+          <Suspense fallback={<PageLoader />}>
             <Outlet />
-          </main>
-        </div>
-        <footer>Footer 2024</footer>
-      </Suspense>
+          </Suspense>
+        </main>
+      </div>
+      <footer>Footer 2024</footer>
     </>
   );
 };
