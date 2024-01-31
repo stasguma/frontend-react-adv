@@ -2,3 +2,7 @@ the cross-env package needs for a workaround, because the ts-node package has a 
 
 https://github.com/TypeStrong/ts-node/issues/1997#issuecomment-1915868832
 https://github.com/webpack/webpack-cli/issues/2458#issuecomment-1915865909
+
+we should name a babel.config.cjs file with 'cjs' and not 'js' extension because of esm bug.
+
+https://stackoverflow.com/questions/61146112/error-while-loading-config-you-appear-to-be-using-a-native-ecmascript-module-c

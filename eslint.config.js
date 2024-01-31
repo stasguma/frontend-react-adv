@@ -9,6 +9,7 @@ import stylistic from '@stylistic/eslint-plugin';
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
 const reactFiles = '**/*.?(*){js,ts}x';
+const testFiles = '**/*.test.{js,ts}?(x)';
 
 export default [
   {
@@ -104,6 +105,14 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
       ...i18nextPlugin.configs.recommended.rules,
+    },
+  },
+  {
+    files: [testFiles],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
     },
   },
 ];

@@ -56,6 +56,18 @@ export const loaders = function (
     ],
   };
 
+  const babelLoader = {
+    test: /\.(js|ts)(x)?$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
+      },
+    ],
+  };
   const typescriptLoader = {
     test: /\.tsx?$/,
     exclude: /node_modules/,
@@ -92,6 +104,7 @@ export const loaders = function (
     fontLoader,
     imageLoader,
     svgLoader,
+    babelLoader,
     typescriptLoader,
     cssLoader,
   ];
