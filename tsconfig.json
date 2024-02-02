@@ -3,7 +3,7 @@
     "outDir": "./build/",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     "noImplicitAny": true,
     "module": "ESNext",
@@ -23,8 +23,8 @@
       "moduleResolution": "NodeNext",
     },
     "esm": true,
-    // "experimentalSpecifierResolution": "node"
   },
+  // "include": ["./config/jest/jest-setup.ts"],
   "exclude": [
     "node_modules"
   ]

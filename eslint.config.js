@@ -5,11 +5,14 @@ import typescriptParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
 import i18nextPlugin from 'eslint-plugin-i18next';
 import stylistic from '@stylistic/eslint-plugin';
+import jestDom from 'eslint-plugin-jest-dom';
+
+console.log(jestDom.configs);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
 const reactFiles = '**/*.?(*){js,ts}x';
-const testFiles = '**/*.test.{js,ts}?(x)';
+const testFiles = '**/*.{test,spec}.{js,ts}?(x)';
 
 export default [
   {
@@ -85,6 +88,7 @@ export default [
   },
   {
     files: [reactFiles],
+    ignores: [testFiles],
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -108,11 +112,22 @@ export default [
     },
   },
   {
-    files: [testFiles],
+    files: [testFiles, '**/jest-setup.ts'],
     languageOptions: {
       globals: {
         ...globals.jest,
       },
+    },
+    settings: {
+      jest: {
+        version: 29,
+      },
+    },
+    plugins: {
+      'jest-dom': jestDom,
+    },
+    rules: {
+      ...jestDom.configs.recommended.rules,
     },
   },
 ];

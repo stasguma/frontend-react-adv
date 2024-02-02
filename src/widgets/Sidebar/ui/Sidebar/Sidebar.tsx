@@ -23,11 +23,12 @@ export const Sidebar: FC<IProps> = (props) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(classes.sidebar, className, {
         [classes['is-collapsed']]: isCollapsed,
       })}
     >
-      <Button onClick={toggleSidebar}>X</Button>
+      <Button data-testid="sidebar-toggle" onClick={toggleSidebar}>X</Button>
       <div className={classes.sidebar__content}>{t('sidebar')}</div>
       <div className={classes.sidebar__footer}>
         <ThemeSwitcher />
