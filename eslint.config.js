@@ -6,17 +6,27 @@ import reactPlugin from 'eslint-plugin-react';
 import i18nextPlugin from 'eslint-plugin-i18next';
 import stylistic from '@stylistic/eslint-plugin';
 import jestDom from 'eslint-plugin-jest-dom';
+import storybookPlugin from 'eslint-plugin-storybook';
 
-console.log(jestDom.configs);
+console.log(storybookPlugin.configs.recommended.overrides);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
 const reactFiles = '**/*.?(*){js,ts}x';
 const testFiles = '**/*.{test,spec}.{js,ts}?(x)';
+const storybookFiles = ['**/*.{stories,story}.@(ts|tsx|js|jsx|mjs|cjs)', '**/storybook/main.@(js|cjs|mjs|ts)'];
 
 export default [
   {
-    ignores: ['**/node_modules/**', '**/*.d.ts', 'build'],
+    ignores: [
+      '**/node_modules/**',
+      '**/*.d.ts',
+      'build',
+      'src/app/styles',
+      '**/.*',
+      '**/.*.{js,ts}',
+      '**/*.config.{js,ts}',
+    ],
   },
   {
     files: [jsFiles, tsFiles, reactFiles],
@@ -88,7 +98,6 @@ export default [
   },
   {
     files: [reactFiles],
-    ignores: [testFiles],
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -128,6 +137,25 @@ export default [
     },
     rules: {
       ...jestDom.configs.recommended.rules,
+      'i18next/no-literal-string': 'off',
+    },
+  },
+  {
+    files: [storybookFiles[0]],
+    plugins: {
+      storybook: storybookPlugin,
+    },
+    rules: {
+      ...storybookPlugin.configs.recommended.overrides[0].rules,
+    },
+  },
+  {
+    files: [storybookFiles[1]],
+    plugins: {
+      storybook: storybookPlugin,
+    },
+    rules: {
+      ...storybookPlugin.configs.recommended.overrides[1].rules,
     },
   },
 ];
