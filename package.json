@@ -14,6 +14,7 @@
 		"lint:jsts:fix": "eslint . --fix",
 		"lint:scss": "pnpm dlx stylelint \"**/*.scss\"",
 		"lint:scss:fix": "pnpm dlx stylelint \"**/*.scss\" --fix",
+		"lint": "pnpm lint:jsts && pnpm lint:scss" ,
 		"test:unit": "jest --config ./config/jest/jest.config.ts",
 		"test:ui": "pnpm dlx chromatic --project-token=chpt_663b9da2243ac76 --build-script-name=storybook:build",
 		"storybook": "storybook dev -p 6006 -c ./config/storybook",
