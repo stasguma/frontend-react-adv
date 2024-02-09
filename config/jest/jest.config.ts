@@ -21,6 +21,7 @@ const config: Config = {
   coveragePathIgnorePatterns: [
     '\\\\node_modules\\\\',
   ],
+  // extensionsToTreatAsEsm: ['.ts', '.tsx'],
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: [
     'node_modules',
@@ -35,21 +36,30 @@ const config: Config = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '\\.(s[ac]ss)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$':
-      '<rootDir>config/jest/jest-file-mock.ts',
-    '@/(.*)': '<rootDir>src/$1',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$': 
+      '<rootDir>/config/jest/jest-file-mock.ts',
+    '@/(.*)': '<rootDir>/src/$1',
   },
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
+    '<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)',
   ],
   // The root directory that Jest should scan for tests and modules within
-  rootDir: '../../',
+  rootDir: '../..',
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>config/jest/jest-setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
+  // A map from regular expressions to paths to transformers
+  // transform: {
+  //   "\\.[jt]sx?$": "babel-jest",
+  // },
 
+  // // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
+  // transformIgnorePatterns: [
+  // //   "\\\\node_modules\\\\",
+  // //   "\\.pnp\\.[^\\\\]+$"
+  // ],
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
@@ -165,15 +175,6 @@ const config: Config = {
 
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
-
-  // A map from regular expressions to paths to transformers
-  // transform: undefined,
-
-  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "\\\\node_modules\\\\",
-  //   "\\.pnp\\.[^\\\\]+$"
-  // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

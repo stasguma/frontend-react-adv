@@ -15,7 +15,7 @@ export const buildWebpackConfig = function (
 
   return {
     mode,
-    devtool: isDev ? 'inline-source-map' : 'none',
+    devtool: isDev ? 'inline-source-map' : false,
     devServer: isDev ? devServer(options) : undefined,
     entry: paths.entry,
     output: {

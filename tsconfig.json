@@ -24,7 +24,6 @@
     },
     "esm": true,
   },
-  // "include": ["./config/jest/jest-setup.ts"],
   "exclude": [
     "node_modules"
   ]
