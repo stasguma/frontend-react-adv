@@ -19,7 +19,7 @@ const Layout: FC = () => {
           </Suspense>
         </main>
       </div>
-      <footer>Footer 2024</footer>
+      <footer>2024</footer>
     </>
   );
 };

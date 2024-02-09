@@ -10,7 +10,7 @@ export const plugins = function (
 ): webpack.WebpackPluginInstance[] {
   const { paths, isDev } = options;
 
-  return [
+  const plugins = [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: paths.htmlTemplate,
@@ -22,8 +22,13 @@ export const plugins = function (
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
   ];
+
+  if (isDev) {
+    plugins.push(new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+    }));
+  }
+
+  return plugins;
 };

@@ -8,7 +8,7 @@ import stylistic from '@stylistic/eslint-plugin';
 import jestDom from 'eslint-plugin-jest-dom';
 import storybookPlugin from 'eslint-plugin-storybook';
 
-console.log(storybookPlugin.configs.recommended.overrides);
+// console.log(storybookPlugin.configs.recommended.overrides);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
@@ -26,6 +26,7 @@ export default [
       '**/.*',
       '**/.*.{js,ts}',
       '**/*.config.{js,ts}',
+      '**/jest-setup.ts'
     ],
   },
   {
@@ -94,6 +95,9 @@ export default [
         allowNullableBoolean: true,
       }],
       '@typescript-eslint/consistent-type-imports': ['error'],
+      '@typescript-eslint/array-type': ['error', {
+        default: 'array-simple'
+      }],
     },
   },
   {

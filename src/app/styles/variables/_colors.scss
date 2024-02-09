@@ -83,7 +83,7 @@ $c-alert: $orange;
 
 // Dark mode
 
-element.style {
+#darkmode {
   --color-text: hsl(0deg 0% 100%);
   --color-background: hsl(210deg 30% 8%);
   --color-blurred-background: hsl(210deg 30% 8% / 85%);
@@ -120,7 +120,7 @@ element.style {
 }
 
 // Light mode
-element.style {
+#lightmode {
   --color-text: hsl(222deg 22% 5%);
   --color-background: hsl(0deg 0% 100%);
   --color-blurred-background: hsl(0deg 0% 100% / 85%);

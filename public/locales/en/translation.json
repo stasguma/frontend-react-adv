@@ -2,5 +2,7 @@
   "sidebar": "Sidebar",
   "language": "English",
   "reload": "Reload",
-  "errorBoundaryText": "Something went wrong. Please, reload the page!"
+  "errorBoundaryText": "Something went wrong. Please, reload the page!",
+  "home": "Home",
+  "about": "About"
 }

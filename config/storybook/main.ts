@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import type { RuleSetRule } from 'webpack';
+import { DefinePlugin, type Configuration, type RuleSetRule } from 'webpack';
 
 import path from 'path';
 
@@ -39,10 +39,11 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  webpackFinal: (config) => {
-    // console.log('plugins', config.plugins[2].definitions)
+  webpackFinal: (config: Configuration): Configuration => {
     /* added global variable */
-    config.plugins[2].definitions.__IS_DEV__ = true;
+    config.plugins!.push(new DefinePlugin({
+      __IS_DEV__: true,
+    }));
 
     /* added aliases */
     if (config.resolve) {

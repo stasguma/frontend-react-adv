@@ -1,7 +1,11 @@
-interface Props {}
+import type { FC } from 'react';
 
-const AboutPage = (props: Props) => {
-  return <div>About</div>;
+import { useTranslation } from 'react-i18next';
+
+const AboutPage: FC = () => {
+  const { t } = useTranslation();
+
+  return <div>{t('about')}</div>;
 };
 
 export default AboutPage;

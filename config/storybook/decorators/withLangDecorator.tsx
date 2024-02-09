@@ -14,6 +14,7 @@ export const withLangDecorator: Decorator = (Story, context) => {
   // const [globals, updateGlobals] = useGlobals();
 
   useEffect(() => {
+    /* eslint-disable-next-line */
     i18n.changeLanguage(locale);
     // doesn't work (bug?) https://github.com/storybookjs/storybook/issues/18477#issuecomment-1582653441
     // addons.getChannel().emit(FORCE_RE_RENDER);
