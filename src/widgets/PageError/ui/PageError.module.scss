@@ -6,10 +6,10 @@
 
   min-height: 100vh;
 
-  background: var(--bg-color);
+  background: var(--color-bg);
 
   &__text {
     font: 30px / 2 var(--font-family);
-    color: var(--c-text);
+    color: var(--color-text);
   }
 }
