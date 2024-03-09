@@ -8,8 +8,11 @@ export enum ETheme {
 }
 
 export interface IThemeContext {
-  theme?: ETheme;
-  setTheme?: (theme: ETheme) => void;
+  theme: ETheme | '';
+  setTheme: (theme: ETheme) => void;
 }
 
-export const ThemeContext = createContext<IThemeContext>({});
+export const ThemeContext = createContext<IThemeContext>({
+  theme: '',
+  setTheme: () => null,
+});

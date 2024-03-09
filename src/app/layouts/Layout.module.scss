@@ -1,7 +1,10 @@
+@use "@/app/styles/utils" as u;
+
 .page-wrapper {
   display: flex;
 }
 
 main {
   flex: 1 1 0%;
+  padding: u.to-rem(20px);
 }

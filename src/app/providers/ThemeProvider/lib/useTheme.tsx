@@ -4,7 +4,7 @@ import { ETheme, LOCAL_STORAGE_THEME_KEY, ThemeContext } from './ThemeContext';
 import { changeThemeInDOM } from './changeThemeInDOM';
 
 interface IUseTheme {
-  theme: ETheme;
+  theme: ETheme | '';
   toggleTheme: () => void;
 }
 

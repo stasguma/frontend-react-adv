@@ -41,9 +41,9 @@
 }
 
 .theme-toggle {
-  --size: 2rem;
-  --icon-fill: hsl(0deg 0% 70%);
-  --icon-fill-hover: hsl(0deg 0% 50%);
+  --size: 28px;
+  --icon-fill: var(--color-theme-button);
+  --icon-fill-hover: var(--color-theme-button-hover);
 
   aspect-ratio: 1;
   inline-size: var(--size);
@@ -61,7 +61,7 @@
   }
 
   // @media (hover: none) {
-  //   --size: 48px;--size--size--size--size--size--size--size--size--size--size--size--size--size--size--size
+  //   --size: 48px;
   // }
 
   &:is(:hover, :focus-visible) {
@@ -81,8 +81,8 @@
 
 [data-theme="dark"] {
   .theme-toggle {
-    --icon-fill: hsl(0deg 0% 85%);
-    --icon-fill-hover: hsl(0deg 0% 80%);
+    // --icon-fill: hsl(0deg 0% 85%);
+    // --icon-fill-hover: hsl(0deg 0% 80%);
 
     :global {
       .sun-and-moon {

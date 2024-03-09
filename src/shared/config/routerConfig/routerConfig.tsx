@@ -11,7 +11,7 @@ enum AppRoutes {
   ERROR404 = 'error404'
 }
 
-const RoutePath: Record<AppRoutes, string> = {
+export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: '/',
   [AppRoutes.ABOUT]: '/about',
   [AppRoutes.ERROR404]: '*',
