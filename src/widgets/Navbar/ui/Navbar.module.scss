@@ -1,5 +1,3 @@
-@use "sass:color";
-
 .navbar {
   display: flex;
   align-items: center;
@@ -9,19 +7,5 @@
   height: var(--navbar-height);
   padding: 0 20px;
 
-  background-color: var(--bg-inverted-color);
-}
-
-.navigation {
-  margin-left: auto;
-
-  &__item {
-    & + & {
-      margin-left: 15px;
-    }
-  }
-}
-
-.navigation-list {
-  display: flex;
+  background-color: var(--color-navbar-bg);
 }
