@@ -1,3 +1,5 @@
+@use "@/app/styles/variables/typography" as t;
+
 .btn {
   touch-action: manipulation;
   cursor: pointer;
@@ -5,28 +7,277 @@
 
   position: relative;
 
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   padding: 0;
 
+  font: inherit;
+  font-weight: t.font-weight(medium);
   text-align: center;
+  white-space: nowrap;
 
+  appearance: none;
   background: transparent;
-  border: none;
+  border: 0 solid transparent;
+  border-radius: 4px;
+  outline-offset: 2px;
+
+  &:not(:disabled):active {
+    transform: translateY(2px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-text);
+  }
 }
 
-.btn-primary {
-  padding: 10px;
-  color: #fff;
-  background-color: var(--primary-color);
-  border: 1px solid transparent;
-  border-radius: 10px;
+// Button variants
+
+.btn-filled {
+  height: 40px;
+  padding: 0 10px;
+  color: var(--color-button-text);
+
+  &:is(.btn-primary, .btn-secondary):disabled {
+    color: var(--color-button-text-disabled);
+    background-color: var(--color-button-bg-disabled);
+  }
+  
+  &.btn-primary {
+    background-color: var(--color-primary);
+
+    &:not(:disabled):hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: var(--color-primary-active);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: var(--color-secondary);
+
+    &:not(:disabled):hover {
+      background-color: var(--color-secondary-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: var(--color-secondary-active);
+    }
+  }
+
+  &.btn-success {
+    background-color: var(--color-success);
+
+    &:not(:disabled):hover {
+      background-color: var(--color-success-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: var(--color-success-active);
+    }
+  }
+
+  &.btn-danger {
+    background-color: var(--color-danger);
+
+    &:not(:disabled):hover {
+      background-color: var(--color-danger-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: var(--color-danger-active);
+    }
+  }
+
+  &.btn-warning {
+    background-color: var(--color-warning);
+
+    &:not(:disabled):hover {
+      background-color: var(--color-warning-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: var(--color-warning-active);
+    }
+  }
 }
 
-.btn-secondary {
-  padding: 10px;
-  color: #fff;
-  background-color: var(--secondary-color);
-  border: 1px solid transparent;
-  border-radius: 10px;
+.btn-outlined {
+  height: 40px;
+  padding: 0 10px;
+  border-width: 2px;
+
+  &:is(.btn-primary, .btn-secondary):disabled {
+    color: var(--color-button-text-disabled);
+    border-color: var(--color-button-border-disabled);
+  }
+
+  &.btn-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:not(:disabled):hover {
+      color: var(--color-primary-hover);
+      border-color: var(--color-primary-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-primary-active);
+      border-color: var(--color-primary-active);
+    }
+  }
+
+  &.btn-secondary {
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+
+    &:not(:disabled):hover {
+      color: var(--color-secondary-hover);
+      border-color: var(--color-secondary-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-secondary-active);
+      border-color: var(--color-secondary-active);
+    }
+  }
+
+  &.btn-success {
+    color: var(--color-success);
+    border-color: var(--color-success);
+
+    &:not(:disabled):hover {
+      color: var(--color-success-hover);
+      border-color: var(--color-success-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-success-active);
+      border-color: var(--color-success-active);
+    }
+  }
+
+  &.btn-danger {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+
+    &:not(:disabled):hover {
+      color: var(--color-danger-hover);
+      border-color: var(--color-danger-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-danger-active);
+      border-color: var(--color-danger-active);
+    }
+  }
+
+  &.btn-warning {
+    color: var(--color-warning);
+    border-color: var(--color-warning);
+
+    &:not(:disabled):hover {
+      color: var(--color-warning-hover);
+      border-color: var(--color-warning-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-warning-active);
+      border-color: var(--color-warning-active);
+    }
+  }
+}
+
+.btn-ghost {
+  height: 40px;
+  padding: 0 10px;
+
+  &:is(.btn-primary, .btn-secondary):disabled {
+    color: var(--color-button-text-disabled);
+    background-color: var(--color-button-border-disabled);
+  }
+
+  &:not(:disabled):hover {
+    background-color: var(--color-button-ghost-bg-hover);
+  }
+
+  &.btn-primary {
+    color: var(--color-primary);
+
+    &:not(:disabled):hover {
+      color: var(--color-primary-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-primary-active);
+    }
+  }
+
+  &.btn-secondary {
+    color: var(--color-secondary);
+
+    &:not(:disabled):hover {
+      color: var(--color-secondary-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-secondary-active);
+    }
+  }
+
+  &.btn-success {
+    color: var(--color-success);
+
+    &:not(:disabled):hover {
+      color: var(--color-success-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-success-active);
+    }
+  }
+
+  &.btn-danger {
+    color: var(--color-danger);
+
+    &:not(:disabled):hover {
+      color: var(--color-danger-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-danger-active);
+    }
+  }
+
+  &.btn-warning {
+    color: var(--color-warning);
+
+    &:not(:disabled):hover {
+      color: var(--color-warning-hover);
+    }
+
+    &:not(:disabled):active {
+      color: var(--color-warning-active);
+    }
+  }
+}
+
+// Button sizes
+
+.btn-large {
+  height: 48px;
+  padding: 0 16px;
+}
+
+.btn-small {
+  height: 32px;
 }
