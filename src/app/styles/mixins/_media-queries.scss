@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "../utils/functions" as fn;
+
+@mixin tablet {
+	@media screen and (min-width: $breakpoint-tablet), print {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media screen and (min-width: $breakpoint-desktop) {
+		@content;
+	}
+}
+
+@mixin widescreen {
+	@media screen and (min-width: $breakpoint-widescreen) {
+		@content;
+	}
+}
+
+$breakpoints: (
+	"mobile": fn.to-em(640px),
+	"tablet": fn.to-em(768px),
+	"tablet-wide": fn.to-em(1024px),
+	"laptop": fn.to-em(1280px),
+	"desktop": fn.to-em(1440px),
+	"desktop-hd": fn.to-em(1920px)
+);
+
+@mixin mq($screen) {
+	@if not map.has-key($breakpoints, $screen) {
+		@error "Screen size with name '#{$screen}' is not exist in $breakpoints map";
+	}
+
+	$_screen: map.get($breakpoints, $screen);
+
+	@media only screen and (min-width: $_screen) {
+		@content;
+	}
+}

@@ -1,7 +1,38 @@
 @use "sass:map";
+@use "sass:math";
+@use "sass:color";
 
-@function theme-color($key, $variant: "light") {
-  $map: map.get($theme-colors, $key);
+@function pick-color($theme-colors, $var, $theme: light) {
+  @if not map.has-key($theme-colors, $var) {
+    @error "Key #{$var} does not exist in $theme-colors map";
+  }
 
-  @return map.get($map, $variant);
+  $color: map.get($theme-colors, $var);
+
+  @return map.get($color, $theme);
+}
+
+@function pick-tint($palette, $var) {
+  @if not map.has-key($palette, $var) {
+    @error "Key #{$var} does not exist in $palette map";
+  }
+  
+  @return map.get($palette, $var);
+}
+
+@function to-hsl($color, $alpha: null) {
+  $alpha: if($alpha, $alpha, color.alpha($color));
+
+  @return hsl(color.hue($color),
+              color.saturation($color),
+              color.lightness($color),
+              $alpha);
+}
+
+@function to-rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+@function to-em($pixels) {
+  @return math.div($pixels, 16px) * 1em;
 }

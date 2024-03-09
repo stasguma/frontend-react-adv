@@ -1,0 +1,151 @@
+@use "sass:color";
+@use "./colors" as *;
+@use "./palettes" as p;
+@use "../utils/functions" as fn;
+
+$theme-colors: (
+  "primary": (
+    "light": $blue,
+    "dark": $light-blue,
+  ),
+  "primary-hover": (
+    "light": fn.pick-tint(p.$palette-blue, 600),
+    "dark": fn.pick-tint(p.$palette-blue, 300),
+  ),
+  "primary-active": (
+    "light": fn.pick-tint(p.$palette-blue, 700),
+    "dark": fn.pick-tint(p.$palette-blue, 200),
+  ),
+  "secondary": (
+    "light": fn.pick-tint(p.$palette-gray, 300),
+    "dark": fn.pick-tint(p.$palette-gray, 200),
+  ),
+  "secondary-hover": (
+    "light": fn.pick-tint(p.$palette-gray, 400),
+    "dark": fn.pick-tint(p.$palette-gray, 100),
+  ),
+  "secondary-active": (
+    "light": fn.pick-tint(p.$palette-gray, 500),
+    "dark": fn.pick-tint(p.$palette-gray, 100),
+  ),
+  "tertiary": (
+    "light": $dark-violet,
+    "dark": $yellow,
+  ),
+  "success": (
+    "light": $lime-green,
+    "dark": $lime-green-2,
+  ),
+  "success-hover": (
+    "light": fn.pick-tint(p.$palette-green, 600),
+    "dark": fn.pick-tint(p.$palette-green, 300),
+  ),
+  "success-active": (
+    "light": fn.pick-tint(p.$palette-green, 700),
+    "dark": fn.pick-tint(p.$palette-green, 200),
+  ),
+  "danger": (
+    "light": $bright-pink,
+    "dark": $bright-pink-2,
+  ),
+  "danger-hover": (
+    "light": fn.pick-tint(p.$palette-pink, 600),
+    "dark": fn.pick-tint(p.$palette-pink, 300),
+  ),
+  "danger-active": (
+    "light": fn.pick-tint(p.$palette-pink, 700),
+    "dark": fn.pick-tint(p.$palette-pink, 200),
+  ),
+  "warning": (
+    "light": $orange,
+    "dark": $orange-2,
+  ),
+  "warning-hover": (
+    "light": fn.pick-tint(p.$palette-orange, 600),
+    "dark": fn.pick-tint(p.$palette-orange, 300),
+  ),
+  "warning-active": (
+    "light": fn.pick-tint(p.$palette-orange, 700),
+    "dark": fn.pick-tint(p.$palette-orange, 200),
+  ),
+  "info": (
+    "light": $blue,
+    "dark": $light-blue,
+  ),
+  "text": (
+    "light": $black-3,
+    "dark": $white,
+  ),
+  "button-text": (
+    "light": $white,
+    "dark": $white
+  ),
+  "button-text-disabled": (
+    "light": fn.pick-tint(p.$palette-gray, 500),
+    "dark": fn.pick-tint(p.$palette-gray, 100)
+  ),
+  "button-bg-disabled": (
+    "light": fn.pick-tint(p.$palette-gray, 100),
+    "dark": fn.pick-tint(p.$palette-gray, 500)
+  ),
+  "button-border-disabled": (
+    "light": fn.pick-tint(p.$palette-gray, 100),
+    "dark": fn.pick-tint(p.$palette-gray, 500)
+  ),
+  "button-ghost-bg-hover": (
+    "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.05),
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.1)
+  ),
+  "heading": (
+    "light": $blue,
+    "dark": $light-blue,
+  ),
+  "background": (
+    "light": $white,
+    "dark": $black-2,
+  ),
+  "background2": (
+    "light": $white-2,
+    "dark": $dark-blue,
+  ),
+  "navbar-background": (
+    "light": $pale-pink,
+    "dark": $dark-blue
+  ),
+  "sidebar-background": (
+    "light": $pale-pink,
+    "dark": $dark-blue
+  ),
+  "sidebar-menu-active": (
+    "light": color.change($white, $alpha: .5),
+    "dark": color.change($white, $alpha: .2)
+  ),
+  "sidebar-menu-hover": (
+    "light": color.change($white, $alpha: .3),
+    "dark": color.change($white, $alpha: .1)
+  ),
+  "sidebar-menu-text": (
+    "light": color.change($black-3, $alpha: .4),
+    "dark": color.change($white, $alpha: .3)
+  ),
+  "sidebar-menu-text-active": (
+    "light": color.change($black-3, $alpha: .7),
+    "dark": color.change($white, $alpha: .9)
+  ),
+  "sidebar-toggle-button": (
+    "light": color.change($gray-400, $alpha: .2),
+    "dark": color.change($gray-400-dark, $alpha: .2)
+  ),
+  "sidebar-toggle-button-selected": (
+    "light": color.change($gray-400, $alpha: .5),
+    "dark": color.change($gray-400-dark, $alpha: .5)
+  ),
+  "theme-button": (
+    "light": color.change($black-3, $alpha: .7),
+    "dark": color.change($white, $alpha: .7)
+  ),
+  "theme-button-hover": (
+    "light": $black-3,
+    "dark": $white
+  ),
+);

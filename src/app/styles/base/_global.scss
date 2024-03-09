@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../variables/typography" as t;
+@use "./typography" as base-t;
+
+:root {
+  --font-family: #{t.$font-family-sans-serif};
+  --font-size-m: 16px;
+  --font-line-height-m: 24px;
+  --font-m: var(--font-size-m) / var(--font-line-height-m) var(--font-family);
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+  --navbar-height: 70px;
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
+
+  color-scheme: light dark;
+}
+
+html {
+  font-size: t.$html-font-size;
+}
+
+body {
+  font-family: t.$font-family-sans-serif;
+  font-size: base-t.$type-base-size;
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--color-bg);
+}

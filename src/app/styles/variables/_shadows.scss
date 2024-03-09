@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "sass:map";
+@use "./colors" as c;
+
+$shadow-list: (
+  "shadow-1": (
+    "black": 0 3px 4px 0 color.change(c.$black, $alpha: 0.03),
+    "white": 0 3px 4px 0 color.change(c.$white, $alpha: 0.03),
+  ),
+  "shadow-2": (
+    "black": 0 3px 4px 0 color.change(c.$black, $alpha: 0.05),
+    "white": 0 3px 4px 0 color.change(c.$white, $alpha: 0.05),
+  ),
+);
+
+@function shadow($shadow, $color) {
+  $shadow: map.get($shadow-list, $shadow);
+
+  @return map.get($shadow, $color);
+}

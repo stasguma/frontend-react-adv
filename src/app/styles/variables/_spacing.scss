@@ -1,0 +1,13 @@
+@use "../utils/functions" as fn;
+
+$spacing-3xs: fn.to-rem(2px);
+$spacing-2xs: fn.to-rem(4px);
+$spacing-xs: fn.to-rem(8px);
+$spacing-sm: fn.to-rem(12px);
+$spacing-md: fn.to-rem(16px);
+$spacing-lg: fn.to-rem(24px);
+$spacing-xl: fn.to-rem(32px);
+$spacing-2xl: fn.to-rem(40px);
+$spacing-3xl: fn.to-rem(48px);
+$spacing-4xl: fn.to-rem(64px);
+$spacing-5xl: fn.to-rem(80px);

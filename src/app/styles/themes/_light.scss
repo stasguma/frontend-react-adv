@@ -1,12 +1,43 @@
 @use "sass:color";
+@use '../utils/functions' as fn;
+@use "../variables/theme-colors" as *;
 
-:root, [data-theme="light"] {
-  --bg-color: hsl(0deg 100% 96%);
-  --bg-inverted-color: hsl(210deg 30% 8%);
-  --primary-color: hsl(245deg 100% 60%);
-  --primary-inverted-color: hsl(230deg 100% 69%);
-  --secondary-color: hsl(333deg 100% 45%);
-  --secondary-inverted-color: hsl(333deg 100% 52%);
+:root[data-theme="light"] {
+  --color-bg:                             #{fn.pick-color($theme-colors, 'background')};
+  --color-bg-accent:                      #{fn.pick-color($theme-colors, 'background2')};
+  --color-text:                           #{fn.pick-color($theme-colors, 'text')};
+  --color-heading:                        #{fn.pick-color($theme-colors, 'heading')};
+  --color-primary:                        #{fn.pick-color($theme-colors, 'primary')};
+  --color-primary-hover:                  #{fn.pick-color($theme-colors, 'primary-hover')};
+  --color-primary-active:                 #{fn.pick-color($theme-colors, 'primary-active')};
+  --color-secondary:                      #{fn.pick-color($theme-colors, 'secondary')};
+  --color-secondary-hover:                #{fn.pick-color($theme-colors, 'secondary-hover')};
+  --color-secondary-active:               #{fn.pick-color($theme-colors, 'secondary-active')};
+  --color-success:                        #{fn.pick-color($theme-colors, 'success')};
+  --color-success-hover:                  #{fn.pick-color($theme-colors, 'success-hover')};
+  --color-success-active:                 #{fn.pick-color($theme-colors, 'success-active')};
+  --color-danger:                         #{fn.pick-color($theme-colors, 'danger')};
+  --color-danger-hover:                   #{fn.pick-color($theme-colors, 'danger-hover')};
+  --color-danger-active:                  #{fn.pick-color($theme-colors, 'danger-active')};
+  --color-warning:                        #{fn.pick-color($theme-colors, 'warning')};
+  --color-warning-hover:                  #{fn.pick-color($theme-colors, 'warning-hover')};
+  --color-warning-active:                 #{fn.pick-color($theme-colors, 'warning-active')};
+  --color-info:                           #{fn.pick-color($theme-colors, 'info')};
+  --color-sidebar-bg:                     #{fn.pick-color($theme-colors, 'sidebar-background')};
+  --color-sidebar-menu-active:            #{fn.pick-color($theme-colors, 'sidebar-menu-active')};
+  --color-sidebar-menu-hover:             #{fn.pick-color($theme-colors, 'sidebar-menu-hover')};
+  --color-sidebar-menu-text:              #{fn.pick-color($theme-colors, 'sidebar-menu-text')};
+  --color-sidebar-menu-text-active:       #{fn.pick-color($theme-colors, 'sidebar-menu-text-active')};
+  --color-sidebar-toggle-button:          #{fn.pick-color($theme-colors, 'sidebar-toggle-button')};
+  --color-sidebar-toggle-button-selected: #{fn.pick-color($theme-colors, 'sidebar-toggle-button-selected')};
+  --color-theme-button:                   #{fn.pick-color($theme-colors, 'theme-button')};
+  --color-theme-button-hover:             #{fn.pick-color($theme-colors, 'theme-button-hover')};
+  --color-navbar-bg:                      #{fn.pick-color($theme-colors, 'navbar-background')};
+  --color-button-text:                    #{fn.pick-color($theme-colors, 'button-text')};
+  --color-button-text-disabled:           #{fn.pick-color($theme-colors, 'button-text-disabled')};
+  --color-button-bg-disabled:             #{fn.pick-color($theme-colors, 'button-bg-disabled')};
+  --color-button-border-disabled:         #{fn.pick-color($theme-colors, 'button-border-disabled')};
+  --color-button-ghost-bg-hover:          #{fn.pick-color($theme-colors, 'button-ghost-bg-hover')};
 
   color-scheme: light;
 }

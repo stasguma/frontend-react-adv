@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "../utils/functions" as fn;
+
+$html-font-size: 16px;
+$font-family-sans-serif: "Fixel Text", sans-serif;
+$font-family-monospace: "Fixel Text", monospace;
+
+// font-weight
+$font-weights: (
+  "thin": 100,
+  "extra-light": 200,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extra-bold": 800,
+  "black": 900,
+);
+
+@function font-weight($weight) {
+  @return map.get($font-weights, $weight);
+}
+
+// Letter spacing
+$letter-spacing-xs: fn.to-rem(0.5px);
+$letter-spacing-s: fn.to-rem(1px);
+$letter-spacing-md: fn.to-rem(1.5px);
+$letter-spacing-lg: fn.to-rem(2px);

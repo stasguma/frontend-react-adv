@@ -27,8 +27,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-ul[role="list"],
-ol[role="list"] {
+:where(ul,ol):where([role='list']) {
   list-style: none;
 }
 
@@ -83,6 +82,7 @@ a:not([class]) {
 :target {
   scroll-margin-block: 1rlh;
 }
+
 /* stylelint-disable-next-line */
 #root, #__next {
   isolation: isolate;

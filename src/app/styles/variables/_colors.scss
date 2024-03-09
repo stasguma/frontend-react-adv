@@ -1,53 +1,14 @@
 @use "sass:color";
+@use "sass:map";
+@use "./palettes";
+@use "../utils/functions" as fn;
 
-$theme-colors: (
-  "primary": (
-    "light": $blue,
-    "dark": $light-blue,
-  ),
-  "secondary": (
-    "light": $bright-pink,
-    "dark": $bright-pink-2,
-  ),
-  "tertiary": (
-    "light": $dark-violet,
-    "dark": $yellow,
-  ),
-  "text": (
-    "light": $black-3,
-    "dark": $white,
-  ),
-  "foreground": (
-    "light": #6e6e6e,
-    "dark": #111,
-  ),
-  "background": (
-    "light": $white,
-    "dark": $black-2,
-  ),
-  "info": (
-    "light": $blue,
-    "dark": $light-blue,
-  ),
-  "success": (
-    "light": $lime-green,
-    "dark": $lime-green,
-  ),
-  "error": (
-    "light": $vivid-pink,
-    "dark": $vivid-pink-2,
-  ),
-  "alert": (
-    "light": $orange,
-    "dark": $orange-2,
-  ),
-);
-
-/* mono colors */
+/* grayscale */
 $black: hsl(0deg 0% 0%);
 $black-2: hsl(210deg 30% 8%);
 $black-3: hsl(222deg 22% 5%);
 $white: hsl(0deg 0% 100%);
+$white-2: hsl(210deg 55% 92%);
 $gray-100: hsl(225deg 25% 95%);
 $gray-200: hsl(225deg 16% 90%);
 $gray-300: hsl(225deg 8% 80%);
@@ -55,34 +16,47 @@ $gray-400: hsl(225deg 8% 70%);
 $gray-500: hsl(225deg 7% 60%);
 $gray-600: hsl(225deg 15% 50%);
 $gray-700: hsl(225deg 12% 40%);
+$gray-800: hsl(225deg 15% 30%);
 $gray-900: hsl(225deg 25% 20%);
 $gray-1000: hsl(225deg 15% 15%);
+$gray-100-dark: hsl(210deg 15% 20%);
+$gray-200-dark: hsl(210deg 15% 25%);
+$gray-300-dark: hsl(210deg 10% 40%);
+$gray-400-dark: hsl(210deg 9% 45%);
+$gray-500-dark: hsl(210deg 8% 50%);
+$gray-600-dark: hsl(210deg 12% 55%);
+$gray-700-dark: hsl(210deg 14% 66%);
+$gray-800-dark: hsl(210deg 8% 80%);
+$gray-900-dark: hsl(210deg 25% 88%);
+$gray-1000-dark: hsl(210deg 25% 96%);
 
-/* colors */
-$blue: hsl(245deg 100% 60%);
-$light-blue: hsl(230deg 100% 69%);
-$bright-pink: hsl(333deg 100% 45%);
-$bright-pink-2: hsl(333deg 100% 52%);
-$vivid-pink: hsl(340deg 95% 50%);
-$vivid-pink-2: hsl(340deg 95% 60%);
+/* declarative colors */
+$dark-blue: hsl(210deg 38% 15%);
+$blue: fn.pick-tint(palettes.$palette-blue, 500);
+$light-blue: fn.pick-tint(palettes.$palette-blue, 400);
+$pale-pink: fn.pick-tint(palettes.$palette-pink, 100);
+$bright-pink: fn.pick-tint(palettes.$palette-pink, 500);
+$bright-pink-2: fn.pick-tint(palettes.$palette-pink, 400);
 $dark-violet: hsl(255deg 85% 30%);
-$lime-green: hsl(160deg 100% 40%);
-$orange: hsl(37deg 100% 50%);
-$orange-2: hsl(30deg 100% 50%);
-$yellow: hsl(53deg 100% 50%);
+$lime-green: fn.pick-tint(palettes.$palette-green, 500);
+$lime-green-2: fn.pick-tint(palettes.$palette-green, 400);
+$orange: fn.pick-tint(palettes.$palette-orange, 500);
+$orange-2: fn.pick-tint(palettes.$palette-orange, 400);
+$yellow: fn.pick-tint(palettes.$palette-yellow, 500);
+
+/* semantic colors */
+// $c-primary: $blue;
+
+// $c-primary-lighter: color.scale($c-primary, $lightness: 12%);
+// $c-primary-darker: color.scale($c-primary, $lightness: -12%);
 
 /* state color */
-$c-info: $blue;
-$c-success: $lime-green;
-$c-error: $vivid-pink;
-$c-alert: $orange;
-
-// :root {
-//   --error: #{$c-error};
-// }
+// $c-info: $blue;
+// $c-success: $lime-green;
+// $c-error: $vivid-pink;
+// $c-alert: $orange;
 
 // Dark mode
-
 #darkmode {
   --color-text: hsl(0deg 0% 100%);
   --color-background: hsl(210deg 30% 8%);

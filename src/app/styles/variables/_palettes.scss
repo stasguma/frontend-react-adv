@@ -1,0 +1,58 @@
+@use "sass:color";
+@use "sass:map";
+@use "../utils/functions" as fn;
+
+@function generate-palette($color) {
+  $palette: ();
+  $steps: (
+    100: 73%,
+    200: 54%,
+    300: 28%,
+    400: 18%,
+    500: 0%,
+    600: -16%,
+    700: -30%,
+    800: -42%,
+    900: -52%
+  );
+
+  @each $step, $lightness in $steps {
+    $_color: fn.to-hsl(color.scale($color, $lightness: $lightness));
+    $palette: map.deep-merge($palette, ($step: $_color));
+  }
+
+  @return $palette;
+}
+
+$palette-blue: generate-palette(hsl(224deg 100% 50%));
+$palette-pink: generate-palette(hsl(335deg 100% 50%));
+$palette-green: generate-palette(hsl(160deg 50% 50%));
+$palette-yellow: generate-palette(hsl(53deg 100% 50%));
+$palette-orange: generate-palette(hsl(37deg 100% 50%));
+$palette-gray: generate-palette(hsl(0deg 0% 50%));
+
+[class|='p'] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 50px;
+
+  font-size: 0.7rem;
+  color: slategray;
+}
+
+@mixin create-pal($color, $palette) {
+  @each $step, $c in $palette {
+    .p-#{$color}-#{$step} {
+      background-color: map.get($palette, $step);
+    }
+  }
+}
+
+@include create-pal('pink', $palette-pink);
+@include create-pal('orange', $palette-orange);
+@include create-pal('yellow', $palette-yellow);
+@include create-pal('green', $palette-green);
+@include create-pal('blue', $palette-blue);
+@include create-pal('gray', $palette-gray);
