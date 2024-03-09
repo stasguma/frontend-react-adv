@@ -10,7 +10,7 @@ export const loaders = function (
   const { isDev } = options;
 
   const fontLoader = {
-    test: /\.(woff|woff2)$/i,
+    test: /\.(woff2|woff)$/i,
     type: 'asset/resource',
     generator: {
       filename: 'fonts/[path][name][ext]',

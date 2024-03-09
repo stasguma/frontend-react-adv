@@ -122,6 +122,10 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
       ...i18nextPlugin.configs.recommended.rules,
+
+      '@stylistic/jsx-max-props-per-line': [1, {
+        "maximum": { single: 2, multi: 1 }
+      }]
     },
   },
   {
@@ -151,6 +155,7 @@ export default [
     },
     rules: {
       ...storybookPlugin.configs.recommended.overrides[0].rules,
+      'i18next/no-literal-string': 'off',
     },
   },
   {

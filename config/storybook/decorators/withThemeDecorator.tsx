@@ -1,13 +1,19 @@
 import type { Decorator } from '@storybook/react';
+import type { ETheme } from '../../../src/app/providers/ThemeProvider';
+
+import { useEffect } from 'react';
 
 import { ThemeProvider } from '../../../src/app/providers/ThemeProvider';
+import { changeThemeInDOM } from '../../../src/app/providers/ThemeProvider/lib/changeThemeInDOM';
 
 export const withThemeDecorator: Decorator = (Story, context) => {
   const { theme } = context.globals;
 
+  useEffect(() => {
+    changeThemeInDOM(theme as ETheme);
+  }, [theme]);
+
   return (
-    <ThemeProvider>
-      <div data-theme={theme as string}><Story /></div>
-    </ThemeProvider>
+    <ThemeProvider><Story /></ThemeProvider>
   );
 };

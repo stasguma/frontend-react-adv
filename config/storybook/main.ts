@@ -38,6 +38,7 @@ const config: StorybookConfig = {
   }),
   docs: {
     autodocs: 'tag',
+    defaultName: 'Overview',
   },
   webpackFinal: (config: Configuration): Configuration => {
     /* added global variable */
