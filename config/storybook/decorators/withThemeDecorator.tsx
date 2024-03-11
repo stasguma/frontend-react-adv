@@ -9,6 +9,7 @@ import { changeThemeInDOM } from '../../../src/app/providers/ThemeProvider/lib/c
 export const withThemeDecorator: Decorator = (Story, context) => {
   const { theme } = context.globals;
 
+  /* eslint-disable-next-line */
   useEffect(() => {
     changeThemeInDOM(theme as ETheme);
   }, [theme]);

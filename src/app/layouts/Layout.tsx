@@ -19,8 +19,7 @@ const Layout: FC = () => {
           </Suspense>
         </main>
       </div>
-      <footer>2024</footer>
-      <div style={{ 'display': 'flex', 'flex-flow': 'row' }}>
+      <div style={{ display: 'flex', flexFlow: 'row' }}>
         <div style={{ width: '100%', height: '100%' }}>
           <div className="p-orange-100">100</div>
           <div className="p-orange-200">200</div>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { RoutePath } from '@/shared/config/routerConfig/routerConfig';
+import { RoutePath } from '@/shared/config/router/routerConfig';
 import { Button, LangSwitcher } from '@/shared/ui';
 import { ThemeSwitcher } from '@/entities/ThemeSwitcher';
 

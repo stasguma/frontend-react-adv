@@ -7,8 +7,9 @@ import i18nextPlugin from 'eslint-plugin-i18next';
 import stylistic from '@stylistic/eslint-plugin';
 import jestDom from 'eslint-plugin-jest-dom';
 import storybookPlugin from 'eslint-plugin-storybook';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
-// console.log(storybookPlugin.configs.recommended.overrides);
+// console.log(reactHooksPlugin.configs.recommended);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
@@ -26,7 +27,8 @@ export default [
       '**/.*',
       '**/.*.{js,ts}',
       '**/*.config.{js,ts}',
-      '**/jest-setup.ts'
+      '**/jest-setup.ts',
+      'storybook-static'
     ],
   },
   {
@@ -116,11 +118,13 @@ export default [
     },
     plugins: {
       react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
       i18next: i18nextPlugin,
     },
     rules: {
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
       ...i18nextPlugin.configs.recommended.rules,
 
       '@stylistic/jsx-max-props-per-line': [1, {

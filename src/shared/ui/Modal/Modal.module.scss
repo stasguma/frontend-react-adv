@@ -1,0 +1,75 @@
+@use "@/app/styles/variables" as vars;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-color: var(--color-backdrop);
+    transition: opacity .2s vars.$ease-3;
+  }
+  
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  &__content {
+    position: relative;
+
+    max-width: clamp(550px, 60vw, 700px);
+    padding: 24px 20px;
+
+    opacity: 0;
+    background-color: var(--color-bg);
+    border-radius: 4px;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 28px;
+    height: 28px;
+
+    color: #000;
+
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  &:global(.is-open) {
+    z-index: 10;
+    display: block;
+    
+    .modal__backdrop {
+      opacity: 1;
+      animation: fade-in .2s vars.$ease-3;
+    }
+    
+    .modal__content {
+      opacity: 1;
+      animation: scale-up .4s vars.$ease-elastic-in-out-5, fade-in .4s vars.$ease-elastic-in-out-5;
+    }
+  }
+
+  &:global(.is-closing) {
+    .modal__backdrop {
+      opacity: 0;
+      animation: fade-out .3s vars.$ease-3;
+    }
+    
+    .modal__content {
+      opacity: 0;
+      animation: scale-down .15s vars.$ease-3, fade-out .15s vars.$ease-3;
+    }
+  }
+}

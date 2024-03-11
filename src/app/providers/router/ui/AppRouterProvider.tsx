@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import routerConfig from '@/shared/config/routerConfig/routerConfig';
+import routerConfig from '@/shared/config/router/routerConfig';
 
 const router = createBrowserRouter(routerConfig);
 

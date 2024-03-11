@@ -18,5 +18,5 @@ export const useThemeRelyOnColorScheme = (): void => {
     return () => {
       OSColorSchemeDark.removeEventListener('change', onThemeChange);
     };
-  }, []);
+  }, [OSColorSchemeDark]);
 };

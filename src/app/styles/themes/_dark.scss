@@ -5,6 +5,7 @@
 :root[data-theme="dark"] {
   --color-bg:                             #{fn.pick-color($theme-colors, 'background', 'dark')};
   --color-bg-accent:                      #{fn.pick-color($theme-colors, 'background2', 'dark')};
+  --color-backdrop:                       #{fn.pick-color($theme-colors, 'backdrop', 'dark')};
   --color-text:                           #{fn.pick-color($theme-colors, 'text', 'dark')};
   --color-heading:                        #{fn.pick-color($theme-colors, 'heading', 'dark')};
   --color-primary:                        #{fn.pick-color($theme-colors, 'primary', 'dark')};

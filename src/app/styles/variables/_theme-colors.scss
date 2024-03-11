@@ -108,6 +108,10 @@ $theme-colors: (
     "light": $white-2,
     "dark": $dark-blue,
   ),
+  "backdrop": (
+    "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.8),
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.8),
+  ),
   "navbar-background": (
     "light": $pale-pink,
     "dark": $dark-blue
