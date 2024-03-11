@@ -5,16 +5,19 @@ import '@/app/styles/index.scss';
 import '@/shared/config/i18n/i18n';
 
 import App from '@/app/App';
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { PageError } from '@/widgets/PageError';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <ErrorBoundary fallback={<PageError />}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </ErrorBoundary>
+    <StoreProvider>
+      <ErrorBoundary fallback={<PageError />}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </ErrorBoundary>
+    </StoreProvider>
   </StrictMode>
 );
