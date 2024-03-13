@@ -7,6 +7,7 @@
   --color-bg-accent:                      #{fn.pick-color($theme-colors, 'background2')};
   --color-backdrop:                       #{fn.pick-color($theme-colors, 'backdrop')};
   --color-text:                           #{fn.pick-color($theme-colors, 'text')};
+  --color-text-disabled:                  #{fn.pick-color($theme-colors, 'text-disabled')};
   --color-heading:                        #{fn.pick-color($theme-colors, 'heading')};
   --color-primary:                        #{fn.pick-color($theme-colors, 'primary')};
   --color-primary-hover:                  #{fn.pick-color($theme-colors, 'primary-hover')};
@@ -39,6 +40,32 @@
   --color-button-bg-disabled:             #{fn.pick-color($theme-colors, 'button-bg-disabled')};
   --color-button-border-disabled:         #{fn.pick-color($theme-colors, 'button-border-disabled')};
   --color-button-ghost-bg-hover:          #{fn.pick-color($theme-colors, 'button-ghost-bg-hover')};
+  --color-input-bg:                       #{fn.pick-color($theme-colors, 'input-bg')};
+  --color-input-bg-hover:                 #{fn.pick-color($theme-colors, 'input-bg-hover')};
+  --color-input-bg-focus:                 #{fn.pick-color($theme-colors, 'input-bg-focus')};
+  --color-input-bg-active:                #{fn.pick-color($theme-colors, 'input-bg-active')};
+  --color-input-bg-disabled:              #{fn.pick-color($theme-colors, 'input-bg-disabled')};
+  --color-input-border:                   #{fn.pick-color($theme-colors, 'input-border')};
+  --color-input-border-hover:             #{fn.pick-color($theme-colors, 'input-border-hover')};
+  --color-input-border-focus:             #{fn.pick-color($theme-colors, 'input-border-focus')};
+  --color-input-border-active:            #{fn.pick-color($theme-colors, 'input-border-active')};
+  --color-input-danger-bg:                #{fn.pick-color($theme-colors, 'input-danger-bg')};
+  --color-input-danger-bg-hover:          #{fn.pick-color($theme-colors, 'input-danger-bg-hover')};
+  --color-input-danger-bg-focus:          #{fn.pick-color($theme-colors, 'input-danger-bg-focus')};
+  --color-input-danger-bg-active:         #{fn.pick-color($theme-colors, 'input-danger-bg-active')};
+  --color-input-danger-border:            #{fn.pick-color($theme-colors, 'input-danger-border')};
+  --color-input-danger-border-hover:      #{fn.pick-color($theme-colors, 'input-danger-border-hover')};
+  --color-input-danger-border-focus:      #{fn.pick-color($theme-colors, 'input-danger-border-focus')};
+  --color-input-danger-border-active:     #{fn.pick-color($theme-colors, 'input-danger-border-active')};
+  --color-input-warning-bg:               #{fn.pick-color($theme-colors, 'input-warning-bg')};
+  --color-input-warning-bg-hover:         #{fn.pick-color($theme-colors, 'input-warning-bg-hover')};
+  --color-input-warning-bg-focus:         #{fn.pick-color($theme-colors, 'input-warning-bg-focus')};
+  --color-input-warning-bg-active:        #{fn.pick-color($theme-colors, 'input-warning-bg-active')};
+  --color-input-warning-border:           #{fn.pick-color($theme-colors, 'input-warning-border')};
+  --color-input-warning-border-hover:     #{fn.pick-color($theme-colors, 'input-warning-border-hover')};
+  --color-input-warning-border-focus:     #{fn.pick-color($theme-colors, 'input-warning-border-focus')};
+  --color-input-warning-border-active:    #{fn.pick-color($theme-colors, 'input-warning-border-active')};
+
 
   color-scheme: light;
 }

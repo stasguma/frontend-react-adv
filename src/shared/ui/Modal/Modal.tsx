@@ -8,15 +8,25 @@ import { Button, Portal } from '@/shared/ui';
 
 import XMarkIcon from '@/shared/assets/icons/x-mark.svg';
 
+type TModalSizes = 'sm' | 'md' | 'lg';
+
+const ModalSizesMap = {
+  sm: 'small',
+  md: 'medium',
+  lg: 'large',
+};
+
 interface IProps {
   children: ReactNode;
   isOpen?: boolean;
+  size?: TModalSizes;
   onClose?: () => void;
 }
 
 export const Modal: FC<IProps> = (props) => {
   const {
     children,
+    size = 'md',
     isOpen,
     onClose,
   } = props;
@@ -88,7 +98,10 @@ export const Modal: FC<IProps> = (props) => {
         <div className={classNames(classes.modal__wrapper)}>
           <div
             ref={contentRef}
-            className={classNames(classes.modal__content)}
+            className={classNames(
+              classes.modal__content,
+              { [classes[`modal__content--${ModalSizesMap[size]}`]]: size !== 'md' }
+            )}
             role="dialog"
             aria-modal="true"
           >
@@ -108,3 +121,14 @@ export const Modal: FC<IProps> = (props) => {
     </Portal>
   );
 };
+
+// ModalComponent.displayName = 'Modal';
+// ModalHeader.displayName = 'Modal.Header';
+// ModalBody.displayName = 'Modal.Body';
+// ModalFooter.displayName = 'Modal.Footer';
+
+// export const Modal = Object.assign(ModalComponent, {
+//   Header: ModalHeader,
+//   Body: ModalBody,
+//   Footer: ModalFooter,
+// });

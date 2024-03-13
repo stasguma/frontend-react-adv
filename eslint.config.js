@@ -94,6 +94,7 @@ export default [
       // Overrides
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
       '@typescript-eslint/strict-boolean-expressions': ['error', {
+        allowNullableString: true,
         allowNullableBoolean: true,
       }],
       '@typescript-eslint/consistent-type-imports': ['error'],
