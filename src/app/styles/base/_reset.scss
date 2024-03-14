@@ -59,9 +59,14 @@ textarea:not([rows]) {
   min-height: 10em;
 }
 
+
 p, h1, h2, h3, h4, h5, h6 {
   hyphens: auto;
   overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 //  Need to test, might be removed later

@@ -5,3 +5,4 @@ export { LangSwitcher } from './LangSwitcher/LangSwitcher';
 export { Loader } from './Loader/Loader';
 export { Modal } from './Modal/Modal';
 export { Portal } from './Portal/Portal';
+export { default as Typography } from './Typography';

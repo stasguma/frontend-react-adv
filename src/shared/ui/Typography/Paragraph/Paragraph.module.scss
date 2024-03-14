@@ -1,0 +1,13 @@
+@use "@/app/styles/variables" as vars;
+@use "@/app/styles/utils" as u;
+
+.paragraph {
+  font-size: u.to-rem(16px);
+  font-weight: vars.font-weight(normal);
+  color: var(--color-text);
+
+  &--small {
+    font-size: u.to-rem(14px);
+    line-height: 1.3;
+  }
+}
