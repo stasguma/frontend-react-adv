@@ -2,12 +2,10 @@ import type { Preview } from '@storybook/react';
 
 import '../../src/app/styles/index.scss';
 
-// import i18n from '../../src/shared/config/i18n/i18n';
 import { withThemeDecorator } from '../../src/shared/config/storybook/decorators/withThemeDecorator';
 import { withLangDecorator } from '../../src/shared/config/storybook/decorators/withLangDecorator';
 import { withRouterDecorator } from '../../src/shared/config/storybook/decorators/withRouterDecorator';
 import { withStoreDecorator } from '../../src/shared/config/storybook/decorators/withStoreDecorator';
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 const preview: Preview = {
   parameters: {
