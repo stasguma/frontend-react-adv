@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import classes from './PageError.module.scss';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Button } from '@/shared/ui';
 
 interface IProps {

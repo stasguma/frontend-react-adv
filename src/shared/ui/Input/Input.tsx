@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes, FC, ChangeEvent } from 'react';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 import classes from './Input.module.scss';
 
@@ -21,7 +21,7 @@ interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: TInputSizes;
 }
 
-export const Input: FC<IProps> = (props) => {
+export const Input: FC<IProps> = memo((props: IProps) => {
   const {
     className,
     size = 'md',
@@ -62,4 +62,6 @@ export const Input: FC<IProps> = (props) => {
       />
     </div>
   );
-};
+});
+
+Input.displayName = 'Input';

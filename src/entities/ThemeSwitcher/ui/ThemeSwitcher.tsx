@@ -5,7 +5,7 @@ import classes from './ThemeSwitcher.module.scss';
 import SunMoonIcon from '@/shared/assets/svg/sun-moon.svg';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { Button } from '@/shared/ui';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 interface IProps {
   className?: string;

@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import routerConfig from '@/shared/config/router/routerConfig';

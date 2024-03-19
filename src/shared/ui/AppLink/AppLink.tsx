@@ -1,8 +1,11 @@
-import { type FC } from 'react';
-import { Link, type LinkProps } from 'react-router-dom';
+import type { FC } from 'react';
+import type { LinkProps } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
+
+import { classNames } from '@/shared/lib';
 
 import classes from './AppLink.module.scss';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 export enum EAppLinkTheme {
   PRIMARY = 'primary',

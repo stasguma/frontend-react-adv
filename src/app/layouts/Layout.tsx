@@ -1,11 +1,12 @@
-import { type FC, Suspense } from 'react';
+import type { FC } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
-import classes from './Layout.module.scss';
 
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { PageLoader } from '@/widgets/PageLoader';
+
+import classes from './Layout.module.scss';
 
 const Layout: FC = () => {
   return (

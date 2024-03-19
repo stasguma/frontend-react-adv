@@ -3,9 +3,11 @@ import type { Preview } from '@storybook/react';
 import '../../src/app/styles/index.scss';
 
 // import i18n from '../../src/shared/config/i18n/i18n';
-import { withThemeDecorator } from './decorators/withThemeDecorator';
-import { withLangDecorator } from './decorators/withLangDecorator';
-import { withRouterDecorator } from './decorators/withRouterDecorator';
+import { withThemeDecorator } from '../../src/shared/config/storybook/decorators/withThemeDecorator';
+import { withLangDecorator } from '../../src/shared/config/storybook/decorators/withLangDecorator';
+import { withRouterDecorator } from '../../src/shared/config/storybook/decorators/withRouterDecorator';
+import { withStoreDecorator } from '../../src/shared/config/storybook/decorators/withStoreDecorator';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 
 const preview: Preview = {
   parameters: {
@@ -19,20 +21,6 @@ const preview: Preview = {
   },
 
   globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      defaultValue: 'light',
-      toolbar: {
-        // The label to show for this toolbar item
-        title: 'Theme',
-        icon: 'circlehollow',
-        // Array of plain string values or MenuItem shape (see below)
-        items: ['light', 'dark'],
-        // Change title based on selected value
-        dynamicTitle: true,
-      },
-    },
-
     locale: {
       description: 'Internationalization locale',
       defaultValue: 'en',
@@ -47,9 +35,10 @@ const preview: Preview = {
   },
 
   decorators: [
-    withThemeDecorator,
     withLangDecorator,
     withRouterDecorator,
+    withStoreDecorator,
+    withThemeDecorator(),
   ],
 };
 

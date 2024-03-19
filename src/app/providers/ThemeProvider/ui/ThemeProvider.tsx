@@ -1,15 +1,8 @@
-import {
-  type FC,
-  type ReactNode,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from 'react';
-import {
-  ETheme,
-  LOCAL_STORAGE_THEME_KEY,
-  ThemeContext,
-} from '../lib/ThemeContext';
+import type { FC, ReactNode } from 'react';
+
+import { useLayoutEffect, useMemo, useState } from 'react';
+
+import { ETheme, LOCAL_STORAGE_THEME_KEY, ThemeContext } from '../lib/ThemeContext';
 import { useThemeRelyOnColorScheme } from '../lib/useThemeRelyOnColorScheme';
 import { changeThemeInDOM } from '../lib/changeThemeInDOM';
 

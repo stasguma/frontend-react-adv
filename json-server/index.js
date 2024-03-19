@@ -21,7 +21,7 @@ server.use(async (req, res, next) => {
 
 // Check headers if user authorized
 server.use((req, res, next) => {
-  if (!req.headers.authorization) {
+  if (!req.headers.authorization && !req.path.includes('login')) {
     return res.status(401).jsonp({ error: 'Unauthorized', message: 'You are not authorized to access this resource' });
   }
 
@@ -32,13 +32,14 @@ server.use((req, res, next) => {
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 
-server.post('/login', (req, res) => {
+server.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   const db = JSON.parse(readFileSync(path.resolve(import.meta.dirname, 'db.json'), 'utf8'));
-  const { users } = db;
+  const { users = [] } = db;
   const userFromDB = users.find(user => user.username === username && user.password === password);
 
   if (userFromDB) {
+    userFromDB.token = 'Bearer sadasdasdasdasd12h213g31kjh312gkh132khg1231g2khg132kjh';
     return res.status(200).jsonp(userFromDB);
   }
 
@@ -47,6 +48,6 @@ server.post('/login', (req, res) => {
 
 // Use default router
 server.use(router);
-server.listen(6666, () => {
+server.listen(1111, () => {
   console.log('JSON Server is running');
 });

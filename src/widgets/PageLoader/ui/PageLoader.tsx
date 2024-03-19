@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import classes from './PageLoader.module.scss';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
 
 interface IProps {

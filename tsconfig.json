@@ -14,7 +14,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["DOM", "ES2022"],
+    "lib": ["DOM", "ES2022", "DOM.Iterable"],
     "strictNullChecks": true
   },
   "ts-node": {

@@ -1,6 +1,6 @@
 import type { FC, HTMLAttributes, JSX, ReactNode } from 'react';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 import classes from './Title.module.scss';
 

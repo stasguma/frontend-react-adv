@@ -2,7 +2,7 @@ import { type ButtonHTMLAttributes, type FC } from 'react';
 
 import classes from './Button.module.scss';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 
 type TButtonVariants = 'base' | 'filled' | 'outlined' | 'ghost';
 

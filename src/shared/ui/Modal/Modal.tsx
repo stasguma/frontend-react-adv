@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import classes from './Modal.module.scss';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib';
 import { Button, Portal } from '@/shared/ui';
 
 import XMarkIcon from '@/shared/assets/icons/x-mark.svg';
@@ -39,6 +39,7 @@ export const Modal: FC<IProps> = (props) => {
     if (isOpen) {
       document.addEventListener('keydown', onKeyDown);
     }
+
     return () => {
       document.removeEventListener('keydown', onKeyDown);
     };

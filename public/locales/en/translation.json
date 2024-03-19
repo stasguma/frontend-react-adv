@@ -5,5 +5,6 @@
   "errorBoundaryText": "Something went wrong. Please, reload the page!",
   "home": "Home",
   "about": "About",
-  "Log In": "Log In"
+  "Log In": "Log In",
+  "Log Out": "Log Out"
 }
