@@ -1,22 +1,20 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
+// import type { PayloadAction } from '@reduxjs/toolkit';
 import { type UserSchema } from '../types/userSchema';
 import { createSlice } from '@reduxjs/toolkit';
 
 // Define the initial state using that type
 const initialState: UserSchema = {
-  name: 'Stas',
+  authData: undefined,
 };
 
-export const usersSlice = createSlice({
-  name: 'users',
+export const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    changeName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
-    },
+    getAuthData: state => state.authData as UserSchema | undefined,
   },
 });
 
-export const { changeName } = usersSlice.actions;
+export const { getAuthData } = userSlice.actions;
 
-export default usersSlice.reducer;
+export default userSlice.reducer;
