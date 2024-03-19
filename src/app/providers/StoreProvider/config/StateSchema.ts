@@ -1,5 +1,7 @@
 import type { UserSchema } from '@/entities/User';
+import type { SessionSchema } from '@/entities/Session';
 
 export interface StateSchema {
-  users: UserSchema;
+  user: UserSchema;
+  session: SessionSchema;
 }

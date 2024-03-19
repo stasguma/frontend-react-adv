@@ -1,16 +1,27 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { userReducer } from '@/entities/User';
-
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof rootReducer>;
+import { userSlice } from '@/entities/User';
+import { sessionSlice } from '@/entities/Session';
+import { authListenerMiddleware } from '@/features/authentication/Login';
 
 const rootReducer = combineReducers({
-  users: userReducer,
+  [userSlice.name]: userSlice.reducer,
+  [sessionSlice.name]: sessionSlice.reducer,
 });
 
-export const store = configureStore({
-  reducer: rootReducer,
-  devTools: __IS_DEV__,
-  // middleware: () => new Tuple(/* place middleware here */),
-});
+export function createStore() {
+  const store = configureStore({
+    reducer: rootReducer,
+    devTools: __IS_DEV__,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware()
+        .concat(authListenerMiddleware.middleware),
+  });
+
+  return store;
+}
+
+export const appStore = createStore();
+
+export type AppDispatch = typeof appStore.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
