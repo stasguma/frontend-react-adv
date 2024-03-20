@@ -1,18 +1,15 @@
 import { type ButtonHTMLAttributes, type FC } from 'react';
 
-import classes from './Button.module.scss';
-
 import { classNames } from '@/shared/lib';
 
+import classes from './Button.module.scss';
+
 type TButtonVariants = 'base' | 'filled' | 'outlined' | 'ghost';
-
 type TButtonColors = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
-
-type TButtonSizes = 'sm' | 'md' | 'lg';
+type TButtonSizes = 'sm' | 'lg';
 
 const ButtonSizesMap = {
   sm: 'small',
-  md: 'medium',
   lg: 'large',
 };
 
@@ -30,7 +27,7 @@ export const Button: FC<IProps> = (props) => {
     disabled = false,
     variant = 'base',
     color = 'primary',
-    size = 'md',
+    size,
     type = 'button',
     ...otherProps
   } = props;
@@ -40,7 +37,7 @@ export const Button: FC<IProps> = (props) => {
         classNames(classes.btn,
           classes[`btn-${variant}`],
           { [classes[`btn-${color}`]]: variant !== 'base' },
-          { [classes[`btn-${ButtonSizesMap[size]}`]]: size !== 'md' },
+          { [classes[`btn--${ButtonSizesMap[size!]}`]]: !!size },
           className)
       }
       disabled={disabled}

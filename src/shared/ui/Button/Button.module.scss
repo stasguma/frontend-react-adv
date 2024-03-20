@@ -36,6 +36,15 @@
   &:focus-visible {
     outline: 2px solid var(--color-text);
   }
+  
+  &--large {
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  &--small {
+    height: 32px;
+  }
 }
 
 // Button variants
@@ -269,15 +278,4 @@
       color: var(--color-warning-active);
     }
   }
-}
-
-// Button sizes
-
-.btn-large {
-  height: 48px;
-  padding: 0 16px;
-}
-
-.btn-small {
-  height: 32px;
 }
