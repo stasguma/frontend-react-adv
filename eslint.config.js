@@ -41,6 +41,7 @@ export default [
         ...globals.browser,
         ...globals.node,
         __IS_DEV__: true,
+        DeepPartial: true
       },
     },
     linterOptions: {

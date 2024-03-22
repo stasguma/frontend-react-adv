@@ -35,7 +35,6 @@ const preview: Preview = {
   decorators: [
     withLangDecorator,
     withRouterDecorator,
-    withStoreDecorator,
     withThemeDecorator(),
   ],
 };

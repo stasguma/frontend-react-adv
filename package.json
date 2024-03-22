@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "start": "pnpm dev",
-    "build": "cross-env NODE_OPTIONS='--import=tsx' webpack --env production --config webpack.config.ts",
     "dev": "cross-env NODE_OPTIONS='--import=tsx' webpack serve --env development port=8080 --config webpack.config.ts --open",
     "build:prod": "cross-env NODE_OPTIONS='--import=tsx' webpack --env production --config webpack.config.ts",
     "build:dev": "cross-env NODE_OPTIONS='--import=tsx' webpack --env development --config webpack.config.ts",

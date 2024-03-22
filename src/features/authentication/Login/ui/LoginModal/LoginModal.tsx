@@ -44,7 +44,6 @@ export const LoginModal: FC<IProps> = (props) => {
       e.preventDefault();
 
       const data = Object.fromEntries(new FormData(e.target as HTMLFormElement)) as unknown as ILoginForm;
-      // /* eslint-disable-next-line */
       void dispatch(loginThunkAction(data));
     }, [dispatch]
   );

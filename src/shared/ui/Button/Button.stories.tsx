@@ -72,7 +72,6 @@ export const ButtonSizes: Story = {
       <Button
         variant="filled"
         color="primary"
-        size="md"
       >
         Primary
       </Button>

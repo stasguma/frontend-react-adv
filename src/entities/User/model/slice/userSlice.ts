@@ -1,5 +1,6 @@
 // import type { PayloadAction } from '@reduxjs/toolkit';
-import { type UserSchema } from '../types/userSchema';
+import type { UserSchema } from '../types/userSchema';
+
 import { createSlice } from '@reduxjs/toolkit';
 
 // Define the initial state using that type
