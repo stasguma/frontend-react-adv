@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/shared/ui';
-import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { useAppDispatch } from '@/shared/model';
 import { logoutThunkAction } from '../../model/thunkActions/logoutThunkAction';
 
 export const LogoutButton: FC = () => {

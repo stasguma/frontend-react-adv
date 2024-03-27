@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { useEffect } from 'react';
 
 import { AppRouterProvider } from '@/app/providers/router';
-import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { useAppDispatch } from '@/shared/model';
 import { initSession } from '@/entities/Session';
 
 const App: FC = () => {

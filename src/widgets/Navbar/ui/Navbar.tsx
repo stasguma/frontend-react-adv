@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
+import { useAppSelector } from '@/shared/model';
 import { Button } from '@/shared/ui';
 import { selectIsAuth } from '@/entities/Session';
 import { LoginModal } from '@/features/authentication/Login';
 import { LogoutButton } from '@/features/authentication/Logout';
-import { useAppSelector } from '@/app/providers/StoreProvider';
 
 import classes from './Navbar.module.scss';
 

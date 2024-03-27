@@ -5,7 +5,7 @@ import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { selectError, selectIsLoading, selectIsLoadingSuccess } from '@/entities/Session';
-import { useAppDispatch, useAppSelector } from '@/app/providers/StoreProvider';
+import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { Button, Input, Modal, Typography } from '@/shared/ui';
 import { loginThunkAction } from '../../model/thunkActions/loginThunkAction';
 

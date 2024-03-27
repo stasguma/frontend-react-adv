@@ -4,9 +4,8 @@ import type { RootState } from '@/app/providers/StoreProvider';
 
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppStore } from '@/app/providers/StoreProvider/config/hooks';
-// import { appStore } from '@/app/providers/StoreProvider/config/store';
-// import { appStore } from '@/app/providers/StoreProvider/config/store';
+// import { useAppDispatch, useAppStore } from '@/app/providers/StoreProvider/config/hooks';
+import { useAppDispatch, useAppStore } from '@/shared/model';
 
 type TReducers = {
   [name in keyof RootState]: Reducer;
