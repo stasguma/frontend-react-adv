@@ -3,7 +3,7 @@ import type { ReducersMapObject } from '@reduxjs/toolkit';
 
 import { configureStore } from '@reduxjs/toolkit';
 
-import { userSlice } from '@/entities/User';
+// import { userSlice } from '@/entities/User';
 import { sessionSlice } from '@/entities/Session';
 import { authListenerMiddleware } from '@/features/authentication/Login';
 import { createReducerManager } from './reducerManager';
@@ -26,7 +26,6 @@ export function createStore(
   });
 
   const store = configureStore({
-    // reducerManager: reducerManager,
     reducer: reducerManager.reduce,
     preloadedState: initialState,
     devTools: __IS_DEV__,
@@ -40,7 +39,7 @@ export function createStore(
   return store;
 }
 
-export const appStore = createStore({ asyncReducers: {} });
+export const appStore = createStore();
 
 export type AppDispatch = typeof appStore.dispatch;
 export type RootState = StateSchema;

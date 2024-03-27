@@ -40,6 +40,7 @@ server.post('/api/login', (req, res) => {
 
   if (userFromDB) {
     userFromDB.token = 'Bearer sadasdasdasdasd12h213g31kjh312gkh132khg1231g2khg132kjh';
+    delete userFromDB.password;
     return res.status(200).jsonp(userFromDB);
   }
 

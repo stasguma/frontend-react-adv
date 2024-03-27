@@ -4,7 +4,8 @@
 			"id": "1",
 			"username": "admin",
 			"password": "gggg",
-			"isAuthenticated": true
+			"isAuthenticated": true,
+			"token": "Bearer sadasdasdasdasd12h213g31kjh312gkh132khg1231g2khg132kjh"
 		}
 	],
 	"posts": [
@@ -16,6 +17,6 @@
 		{ "id": "2", "text": "another comment about post 1", "postId": "1" }
 	],
 	"profile": {
-		"name": "typicode"
+		"username": "typicode"
 	}
 }

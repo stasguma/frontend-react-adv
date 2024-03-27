@@ -135,7 +135,7 @@ export default [
     },
   },
   {
-    files: [testFiles, '**/jest-setup.ts'],
+    files: [testFiles, '**/jest-setup.ts', '**/TestAsyncThunk.ts'],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -152,6 +152,7 @@ export default [
     rules: {
       ...jestDom.configs.recommended.rules,
       'i18next/no-literal-string': 'off',
+      '@typescript-eslint/unbound-method': 'off',
     },
   },
   {

@@ -3,9 +3,9 @@ import type { Reducer } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/providers/StoreProvider';
 
 import { useEffect } from 'react';
-import { useStore } from 'react-redux';
 
 import { useAppDispatch, useAppStore } from '@/app/providers/StoreProvider/config/hooks';
+// import { appStore } from '@/app/providers/StoreProvider/config/store';
 // import { appStore } from '@/app/providers/StoreProvider/config/store';
 
 type TReducers = {
@@ -19,8 +19,8 @@ interface IProps {
 
 export const DynamicModuleLoader: FC<IProps> = (props) => {
   const { reducers, children } = props;
-  // const store = useAppStore();
-  const store = useStore();
+  const store = useAppStore();
+  // const store = useStore() as ReturnType<typeof createStore>;
   const dispatch = useAppDispatch();
 
   useEffect(() => {

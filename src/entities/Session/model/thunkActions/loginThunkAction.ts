@@ -21,7 +21,6 @@ export const loginThunkAction = createAsyncThunk<
       const e = err as AxiosError<IErrorResponse>;
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
-      // return rejectWithValue(((err as { response: Record<string, string>; })).response.data);
       return rejectWithValue(e.response?.data);
     }
   }

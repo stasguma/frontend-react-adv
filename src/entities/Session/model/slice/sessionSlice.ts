@@ -5,7 +5,7 @@ import type { ISession, SessionSchema } from '../types/sessionSchema';
 import { createSlice } from '@reduxjs/toolkit';
 
 import { loginThunkAction } from '../thunkActions/loginThunkAction';
-import { LocalStorage } from '@/shared/lib';
+import { LocalStorage } from '@/shared/lib/LocalStorage/LocalStorage';
 import { LOCAL_STORAGE_SESSION_KEY } from '@/shared/consts/localStorage';
 
 const initialState: SessionSchema = {
