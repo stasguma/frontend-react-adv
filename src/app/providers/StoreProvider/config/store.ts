@@ -3,17 +3,17 @@ import type { ReducersMapObject } from '@reduxjs/toolkit';
 
 import { configureStore } from '@reduxjs/toolkit';
 
-// import { userSlice } from '@/entities/User';
+// import { profileSlice } from '@/entities/Profile';
 import { sessionSlice } from '@/entities/Session';
 import { authListenerMiddleware } from '@/features/authentication/Login';
 import { createReducerManager } from './reducerManager';
 
 const staticReducers: Partial<ReducersMapObject<StateSchema>> = {
-  // [userSlice.name]: userSlice.reducer,
+  // [profileSlice.name]: profileSlice.reducer,
   [sessionSlice.name]: sessionSlice.reducer,
 };
 // const rootReducer = combineReducers({
-//   [userSlice.name]: userSlice.reducer,
+//   [profileSlice.name]: profileSlice.reducer,
 //   [sessionSlice.name]: sessionSlice.reducer,
 // });
 

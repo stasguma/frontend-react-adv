@@ -1,15 +1,15 @@
-import { type FC } from 'react';
-
-import classes from './PageLoader.module.scss';
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
+
+import classes from './PageLoader.module.scss';
 
 interface IProps {
   className?: string;
 };
 
-export const PageLoader: FC<IProps> = (props) => {
+export const PageLoader = memo<IProps>(function PageLoader(props) {
   const { className } = props;
 
   return (
@@ -17,4 +17,4 @@ export const PageLoader: FC<IProps> = (props) => {
       <Loader />
     </div>
   );
-};
+});

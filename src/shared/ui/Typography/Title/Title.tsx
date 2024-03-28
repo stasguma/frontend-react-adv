@@ -1,4 +1,6 @@
-import type { FC, HTMLAttributes, JSX, ReactNode } from 'react';
+import type { HTMLAttributes, JSX, ReactNode } from 'react';
+
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
@@ -14,7 +16,7 @@ interface IProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'dangerouslySe
   as?: THeadings;
 }
 
-export const Title: FC<IProps> = (props) => {
+export const Title = memo<IProps>(function Title(props) {
   const {
     children,
     variant = '1',
@@ -37,4 +39,4 @@ export const Title: FC<IProps> = (props) => {
       {children}
     </Wrapper>
   );
-};
+});

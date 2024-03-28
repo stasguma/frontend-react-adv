@@ -1,5 +1,7 @@
 import { type FC } from 'react';
 
+import { memo } from 'react';
+
 import { Typography } from '@/shared/ui';
 
 const HomePage: FC = () => {
@@ -18,4 +20,4 @@ const HomePage: FC = () => {
   );
 };
 
-export default HomePage;
+export default memo(HomePage);

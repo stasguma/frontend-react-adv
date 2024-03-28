@@ -1,10 +1,12 @@
-import type { FC, HTMLAttributes, ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
+
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
 import classes from './Paragraph.module.scss';
 
-type TSize = 'sm' | 'md';
+type TSize = keyof typeof ParagraphSizesMap;
 
 const ParagraphSizesMap = {
   sm: 'small',
@@ -17,7 +19,7 @@ interface IProps extends Omit<HTMLAttributes<HTMLParagraphElement>, 'dangerously
   size?: TSize;
 }
 
-export const Paragraph: FC<IProps> = (props) => {
+export const Paragraph = memo<IProps>(function Paragraph(props) {
   const { children, size = 'md', className } = props;
 
   return (
@@ -31,4 +33,4 @@ export const Paragraph: FC<IProps> = (props) => {
       {children}
     </p>
   );
-};
+});

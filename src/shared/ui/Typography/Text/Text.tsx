@@ -1,11 +1,13 @@
-import type { FC, HTMLAttributes, ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode } from 'react';
+
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
 import classes from './Text.module.scss';
 
 type TTextColors = 'success' | 'danger' | 'warning';
-type TSize = 'sm' | 'md';
+type TSize = keyof typeof TextSizesMap;
 
 const TextSizesMap = {
   sm: 'small',
@@ -25,7 +27,7 @@ interface IProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'dangerouslySetIn
   underline?: boolean;
 }
 
-export const Text: FC<IProps> = (props) => {
+export const Text = memo<IProps>(function Text(props) {
   const {
     children,
     color,
@@ -70,4 +72,4 @@ export const Text: FC<IProps> = (props) => {
       {wrapper(children)}
     </span>
   );
-};
+});

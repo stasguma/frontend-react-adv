@@ -1,4 +1,6 @@
 import { type FC } from 'react';
+
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classes from './PageError.module.scss';
@@ -10,7 +12,7 @@ interface IProps {
   className?: string;
 }
 
-export const PageError: FC<IProps> = (props) => {
+export const PageError = memo<IProps>(function PageError(props) {
   const { className } = props;
   const { t } = useTranslation();
 
@@ -30,4 +32,4 @@ export const PageError: FC<IProps> = (props) => {
       </Button>
     </div>
   );
-};
+});

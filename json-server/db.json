@@ -17,6 +17,10 @@
 		{ "id": "2", "text": "another comment about post 1", "postId": "1" }
 	],
 	"profile": {
-		"username": "typicode"
+		"username": "Typicode",
+		"email": "typicode@gmail.com",
+		"city": "Paris",
+		"country": "France",
+		"avatarUrl": "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg"
 	}
 }

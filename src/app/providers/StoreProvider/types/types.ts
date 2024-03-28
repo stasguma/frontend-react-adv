@@ -5,11 +5,11 @@ import type {
   ReducersMapObject,
   combineReducers,
 } from '@reduxjs/toolkit';
-import type { UserSchema } from '@/entities/User';
+import type { ProfileSchema } from '@/entities/Profile';
 import type { SessionSchema } from '@/entities/Session';
 
 export interface StateSchema {
-  user: UserSchema;
+  profile: ProfileSchema;
   session: SessionSchema;
 }
 

@@ -1,6 +1,4 @@
-@use "sass:color";
 @use "@/app/styles/variables" as vars;
-@use "@/app/styles/utils" as u;
 
 .sidebar {
   display: flex;
@@ -55,31 +53,6 @@
       align-items: center;
       padding: 0;
     }
-    
-    .navigation-link {
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      padding: 0;
-  
-      &__icon {
-        width: 24px;
-        height: 24px;
-        margin-right: 0;
-      }
-    
-      &__text {
-        display: none;
-      }
-    }
-  }
-}
-
-.navigation {
-  &__item {
-    & + & {
-      margin-top: 6px;
-    }
   }
 }
 
@@ -87,42 +60,4 @@
   display: flex;
   flex-flow: column;
   padding: 0 16px;
-}
-
-.navigation-link {
-  display: flex;
-  align-items: center;
-
-  padding: 12px 20px;
-
-  font-size: u.to-rem(18px);
-  font-weight: 500;
-  line-height: 100%;
-  color: var(--color-sidebar-menu-text);
-  text-decoration: none;
-
-  border-radius: 8px;
-  
-  &:hover {
-    color: var(--color-sidebar-menu-text-active);
-    background-color: var(--color-sidebar-menu-hover);
-  }
-  
-  &:global(.is-active) {
-    color: var(--color-sidebar-menu-text-active);
-    background-color: var(--color-sidebar-menu-active);
-    box-shadow: vars.shadow(shadow-2, 'black');
-  }
-
-  &__icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
-
-  &__text {
-    position: relative;
-    top: 1px;
-    animation: .6s fade-in;
-  }
 }

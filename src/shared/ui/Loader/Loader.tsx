@@ -1,14 +1,14 @@
-import type { FC } from 'react';
-
-import classes from './Loader.module.scss';
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
+
+import classes from './Loader.module.scss';
 
 interface IProps {
   className?: string;
 };
 
-export const Loader: FC<IProps> = (props) => {
+export const Loader = memo<IProps>(function Loader(props) {
   const { className } = props;
 
   return (
@@ -20,4 +20,4 @@ export const Loader: FC<IProps> = (props) => {
       <div className={classNames(classes.orbe)}></div>
     </div>
   );
-};
+});

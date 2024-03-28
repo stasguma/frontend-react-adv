@@ -1,25 +1,22 @@
-import { type FC, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { useState } from 'react';
 
 import { classNames } from '@/shared/lib';
-import { RoutePath } from '@/shared/config/router/routerConfig';
 import { Button, LangSwitcher } from '@/shared/ui';
 import { ThemeSwitcher } from '@/entities/ThemeSwitcher';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { SidebarItemList } from '../../model/consts/SidebarItemList';
 
 import classes from './Sidebar.module.scss';
 
-import HomeIcon from '@/shared/assets/icons/home.svg';
-import CofeeIcon from '@/shared/assets/icons/coffee.svg';
 import MenuIcon from '@/shared/assets/icons/menu.svg';
 
 interface IProps {
   className?: string;
 }
 
-export const Sidebar: FC<IProps> = (props) => {
+export const Sidebar = memo<IProps>(function Sidebar(props) {
   const { className } = props;
-  const { t } = useTranslation();
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
@@ -50,31 +47,12 @@ export const Sidebar: FC<IProps> = (props) => {
           aria-label="sidebar navigation"
         >
           <ul className={classes['navigation-list']} role="list">
-            <li className={classes.navigation__item} role="listitem">
-              <NavLink
-                className={({ isActive }) =>
-                  classNames(classes['navigation-link'], { 'is-active': isActive })}
-                to={RoutePath.home}
-                role="link"
-              >
-                <HomeIcon
-                  className={classNames(classes['navigation-link__icon'])}
-                />
-                <span className={classes['navigation-link__text']}>{t('home')}</span>
-              </NavLink>
-            </li>
-            <li className={classes.navigation__item} role="listitem">
-              <NavLink
-                className={({ isActive }) =>
-                  classNames(classes['navigation-link'], { 'is-active': isActive })}
-                to={RoutePath.about}
-              >
-                <CofeeIcon
-                  className={classNames(classes['navigation-link__icon'])}
-                />
-                <span className={classes['navigation-link__text']}>{t('about')}</span>
-              </NavLink>
-            </li>
+            {SidebarItemList.map(item => (
+              <SidebarItem
+                key={item.name}
+                itemData={item}
+              />
+            ))}
           </ul>
         </nav>
       </div>
@@ -84,4 +62,4 @@ export const Sidebar: FC<IProps> = (props) => {
       </div>
     </div>
   );
-};
+});

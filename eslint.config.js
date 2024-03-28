@@ -128,10 +128,11 @@ export default [
       ...reactPlugin.configs['jsx-runtime'].rules,
       ...reactHooksPlugin.configs.recommended.rules,
       ...i18nextPlugin.configs.recommended.rules,
-
+      // override
       '@stylistic/jsx-max-props-per-line': [1, {
         "maximum": { single: 2, multi: 1 }
-      }]
+      }],
+      'react/prop-types': 'off',
     },
   },
   {

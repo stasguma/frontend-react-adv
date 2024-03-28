@@ -1,17 +1,13 @@
-import { type FC } from 'react';
+import { memo } from 'react';
+
+import SunMoonIcon from '@/shared/assets/svg/sun-moon.svg';
+import { classNames } from '@/shared/lib';
+import { Button } from '@/shared/ui';
+import { useTheme } from '@/app/providers/ThemeProvider';
 
 import classes from './ThemeSwitcher.module.scss';
 
-import SunMoonIcon from '@/shared/assets/svg/sun-moon.svg';
-import { useTheme } from '@/app/providers/ThemeProvider';
-import { Button } from '@/shared/ui';
-import { classNames } from '@/shared/lib';
-
-interface IProps {
-  className?: string;
-}
-
-export const ThemeSwitcher: FC<IProps> = () => {
+export const ThemeSwitcher = memo(function ThemeSwitcher() {
   const { toggleTheme } = useTheme();
 
   return (
@@ -25,4 +21,4 @@ export const ThemeSwitcher: FC<IProps> = () => {
       <SunMoonIcon />
     </Button>
   );
-};
+});

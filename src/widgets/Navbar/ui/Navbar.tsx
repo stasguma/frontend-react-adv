@@ -1,6 +1,4 @@
-import type { FC } from 'react';
-
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib';
@@ -16,7 +14,7 @@ interface IProps {
   className?: string;
 }
 
-export const Navbar: FC<IProps> = ({ className }) => {
+export const Navbar = memo<IProps>(function Navbar({ className }) {
   const { t } = useTranslation();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const isAuth = useAppSelector(selectIsAuth);
@@ -48,4 +46,4 @@ export const Navbar: FC<IProps> = ({ className }) => {
       <LoginModal isOpen={isAuthModalOpen} onClose={closeModal} />
     </header>
   );
-};
+});

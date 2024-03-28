@@ -1,4 +1,6 @@
-import { type ButtonHTMLAttributes, type FC } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
+
+import { memo } from 'react';
 
 import { classNames } from '@/shared/lib';
 
@@ -6,12 +8,12 @@ import classes from './Button.module.scss';
 
 type TButtonVariants = 'base' | 'filled' | 'outlined' | 'ghost';
 type TButtonColors = 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
-type TButtonSizes = 'sm' | 'lg';
+type TButtonSizes = keyof typeof ButtonSizesMap;
 
 const ButtonSizesMap = {
   sm: 'small',
   lg: 'large',
-};
+} as const;
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -20,7 +22,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: TButtonSizes;
 }
 
-export const Button: FC<IProps> = (props) => {
+export const Button = memo<IProps>(function Button(props) {
   const {
     children,
     className,
@@ -47,4 +49,4 @@ export const Button: FC<IProps> = (props) => {
       {children}
     </button>
   );
-};
+});

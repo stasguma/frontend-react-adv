@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AppLink, EAppLinkTheme } from './AppLink';
+import { AppLink } from './AppLink';
 
 // 👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AppLink> = {
@@ -14,13 +14,13 @@ type Story = StoryObj<typeof AppLink>;
 export const Primary: Story = {
   args: {
     children: 'Primary',
-    theme: EAppLinkTheme.PRIMARY,
+    theme: 'primary',
   },
 };
 
 export const Secondary: Story = {
   args: {
     children: 'Secondary',
-    theme: EAppLinkTheme.SECONDARY,
+    theme: 'secondary',
   },
 };

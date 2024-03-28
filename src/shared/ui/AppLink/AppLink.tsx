@@ -1,28 +1,29 @@
-import type { FC } from 'react';
 import type { LinkProps } from 'react-router-dom';
+import type { TObjectValues } from '@/shared/types';
 
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { classNames } from '@/shared/lib';
 
 import classes from './AppLink.module.scss';
 
-export enum EAppLinkTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary'
-}
+const AppLinkTheme = {
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+} as const;
 
 interface IProps extends LinkProps {
   className?: string;
-  theme?: EAppLinkTheme;
+  theme?: TObjectValues<typeof AppLinkTheme>;
 }
 
-export const AppLink: FC<IProps> = (props) => {
+export const AppLink = memo<IProps>(function AppLink(props) {
   const {
     children,
     className,
     to,
-    theme = EAppLinkTheme.PRIMARY,
+    theme = 'primary',
     ...otherProps
   } = props;
 
@@ -35,4 +36,4 @@ export const AppLink: FC<IProps> = (props) => {
       {children}
     </Link>
   );
-};
+});

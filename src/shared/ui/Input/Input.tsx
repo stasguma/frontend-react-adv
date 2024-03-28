@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, FC, ChangeEvent } from 'react';
+import type { InputHTMLAttributes, ChangeEvent } from 'react';
 import { memo, useState } from 'react';
 
 import { classNames } from '@/shared/lib';
@@ -6,13 +6,14 @@ import { classNames } from '@/shared/lib';
 import classes from './Input.module.scss';
 
 type TInputValidate = 'danger' | 'warning';
-type TInputSizes = 'sm' | 'md' | 'lg';
+type TInputSizes = keyof typeof InputSizesMap;
+// type TInputSizes = 'sm' | 'md' | 'lg';
 
 const InputSizesMap = {
   sm: 'small',
   md: 'medium',
   lg: 'large',
-};
+} as const;
 
 interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   className?: string;
@@ -21,7 +22,7 @@ interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: TInputSizes;
 }
 
-export const Input: FC<IProps> = memo((props: IProps) => {
+export const Input = memo<IProps>(function Input(props) {
   const {
     className,
     size = 'md',
@@ -63,5 +64,3 @@ export const Input: FC<IProps> = memo((props: IProps) => {
     </div>
   );
 });
-
-Input.displayName = 'Input';

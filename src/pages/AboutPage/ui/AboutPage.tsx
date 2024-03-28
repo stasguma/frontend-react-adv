@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 
+import { memo } from 'react';
+
 import { useTranslation } from 'react-i18next';
 
 const AboutPage: FC = () => {
@@ -8,4 +10,4 @@ const AboutPage: FC = () => {
   return <div>{t('about')}</div>;
 };
 
-export default AboutPage;
+export default memo(AboutPage);
