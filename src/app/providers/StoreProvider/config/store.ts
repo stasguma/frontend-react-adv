@@ -3,13 +3,15 @@ import type { ReducersMapObject } from '@reduxjs/toolkit';
 
 import { configureStore } from '@reduxjs/toolkit';
 
-// import { profileSlice } from '@/entities/Profile';
+import { baseApi } from '@/shared/api';
 import { sessionSlice } from '@/entities/Session';
+// import { profileSlice } from '@/entities/Profile';
 import { authListenerMiddleware } from '@/features/authentication/Login';
 import { createReducerManager } from './reducerManager';
 
 const staticReducers: Partial<ReducersMapObject<StateSchema>> = {
   // [profileSlice.name]: profileSlice.reducer,
+  [baseApi.reducerPath]: baseApi.reducer,
   [sessionSlice.name]: sessionSlice.reducer,
 };
 // const rootReducer = combineReducers({
@@ -31,7 +33,10 @@ export function createStore(
     devTools: __IS_DEV__,
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware()
-        .concat(authListenerMiddleware.middleware),
+        .concat(
+          authListenerMiddleware.middleware,
+          baseApi.middleware
+        ),
   }) as IStoreWithReducerManager;
 
   store.reducerManager = reducerManager;
@@ -46,17 +51,6 @@ export type RootState = StateSchema;
 // export type RootState = ReturnType<typeof rootReducer>;
 // export type RootState = ReturnType<typeof appStore.getState>;
 
-// const staticReducers = {
-//   users: usersReducer,
-//   posts: postsReducer
-// }
-
-// export function configureStore(initialState) {
-//   const reducerManager = createReducerManager(staticReducers)
-
-//   // Create a store with the root reducer function being the one exposed by the manager.
-//   const store = createStore(reducerManager.reduce, initialState)
-
-//   // Optional: Put the reducer manager on the store so it is easily accessible
-//   store.reducerManager = reducerManager
-// }
+// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+// setupListeners(store.dispatch)

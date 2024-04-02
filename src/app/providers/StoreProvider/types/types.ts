@@ -9,8 +9,9 @@ import type { ProfileSchema } from '@/entities/Profile';
 import type { SessionSchema } from '@/entities/Session';
 
 export interface StateSchema {
-  profile: ProfileSchema;
+  baseApi: ProfileSchema;
   session: SessionSchema;
+  profile: ProfileSchema;
 }
 
 export interface ICreateStoreArgs<S = StateSchema> {

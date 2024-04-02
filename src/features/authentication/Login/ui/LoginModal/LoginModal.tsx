@@ -70,7 +70,7 @@ export const LoginModal: FC<IProps> = (props) => {
           label="Password"
           placeholder="Enter the password"
         />
-        {resError ? <Text color="danger">{`${resError.error}. ${resError.message}`}</Text> : null}
+        {resError ? <Text color="danger">{`${resError.data.error}. ${resError.data.message}`}</Text> : null}
         <Button
           variant="filled"
           type="submit"

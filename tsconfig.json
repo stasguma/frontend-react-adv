@@ -15,7 +15,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "lib": ["DOM", "ES2022", "DOM.Iterable"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["vitest/globals"],
   },
   "ts-node": {
     "compilerOptions": {

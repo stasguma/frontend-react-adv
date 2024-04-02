@@ -36,7 +36,7 @@ export const DynamicModuleLoader: FC<IProps> = (props) => {
         dispatch({ type: `@DESTROY ${name} reducer` });
       });
     };
-  }, []);
+  }, []); /* eslint-disable-line */
 
   return children;
 };

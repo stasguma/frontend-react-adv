@@ -39,7 +39,7 @@ server.post('/api/login', (req, res) => {
   const userFromDB = users.find(user => user.username === username && user.password === password);
 
   if (userFromDB) {
-    userFromDB.token = 'Bearer sadasdasdasdasd12h213g31kjh312gkh132khg1231g2khg132kjh';
+    userFromDB.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-IpnY';
     delete userFromDB.password;
     return res.status(200).jsonp(userFromDB);
   }

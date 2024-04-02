@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { TReducers } from '@/shared/lib';
 
-import { Suspense, memo, useEffect } from 'react';
+import { Suspense, memo } from 'react';
 
 import { DynamicModuleLoader } from '@/shared/lib';
 import { profileSlice } from '@/entities/Profile';
