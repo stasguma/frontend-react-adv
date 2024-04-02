@@ -1,22 +1,42 @@
-import type { AxiosError } from 'axios';
-import type { ILoginForm } from '@/entities/Session';
-import type { IErrorResponse } from '@/shared/types';
+import type { ILoginForm, ISession } from '@/entities/Session';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+// import type { IErrorResponse } from '@/shared/types';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { loginThunkAction as login } from '@/entities/Session';
+import { sessionApi } from '@/entities/Session';
+import { isFetchBaseQueryError } from '@/shared/api';
+
+interface IReturnType {
+  data?: ISession;
+  error?: FetchBaseQueryError;
+}
 
 export const loginThunkAction = createAsyncThunk<
-  unknown, ILoginForm, { rejectValue: IErrorResponse | undefined; }
+  // IReturnType, ILoginForm, { rejectValue: IErrorResponse | undefined; }
+  ISession, ILoginForm, { rejectValue: FetchBaseQueryError; }
 >(
   'authentication/login',
   async ({ username, password }, { rejectWithValue, dispatch }) => {
     try {
-      await dispatch(login({ username, password })).unwrap();
-    } catch (err) {
-      const e = err as AxiosError<IErrorResponse>;
+      const { data, error } = await dispatch(
+        sessionApi.endpoints.login.initiate({ username, password })
+      );
 
-      return rejectWithValue(e.response?.data ?? (err) as IErrorResponse);
+      if (isFetchBaseQueryError(error)) {
+        return rejectWithValue(error);
+        // return rejectWithValue((response as { error: IErrorResponse; }).error);
+      }
+
+      return data;
+      // return (response as { data: ISession; }).data;
+    } catch (error) {
+      // const e = error as AxiosError<IErrorResponse>;
+      const e = error as FetchBaseQueryError;
+      if (isFetchBaseQueryError(error)) {
+        return rejectWithValue(e);
+      }
+      return rejectWithValue(e);
     }
   }
 );

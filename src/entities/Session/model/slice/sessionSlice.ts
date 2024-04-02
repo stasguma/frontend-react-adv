@@ -1,12 +1,12 @@
-// import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/app/providers/StoreProvider';
 import type { ISession, SessionSchema } from '../types/sessionSchema';
 
 import { createSlice } from '@reduxjs/toolkit';
 
-import { loginThunkAction } from '../thunkActions/loginThunkAction';
 import { LocalStorage } from '@/shared/lib/LocalStorage/LocalStorage';
 import { LOCAL_STORAGE_SESSION_KEY } from '@/shared/consts/localStorage';
+import { sessionApi } from '../../api/sessionApi';
 
 const initialState: SessionSchema = {
   loading: 'idle',
@@ -21,12 +21,7 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState,
   reducers: {
-    clearSession: (state) => {
-      state.id = undefined;
-      state.username = undefined;
-      state.token = undefined;
-      state.isAuthenticated = false;
-    },
+    clearSession: () => initialState,
     initSession: (state) => {
       const session = LocalStorage.getItem(LOCAL_STORAGE_SESSION_KEY) as ISession;
 
@@ -41,11 +36,11 @@ export const sessionSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginThunkAction.pending, (state) => {
+      .addMatcher(sessionApi.endpoints.login.matchPending, (state) => {
         state.loading = 'pending';
         state.error = undefined;
       })
-      .addCase(loginThunkAction.fulfilled, (state, action) => {
+      .addMatcher(sessionApi.endpoints.login.matchFulfilled, (state, action) => {
         const { username, id, token } = action.payload;
         state.id = id;
         state.username = username;
@@ -58,7 +53,7 @@ export const sessionSlice = createSlice({
         // state.entities = newEntities
         state.loading = 'succeeded';
       })
-      .addCase(loginThunkAction.rejected, (state, action) => {
+      .addMatcher(sessionApi.endpoints.login.matchRejected, (state, action) => {
         state.loading = 'failed';
         state.error = action.payload;
       });

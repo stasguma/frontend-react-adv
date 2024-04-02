@@ -5,16 +5,17 @@ import typescriptParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
 import i18nextPlugin from 'eslint-plugin-i18next';
 import stylistic from '@stylistic/eslint-plugin';
-import jestDom from 'eslint-plugin-jest-dom';
+import jestDomPlugin from 'eslint-plugin-jest-dom';
 import storybookPlugin from 'eslint-plugin-storybook';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import vitestPlugin from 'eslint-plugin-vitest';
 
-// console.log(reactHooksPlugin.configs.recommended);
+// console.log(vitestPlugin.configs.recommended);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.?(*)ts?(x)';
 const reactFiles = '**/*.?(*){js,ts}x';
-const testFiles = '**/*.{test,spec}.{js,ts}?(x)';
+const testFiles = ['**/*.{test,spec}.{js,ts}?(x)', 'config/vitest/**', '**/shared/lib/tests/*.{js,ts}?(x)'];
 const storybookFiles = ['**/*.{stories,story}.@(ts|tsx|js|jsx|mjs|cjs)', '**/storybook/main.@(js|cjs|mjs|ts)'];
 
 export default [
@@ -27,7 +28,7 @@ export default [
       '**/.*',
       '**/.*.{js,ts}',
       '**/*.config.{js,ts}',
-      '**/jest-setup.ts',
+      'config/vitest/setup.ts',
       'storybook-static'
     ],
   },
@@ -136,22 +137,19 @@ export default [
     },
   },
   {
-    files: [testFiles, '**/jest-setup.ts', '**/TestAsyncThunk.ts'],
+    files: [...testFiles],
     languageOptions: {
       globals: {
-        ...globals.jest,
-      },
-    },
-    settings: {
-      jest: {
-        version: 29,
+        ...vitestPlugin.environments.env.globals,
       },
     },
     plugins: {
-      'jest-dom': jestDom,
+      'jest-dom': jestDomPlugin,
+      vitest: vitestPlugin,
     },
     rules: {
-      ...jestDom.configs.recommended.rules,
+      ...jestDomPlugin.configs.recommended.rules,
+      ...vitestPlugin.configs.recommended.rules,
       'i18next/no-literal-string': 'off',
       '@typescript-eslint/unbound-method': 'off',
     },

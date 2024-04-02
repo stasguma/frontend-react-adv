@@ -11,7 +11,7 @@ describe('<Modal />', () => {
   });
 
   // test('close modal by a close button', async () => {
-  //   const closeHandler = jest.fn();
+  //   const closeHandler = vi.fn();
   //   render(<Modal isOpen={true} onClose={closeHandler}>Modal</Modal>);
   //   const modal = screen.getByTestId('modal');
   //   const modalBackdrop = screen.getByTestId('modal-backdrop');

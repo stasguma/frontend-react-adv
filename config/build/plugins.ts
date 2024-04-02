@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import Dotenv from 'dotenv-webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { type IBuildOptions } from './types/config';
@@ -21,7 +22,9 @@ export const plugins = function (
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      // 'process.env': JSON.stringify(process.env),
     }),
+    new Dotenv(), /* eslint-disable-line */
   ];
 
   if (isDev) {

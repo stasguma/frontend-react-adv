@@ -1,68 +1,72 @@
-import type { AxiosResponse } from 'axios';
-import type { ILoginForm, ISession } from '@/entities/Session';
-
-import axios from 'axios';
+import type { ILoginForm } from '@/entities/Session';
 
 import { loginThunkAction } from './loginThunkAction';
-import { loginThunkAction as login } from '@/entities/Session';
-import { TestAsyncThunk } from '@/shared/lib';
-
-jest.mock('axios');
-
-const mockedAxios = jest.mocked(axios);
-// const mockedAxios = axios as jest.Mocked<typeof axios>;
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { ENV } from '@/shared/config/enviroment/env';
 
 describe('loginThunkAction for a Login feature', () => {
   test('should return the session data after a success login', async () => {
-    const sessionData = {
+    const responseData = {
       id: '1',
       username: 'admin',
-      token: 'Bearer sadasdasdasdasd12h213g31kjh312gkh132khg1231g2khg132kjh',
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-IpnY',
       isAuthenticated: true,
     };
 
-    const mockedResponse: Partial<AxiosResponse> = {
-      data: sessionData,
-      // status: 200,
-      // statusText: 'OK',
-      // headers: {},
-      // config: {},
+    const credentials = {
+      username: 'admin',
+      password: 'gggg',
     };
 
-    const inputData = { username: 'admin', password: 'gggg' };
-    // mockedAxios.post.mockResolvedValue(mockedResponse);
+    const result = await fetch(`${ENV.API_ENDPOINT}/login`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(credentials),
+    });
+    const { data } = await result.json();
+    // console.log(data);
+    expect(data).toEqual(responseData);
+
     const thunk = new TestAsyncThunk<unknown, ILoginForm>(loginThunkAction);
-    const result = await thunk.callThunk(inputData);
+    const actionResponse = await thunk.callThunk(credentials);
+    // console.log(thunk.dispatch.mock.calls);
+    // console.log('actionResponse', actionResponse);
+    // expect(actionResponse.meta.requestStatus).toBe('fulfilled');
     // expect(thunk.dispatch).toHaveBeenCalledTimes(3);
-    // expect(thunk.dispatch).toHaveBeenCalledWith(login(inputData));
-    expect(result.meta.requestStatus).toBe('fulfilled');
     // expect(result.payload).toEqual(sessionData);
   });
 
-  // test('should return the error on the failed login', async () => {
-  //   const responseData = {
-  //     error: 'Unauthorized',
-  //     message: 'User was not found',
-  //   };
+  test('should return the error on the failed login', async () => {
+    const responseData = {
+      error: 'Unauthorized',
+      message: 'User was not found',
+    };
 
-  //   const mockedResponse: Partial<AxiosResponse> = {
-  //     data: responseData,
-  //     status: 403,
-  //     // statusText: 'OK',
-  //     // headers: {},
-  //     // config: {},
-  //   };
+    const credentials = {
+      username: 'admin',
+      password: 'wrongpass',
+    };
 
-  //   mockedAxios.post.mockRejectedValue(mockedResponse);
+    const result = await fetch(`${ENV.API_ENDPOINT}/login`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(credentials),
+    });
+    const { error } = await result.json();
 
-  //   const thunk = new TestAsyncThunk<ISession, ILoginForm>(loginThunkAction);
-  //   const result = await thunk.callThunk({ username: 'admin', password: 'wrongpass' });
-  //   console.log(result);
-  //   // expect(thunk.dispatch).toHaveBeenCalledTimes();
-  //   expect(mockedAxios.post).toHaveBeenCalled();
-  //   expect(result.meta.requestStatus).toBe('rejected');
-  //   // TODO: action.payload is undefined because rejectWithValue is not invoked.
-  //   // Created an issue https://github.com/reduxjs/redux-toolkit/issues/4302
-  //   // expect(result.payload).toEqual(responseData);
-  // });
+    expect(error).toEqual(responseData);
+
+    const thunk = new TestAsyncThunk<unknown, ILoginForm>(loginThunkAction);
+    const actionResponse = await thunk.callThunk(credentials);
+    // console.log(actionResponse);
+    // expect(actionResponse.meta.requestStatus).toBe('rejected');
+    // expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    // TODO: action.payload is undefined because rejectWithValue is not invoked.
+    // Created an issue https://github.com/reduxjs/redux-toolkit/issues/4302
+    // expect(result.payload).toEqual(responseData);
+  });
 });

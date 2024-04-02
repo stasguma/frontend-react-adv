@@ -11,7 +11,7 @@ type TActionCreatorType<Return, Arg, Config> = (arg: Arg) => AsyncThunkAction<Re
 // type AppDispatch = ThunkDispatch<any, undefined, AnyAction> & Dispatch<any>
 
 export class TestAsyncThunk<Return, Arg, ThunkApiConfig = { rejectValue: IErrorResponse; }> {
-  dispatch: jest.MockedFn<() => AppDispatch>; /* eslint-disable-line */
+  dispatch: () => typeof vi.fn;
   getState: () => RootState;
   actionCreator: TActionCreatorType<Return, Arg, ThunkApiConfig>;
 
@@ -19,8 +19,8 @@ export class TestAsyncThunk<Return, Arg, ThunkApiConfig = { rejectValue: IErrorR
     actionCreator: TActionCreatorType<Return, Arg, ThunkApiConfig>
   ) {
     this.actionCreator = actionCreator;
-    this.dispatch = jest.fn();
-    this.getState = jest.fn();
+    this.dispatch = vi.fn();
+    this.getState = vi.fn();
   };
 
   async callThunk(arg: Arg) {

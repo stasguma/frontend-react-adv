@@ -11,4 +11,5 @@ export {
   selectIsAuth,
   selectError,
 } from './model/slice/sessionSlice';
-export { loginThunkAction } from './model/thunkActions/loginThunkAction';
+export { sessionApi } from './api/sessionApi';
+export { sessionHandlers } from './api/__mocks__/sessionHandlers';
