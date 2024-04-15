@@ -24,7 +24,7 @@ export function createReducerManager<S>({
       // If any reducers have been removed, clean up their state first
       if (keysToRemove.length > 0) {
         state = { ...state };
-        for (let key of keysToRemove) {
+        for (const key of keysToRemove) {
           delete state[key];
         }
         keysToRemove = [];
@@ -36,7 +36,7 @@ export function createReducerManager<S>({
 
     // Adds a new reducer with the specified key
     add: (key, reducer) => {
-      if (!key || reducers[key] !== undefined) {
+      if (key !== undefined || reducers[key] !== undefined) {
         return;
       }
 
@@ -49,7 +49,7 @@ export function createReducerManager<S>({
 
     // Removes a reducer with the specified key
     remove: (key) => {
-      if (!key || reducers[key] === undefined) {
+      if (key !== undefined || reducers[key] === undefined) {
         return;
       }
 

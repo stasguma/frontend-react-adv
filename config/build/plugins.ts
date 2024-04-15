@@ -24,7 +24,7 @@ export const plugins = function (
       __IS_DEV__: JSON.stringify(isDev),
       // 'process.env': JSON.stringify(process.env),
     }),
-    new Dotenv(), /* eslint-disable-line */
+    new Dotenv(),
   ];
 
   if (isDev) {

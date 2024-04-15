@@ -10,7 +10,6 @@ const App: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log('initSession');
     dispatch(initSession());
   }, [dispatch]);
 
