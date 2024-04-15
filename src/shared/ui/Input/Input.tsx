@@ -17,16 +17,17 @@ const InputSizesMap = {
 } as const;
 
 interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  register: () => UseFormRegisterReturn<any>; /* eslint-disable-line @typescript-eslint/no-explicit-any */
   className?: string;
   label?: string;
   validateStatus?: TInputValidate;
   size?: TInputSizes;
   errorEl?: ReactElement;
-  register: () => UseFormRegisterReturn<any>; /* eslint-disable-line @typescript-eslint/no-explicit-any */
 }
 
 export const Input = memo<IProps>(function Input(props) {
   const {
+    register,
     className,
     size = 'md',
     id,
@@ -35,7 +36,6 @@ export const Input = memo<IProps>(function Input(props) {
     type = 'text',
     validateStatus,
     errorEl,
-    register,
     ...otherProps
   } = props;
 
