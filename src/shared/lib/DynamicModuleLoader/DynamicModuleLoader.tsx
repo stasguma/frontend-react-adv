@@ -1,13 +1,13 @@
 import type { FC, ReactNode } from 'react';
 import type { Reducer } from '@reduxjs/toolkit';
-import type { RootState } from '@/app/providers/StoreProvider';
+import type { RootState } from '@/app/providers/store';
 
 import { useEffect } from 'react';
 
-// import { useAppDispatch, useAppStore } from '@/app/providers/StoreProvider/config/hooks';
+// import { useAppDispatch, useAppStore } from '@/app/providers/store/config/hooks';
 import { useAppDispatch, useAppStore } from '@/shared/model';
 
-type TReducerEntries = [keyof RootState, Reducer];
+// type TReducerEntries = [keyof RootState, Reducer];
 
 export type TReducers = {
   [name in keyof RootState]?: Reducer;
@@ -25,18 +25,18 @@ export const DynamicModuleLoader: FC<IProps> = (props) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: TReducerEntries) => {
-      store.reducerManager.add(name, reducer);
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      store.reducerManager.add(name as keyof RootState, reducer);
       dispatch({ type: `@INIT ${name} reducer` });
     });
 
     return () => {
-      Object.entries(reducers).forEach(([name]: TReducerEntries) => {
-        store.reducerManager.remove(name);
+      Object.entries(reducers).forEach(([name]) => {
+        store.reducerManager.remove(name as keyof RootState);
         dispatch({ type: `@DESTROY ${name} reducer` });
       });
     };
-  }, []); /* eslint-disable-line */
+  }, []); /* eslint-disable-lin */
 
   return children;
 };
