@@ -152,4 +152,4 @@ jobs:
         run: pnpm install
         
       - name: Create build
-        run: pnpm build
+        run: pnpm build:prod

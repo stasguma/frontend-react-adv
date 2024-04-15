@@ -1,8 +1,11 @@
 .vscode
 /build
 node_modules
-/storybook-static
 .env
 /coverage
 /.fttemplates
+/storybook-static
 build-storybook.log
+chromatic.log
+chromatic-build-*.xml
+chromatic-diagnostics.json
