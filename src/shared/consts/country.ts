@@ -1,5 +1,5 @@
 export const Country = {
   UKRAINE: 'Ukraine',
-  POLAND: 'Poland',
+  UNITED_KINGDOM: 'United Kingdom',
   GERMANY: 'Germany',
 } as const;

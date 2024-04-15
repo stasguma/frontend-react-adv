@@ -1,5 +1,5 @@
 export const Currency = {
-  UAH: 'uah',
-  USD: 'usd',
-  EUR: 'eur',
+  UAH: 'UAH',
+  USD: 'USD',
+  EUR: 'EUR',
 } as const;

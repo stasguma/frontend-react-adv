@@ -16,7 +16,8 @@
     "esModuleInterop": true,
     "lib": ["DOM", "ES2022", "DOM.Iterable"],
     "strictNullChecks": true,
-    "types": ["vitest/globals"],
+    "strict": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
   },
   "ts-node": {
     "compilerOptions": {

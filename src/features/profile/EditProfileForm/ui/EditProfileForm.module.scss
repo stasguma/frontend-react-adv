@@ -1,0 +1,10 @@
+.form {
+  & > * + * {
+    margin-top: 20px;
+  }
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: end;
+}

@@ -4,21 +4,19 @@ import type { TReducers } from '@/shared/lib';
 import { Suspense, memo } from 'react';
 
 import { DynamicModuleLoader } from '@/shared/lib';
+import { Loader } from '@/shared/ui';
 import { profileSlice } from '@/entities/Profile';
-
-// import { Typography } from '@/shared/ui';
+import { ProfileSettings } from '@/widgets/ProfileSettings';
 
 const reducers: TReducers = {
   profile: profileSlice.reducer,
 };
 
 const ProfilePage: FC = () => {
-  // const { Title } = Typography;
-
   return (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <DynamicModuleLoader reducers={reducers}>
-        <div>Profile Page</div>
+        <ProfileSettings />
       </DynamicModuleLoader>
     </Suspense>
   );
