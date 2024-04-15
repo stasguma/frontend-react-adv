@@ -29,7 +29,7 @@ export const ProfileSettings = memo<IProps>(function ProfileSettings(props) {
           : (
             <div className="row">
               <div className="col-auto">
-                <UploadAvatar imageUrl={data!.avatarUrl} />
+                <UploadAvatar imageUrl={data?.avatarUrl ?? ''} />
               </div>
               <div className="col">
                 <EditProfileForm data={data} />
