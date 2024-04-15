@@ -6,6 +6,7 @@ import { HomePage } from '@/pages/HomePage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { Error404Page } from '@/pages/Error404Page';
+import { PrivateGuard } from '../lib/PrivateGuard';
 
 const AppRouteNames = {
   HOME: 'home',
@@ -46,7 +47,7 @@ const routerConfig: RouteObject[] = [
       },
       {
         path: AppRoutes.profile,
-        element: <ProfilePage />,
+        element: <PrivateGuard><ProfilePage /></PrivateGuard>,
       },
     ],
   },
