@@ -7,5 +7,16 @@
   "about": "About",
   "Log In": "Log In",
   "Log Out": "Log Out",
-  "profile": "Profile"
+  "profile": "Profile",
+  "My Profile": "My Profile",
+  "Upload": "Upload",
+  "Username": "Username",
+  "Email": "Email",
+  "Update": "Update",
+  "Country": "Country",
+  "City": "City",
+  "Password": "Password",
+  "Enter the name": "Enter the name",
+  "Enter the password": "Enter the password",
+  "Currency": "Currency"
 }

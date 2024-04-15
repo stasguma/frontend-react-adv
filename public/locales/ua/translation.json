@@ -7,5 +7,16 @@
   "about": "Про нас",
   "Log In": "Увійти",
   "Log Out": "Вийти",
-  "profile": "Профіль"
+  "profile": "Профіль",
+  "My Profile": "Мій профіль",
+  "Upload": "Завантажити",
+  "Username": "Ім'я користувача",
+  "Email": "Пошта",
+  "Update": "Оновити",
+  "Country": "Країна",
+  "City": "Місто",
+  "Password": "Пароль",
+  "Enter the name": "Ведіть ім'я",
+  "Enter the password": "Введіть пароль",
+  "Currency": "Валюта"
 }

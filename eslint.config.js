@@ -1,24 +1,35 @@
+
 import globals from 'globals';
 import jsPlugin from '@eslint/js';
-import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import typescriptParser from '@typescript-eslint/parser';
+import tseslint  from 'typescript-eslint';
+// import typescriptPlugin from '@typescript-eslint/eslint-plugin';
+// import typescriptParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
+import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
+import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import i18nextPlugin from 'eslint-plugin-i18next';
 import stylistic from '@stylistic/eslint-plugin';
 import jestDomPlugin from 'eslint-plugin-jest-dom';
 import storybookPlugin from 'eslint-plugin-storybook';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import vitestPlugin from 'eslint-plugin-vitest';
 
-// console.log(vitestPlugin.configs.recommended);
+// console.log('tseslint: ', tseslint);
+// console.log('jestDomPlugin: ', jestDomPlugin.configs["flat/recommended"]);
+// console.log('react: ', reactPlugin);
+// console.log('react recommended: ', reactPlugin.configs.recommended);
+// console.log('reactHooksPlugin: ', reactHooksPlugin.configs.recommended);
+// console.log('reactJsxRuntime: ', reactJsxRuntime);
+// console.log('reactPlugin: ', reactPlugin);
+// console.log('reactRecommended: ', reactRecommended);
 
 const jsFiles = '**/*.?(*)js?(x)';
-const tsFiles = '**/*.?(*)ts?(x)';
-const reactFiles = '**/*.?(*){js,ts}x';
+const tsFiles = '**/*.ts?(x)'; // ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts']
+const reactFiles = '**/*.{js,ts}x';
 const testFiles = ['**/*.{test,spec}.{js,ts}?(x)', 'config/vitest/**', '**/shared/lib/tests/*.{js,ts}?(x)'];
 const storybookFiles = ['**/*.{stories,story}.@(ts|tsx|js|jsx|mjs|cjs)', '**/storybook/main.@(js|cjs|mjs|ts)'];
 
-export default [
+export default tseslint.config(
   {
     ignores: [
       '**/node_modules/**',
@@ -29,11 +40,11 @@ export default [
       '**/.*.{js,ts}',
       '**/*.config.{js,ts}',
       'config/vitest/setup.ts',
+      'vitest.config.ts',
       'storybook-static'
     ],
   },
   {
-    files: [jsFiles, tsFiles, reactFiles],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -74,25 +85,21 @@ export default [
     },
   },
   {
-    files: [jsFiles],
-    rules: {
-      ...typescriptPlugin.configs['disable-type-checked'].rules,
-    },
-  },
-  {
     files: [tsFiles],
+    extends: [
+      ...tseslint.configs.recommendedTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+    ],
     languageOptions: {
-      parser: typescriptParser,
+      parser: tseslint.parser,
       parserOptions: {
         project: true,
       },
     },
     plugins: {
-      '@typescript-eslint': typescriptPlugin,
+      '@typescript-eslint': tseslint.plugin,
     },
     rules: {
-      ...typescriptPlugin.configs['recommended-type-checked'].rules,
-      ...typescriptPlugin.configs['stylistic-type-checked'].rules,
       // Overrides
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
       '@typescript-eslint/strict-boolean-expressions': ['error', {
@@ -102,6 +109,11 @@ export default [
       '@typescript-eslint/consistent-type-imports': ['error'],
       '@typescript-eslint/array-type': ['error', {
         default: 'array-simple'
+      }],
+      "@typescript-eslint/no-misused-promises": [2, {
+        "checksVoidReturn": {
+          "attributes": false
+        }
       }],
     },
   },
@@ -120,15 +132,15 @@ export default [
       },
     },
     plugins: {
-      react: reactPlugin,
-      'react-hooks': reactHooksPlugin,
-      i18next: i18nextPlugin,
+      react: reactPlugin, // https://github.com/jsx-eslint/eslint-plugin-react/pull/3727
+      'react-hooks': reactHooksPlugin, // https://github.com/facebook/react/pull/28773
+      i18next: i18nextPlugin, // https://github.com/edvardchen/eslint-plugin-i18next/issues
     },
     rules: {
-      ...reactPlugin.configs.recommended.rules,
-      ...reactPlugin.configs['jsx-runtime'].rules,
-      ...reactHooksPlugin.configs.recommended.rules,
-      ...i18nextPlugin.configs.recommended.rules,
+      // ...reactRecommended.rules,
+      // ...reactJsxRuntime.rules,
+      // ...reactHooksPlugin.configs.recommended.rules,
+      // ...i18nextPlugin.configs.recommended.rules,
       // override
       '@stylistic/jsx-max-props-per-line': [1, {
         "maximum": { single: 2, multi: 1 }
@@ -143,34 +155,38 @@ export default [
         ...vitestPlugin.environments.env.globals,
       },
     },
+    // ...jestDomPlugin.configs["flat/recommended"],
     plugins: {
-      'jest-dom': jestDomPlugin,
+      // ...jestDomPlugin.configs["flat/recommended"].plugins,
+      // 'jest-dom': jestDomPlugin, https://github.com/testing-library/eslint-plugin-jest-dom/issues
       vitest: vitestPlugin,
     },
     rules: {
-      ...jestDomPlugin.configs.recommended.rules,
+      // ...jestDomPlugin.configs["flat/recommended"].rules,
       ...vitestPlugin.configs.recommended.rules,
+      // overrides
       'i18next/no-literal-string': 'off',
       '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off'
     },
   },
-  {
-    files: [storybookFiles[0]],
-    plugins: {
-      storybook: storybookPlugin,
-    },
-    rules: {
-      ...storybookPlugin.configs.recommended.overrides[0].rules,
-      'i18next/no-literal-string': 'off',
-    },
-  },
-  {
-    files: [storybookFiles[1]],
-    plugins: {
-      storybook: storybookPlugin,
-    },
-    rules: {
-      ...storybookPlugin.configs.recommended.overrides[1].rules,
-    },
-  },
-];
+  // {
+  //   files: [storybookFiles[0]],
+  //   plugins: {
+  //     storybook: storybookPlugin,
+  //   },
+  //   rules: {
+  //     ...storybookPlugin.configs.recommended.overrides[0].rules,
+  //     'i18next/no-literal-string': 'off',
+  //   },
+  // },
+  // {
+  //   files: [storybookFiles[1]],
+  //   plugins: {
+  //     storybook: storybookPlugin,
+  //   },
+  //   rules: {
+  //     ...storybookPlugin.configs.recommended.overrides[1].rules,
+  //   },
+  // },
+);
