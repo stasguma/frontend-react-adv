@@ -1,0 +1,76 @@
+@use "@/app/styles/variables" as vars;
+@use "@/app/styles/utils" as fn;
+
+.select {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+
+  &__label {
+    display: inline-flex;
+    margin-bottom: 6px;
+    font-weight: vars.font-weight(medium);
+    color: inherit;
+  }
+
+  &__field {
+    cursor: pointer;
+
+    display: block;
+
+    width: 100%;
+    padding: 0 12px;
+
+    background-color: var(--color-select-bg);
+    border: 1px solid var(--color-select-border);
+    border-radius: 3px;
+
+    option {
+      background-color: var(--color-bg-layer-2);
+    }
+
+    &:not(:disabled) {
+      &:hover {
+        background-color: var(--color-select-bg-hover);
+        border-color: var(--color-select-border-hover);
+      }
+      
+      &:focus {
+        background-color: var(--color-select-bg-focus);
+        border-color: var(--color-select-border-focus);
+      }
+      
+      &:active {
+        background-color: var(--color-select-bg-active);
+        border-color: var(--color-select-border-active);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: var(--color-text-disabled);
+      background-color: var(--color-select-bg-disabled);
+      
+      &::placeholder {
+        color: inherit;
+      }
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &--small {
+      height: 28px;
+      font-size: fn.to-rem(14px);
+    }
+
+    &--medium {
+      height: 36px;
+    }
+
+    &--large {
+      height: 44px;
+    }
+  }
+}
