@@ -111,9 +111,17 @@ $theme-colors: (
     "light": $white,
     "dark": $black-2,
   ),
-  "background2": (
-    "light": $white-2,
-    "dark": $dark-blue,
+  "layer-1": (
+    "light": fn.to-hsl(color.scale(fn.pick-tint(p.$palette-gray, 100), $lightness: 60%)),
+    "dark": hsl(210deg 30% 13%),
+  ),
+  "layer-2": (
+    "light": $white,
+    "dark": hsl(210deg 30% 18%),
+  ),
+  "layer-3": (
+    "light": fn.to-hsl(color.scale(fn.pick-tint(p.$palette-gray, 100), $lightness: 60%)),
+    "dark": hsl(210deg 30% 23%),
   ),
   "backdrop": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.8),
@@ -165,23 +173,23 @@ $theme-colors: (
 
   "input-bg": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.08),
-    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.08)
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.08)
   ),
   "input-bg-hover": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.12),
-    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.12)
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.12)
   ),
   "input-bg-focus": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.08),
-    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.08)
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.08)
   ),
   "input-bg-active": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.18),
-    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.18)
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.18)
   ),
   "input-bg-disabled": (
     "light": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.06),
-    "dark": color.change(fn.pick-tint(p.$palette-gray, 900), $alpha: 0.06)
+    "dark": color.change(fn.pick-tint(p.$palette-gray, 100), $alpha: 0.06)
   ),
   "input-border": (
     "light": transparent,
@@ -193,28 +201,28 @@ $theme-colors: (
   ),
   "input-border-focus": (
     "light": $blue,
-    "dark": $blue
+    "dark": $light-blue
   ),
   "input-border-active": (
     "light": $blue,
-    "dark": $blue
+    "dark": $light-blue
   ),
 
   "input-danger-bg": (
     "light": color.scale(fn.pick-tint(p.$palette-pink, 100), $lightness: 60%), 
-    "dark": color.scale(fn.pick-tint(p.$palette-pink, 100), $lightness: 60%),
+    "dark": color.change(fn.pick-tint(p.$palette-pink, 400), $alpha: .25),
   ),
   "input-danger-bg-hover": (
     "light": fn.pick-tint(p.$palette-pink, 100), 
-    "dark": fn.pick-tint(p.$palette-pink, 100),
+    "dark": color.change(fn.pick-tint(p.$palette-pink, 400), $alpha: .4),
   ),
   "input-danger-bg-focus": (
     "light": color.scale(fn.pick-tint(p.$palette-pink, 100), $lightness: 60%), 
-    "dark": color.scale(fn.pick-tint(p.$palette-pink, 100), $lightness: 60%),
+    "dark": color.change(fn.pick-tint(p.$palette-pink, 400), $alpha: .3),
   ),
   "input-danger-bg-active": (
     "light":  color.scale(fn.pick-tint(p.$palette-pink, 200), $lightness: 20%),
-    "dark": color.scale(fn.pick-tint(p.$palette-pink, 200), $lightness: 20%),
+    "dark": color.change(fn.pick-tint(p.$palette-pink, 400), $alpha: .5),
   ),
   "input-danger-border": (
     "light": transparent,
@@ -226,28 +234,28 @@ $theme-colors: (
   ),
   "input-danger-border-focus": (
     "light": $bright-pink,
-    "dark": $bright-pink
+    "dark": $bright-pink-2
   ),
   "input-danger-border-active": (
     "light": $bright-pink,
-    "dark": $bright-pink
+    "dark": $bright-pink-2
   ),
 
   "input-warning-bg": (
     "light": color.scale(fn.pick-tint(p.$palette-orange, 100), $lightness: 60%), 
-    "dark": color.scale(fn.pick-tint(p.$palette-orange, 100), $lightness: 60%),
+    "dark": color.change(fn.pick-tint(p.$palette-orange, 400), $alpha: .25),
   ),
   "input-warning-bg-hover": (
     "light": fn.pick-tint(p.$palette-orange, 100), 
-    "dark": fn.pick-tint(p.$palette-orange, 100),
+    "dark": color.change(fn.pick-tint(p.$palette-orange, 400), $alpha: .4),
   ),
   "input-warning-bg-focus": (
     "light": color.scale(fn.pick-tint(p.$palette-orange, 100), $lightness: 60%), 
-    "dark": color.scale(fn.pick-tint(p.$palette-orange, 100), $lightness: 60%),
+    "dark": color.change(fn.pick-tint(p.$palette-orange, 400), $alpha: .3),
   ),
   "input-warning-bg-active": (
     "light":  color.scale(fn.pick-tint(p.$palette-orange, 200), $lightness: 20%),
-    "dark": color.scale(fn.pick-tint(p.$palette-orange, 200), $lightness: 20%),
+    "dark": color.change(fn.pick-tint(p.$palette-orange, 400), $alpha: .5),
   ),
   "input-warning-border": (
     "light": transparent,
@@ -259,10 +267,10 @@ $theme-colors: (
   ),
   "input-warning-border-focus": (
     "light": $orange,
-    "dark": $orange
+    "dark": $orange-2
   ),
   "input-warning-border-active": (
     "light": $orange,
-    "dark": $orange
+    "dark": $orange-2
   ),
 );

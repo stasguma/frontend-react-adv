@@ -4,7 +4,9 @@
 
 :root[data-theme="dark"] {
   --color-bg:                             #{fn.pick-color($theme-colors, 'background', 'dark')};
-  --color-bg-accent:                      #{fn.pick-color($theme-colors, 'background2', 'dark')};
+  --color-bg-layer-1:                     #{fn.pick-color($theme-colors, 'layer-1', 'dark')};
+  --color-bg-layer-2:                     #{fn.pick-color($theme-colors, 'layer-2', 'dark')};
+  --color-bg-layer-3:                     #{fn.pick-color($theme-colors, 'layer-3', 'dark')};
   --color-backdrop:                       #{fn.pick-color($theme-colors, 'backdrop', 'dark')};
   --color-text:                           #{fn.pick-color($theme-colors, 'text', 'dark')};
   --color-text-disabled:                  #{fn.pick-color($theme-colors, 'text-disabled', 'dark')};
@@ -65,6 +67,15 @@
   --color-input-warning-border-hover:     #{fn.pick-color($theme-colors, 'input-warning-border-hover', 'dark')};
   --color-input-warning-border-focus:     #{fn.pick-color($theme-colors, 'input-warning-border-focus', 'dark')};
   --color-input-warning-border-active:    #{fn.pick-color($theme-colors, 'input-warning-border-active', 'dark')};
+  --color-select-bg:                      var(--color-input-bg);
+  --color-select-bg-hover:                var(--color-input-bg-hover);
+  --color-select-bg-focus:                var(--color-input-bg-focus);
+  --color-select-bg-active:               var(--color-input-bg-active);
+  --color-select-bg-disabled:             var(--color-input-bg-disabled);
+  --color-select-border:                  var(--color-input-border);
+  --color-select-border-hover:            var(--color-input-border-hover);
+  --color-select-border-focus:            var(--color-input-border-focus);
+  --color-select-border-active:           var(--color-input-border-active);
 
   // background-color: var(--bg-color);
   color-scheme: dark;
