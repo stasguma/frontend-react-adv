@@ -1,9 +1,11 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { useState } from 'react';
 
 import { classNames } from '@/shared/lib';
+import { useAppSelector } from '@/shared/model';
 import { Button, LangSwitcher } from '@/shared/ui';
 import { ThemeSwitcher } from '@/entities/ThemeSwitcher';
+import { selectIsAuth } from '@/entities/Session';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { SidebarItemList } from '../../model/consts/SidebarItemList';
 
@@ -18,11 +20,27 @@ interface IProps {
 export const Sidebar = memo<IProps>(function Sidebar(props) {
   const { className } = props;
 
+  const isAuth = useAppSelector(selectIsAuth);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
   const toggleSidebar = (): void => {
     setIsCollapsed(!isCollapsed);
   };
+
+  const filteredItems = useMemo(() => {
+    let items = [...SidebarItemList];
+
+    if (!isAuth) {
+      items = items.filter(item => !item.private);
+    }
+
+    return items.map(item => (
+      <SidebarItem
+        key={item.name}
+        itemData={item}
+      />
+    ));
+  }, [isAuth]);
 
   return (
     <div
@@ -47,12 +65,7 @@ export const Sidebar = memo<IProps>(function Sidebar(props) {
           aria-label="sidebar navigation"
         >
           <ul className={classes['navigation-list']} role="list">
-            {SidebarItemList.map(item => (
-              <SidebarItem
-                key={item.name}
-                itemData={item}
-              />
-            ))}
+            {filteredItems}
           </ul>
         </nav>
       </div>

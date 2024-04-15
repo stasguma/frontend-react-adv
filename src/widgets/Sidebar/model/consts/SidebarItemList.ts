@@ -19,5 +19,6 @@ export const SidebarItemList: ISidebarItem[] = [
     path: '/profile',
     name: 'profile',
     icon: UserIcon,
+    private: true,
   },
 ];

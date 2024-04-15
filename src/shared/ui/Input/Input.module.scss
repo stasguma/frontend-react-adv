@@ -30,17 +30,16 @@ input[type='password'] {
 .input {
   display: flex;
   flex-flow: column;
+  align-items: start;
 
   &__label {
     display: inline-flex;
-    align-self: flex-start;
     margin-bottom: 6px;
     font-weight: vars.font-weight(medium);
     color: inherit;
   }
   
   &__field {
-    height: 36px;
     padding: 0 12px;
     background-color: var(--color-input-bg);
     border: 1px solid var(--color-input-border);
@@ -72,10 +71,15 @@ input[type='password'] {
         color: inherit;
       }
     }
+
     
     &--small {
       height: 28px;
       font-size: fn.to-rem(14px);
+    }
+
+    &--medium {
+      height: 36px;
     }
 
     &--large {
@@ -83,6 +87,9 @@ input[type='password'] {
     }
   }
 
+  &__error {
+    padding-top: 10px;
+  }
   
   &--danger {
     .input__field {

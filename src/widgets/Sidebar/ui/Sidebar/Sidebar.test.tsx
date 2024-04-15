@@ -4,12 +4,12 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { renderWithAllProviders } from '@/shared/lib';
 
 describe('<Sidebar />', () => {
-  test('render', () => {
+  test('should be rendered in dom', () => {
     renderWithAllProviders(<Sidebar />);
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
-  test('test a toggle function', () => {
+  test('should work a toggle button', () => {
     renderWithAllProviders(<Sidebar />);
     const toggleBtn = screen.getByTestId('sidebar-toggle');
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();

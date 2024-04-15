@@ -12,6 +12,7 @@ type TButtonSizes = keyof typeof ButtonSizesMap;
 
 const ButtonSizesMap = {
   sm: 'small',
+  md: 'medium',
   lg: 'large',
 } as const;
 
@@ -20,6 +21,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: TButtonVariants;
   color?: TButtonColors;
   size?: TButtonSizes;
+  full?: boolean;
 }
 
 export const Button = memo<IProps>(function Button(props) {
@@ -29,8 +31,9 @@ export const Button = memo<IProps>(function Button(props) {
     disabled = false,
     variant = 'base',
     color = 'primary',
-    size,
+    size = 'md',
     type = 'button',
+    full = false,
     ...otherProps
   } = props;
   return (
@@ -38,8 +41,9 @@ export const Button = memo<IProps>(function Button(props) {
       className={
         classNames(classes.btn,
           classes[`btn-${variant}`],
+          { [classes[`btn--${ButtonSizesMap[size]}`]]: variant !== 'base' },
           { [classes[`btn-${color}`]]: variant !== 'base' },
-          { [classes[`btn--${ButtonSizesMap[size!]}`]]: !!size },
+          { [classes['btn--full']]: full },
           className)
       }
       disabled={disabled}
