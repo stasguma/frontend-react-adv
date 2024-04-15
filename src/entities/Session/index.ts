@@ -1,4 +1,4 @@
-export type { ILoginForm, ISession, SessionSchema } from './model/types/sessionSchema';
+export type { ISession, SessionSchema } from './model/types/sessionSchema';
 export {
   sessionSlice,
   initSession,

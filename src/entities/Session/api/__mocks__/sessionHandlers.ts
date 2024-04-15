@@ -1,11 +1,11 @@
-import type { ILoginForm } from '../../model/types/sessionSchema';
+import type { ILoginRequest } from '../types';
 
 import { HttpResponse, http } from 'msw';
 import { ENV } from '@/shared/config/enviroment/env';
 
 export const sessionHandlers = [
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  http.post<any, ILoginForm>(`${ENV.API_ENDPOINT}/login`, async ({ request }) => {
+  http.post<any, ILoginRequest>(`${ENV.API_ENDPOINT}/login`, async ({ request }) => {
     const { username, password } = await request.json();
 
     const successResponseData = {

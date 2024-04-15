@@ -1,5 +1,5 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '@/app/providers/StoreProvider';
+// import type { PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '@/app/providers/store';
 import type { ISession, SessionSchema } from '../types/sessionSchema';
 
 import { createSlice } from '@reduxjs/toolkit';

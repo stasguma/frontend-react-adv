@@ -1,16 +1,17 @@
-import type { ILoginForm, ISession } from '../model/types/sessionSchema';
+import type { ILoginRequest } from './types';
+import type { ISession as ILoginResponse } from '../model/types/sessionSchema';
 import { SESSION_TAG, baseApi } from '@/shared/api';
 
 export const sessionApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    login: builder.mutation<ISession, ILoginForm>({
+    login: builder.mutation<ILoginResponse, ILoginRequest>({
       query: data => ({
         url: `login`,
-        method: 'post',
+        method: 'POST',
         body: data,
       }),
       invalidatesTags: [SESSION_TAG],
-      // transformResponse: (response: { data: ISession; }, meta, arg) => response.data,
+      // transformResponse: (response: { data: ILoginResponse; }, meta, arg) => response.data,
     }),
   }),
 });

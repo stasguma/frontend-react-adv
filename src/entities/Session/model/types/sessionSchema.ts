@@ -1,9 +1,5 @@
-import type { IErrorResponse, TLoadingState } from '@/shared/types';
-
-export interface ILoginForm {
-  username: string;
-  password: string;
-}
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { /* IErrorResponse, */ TLoadingState } from '@/shared/types';
 
 export interface ISession {
   id?: string;
@@ -14,5 +10,5 @@ export interface ISession {
 
 export interface SessionSchema extends ISession {
   loading: TLoadingState;
-  error?: IErrorResponse;
+  error?: FetchBaseQueryError;
 }
