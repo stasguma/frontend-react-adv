@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
+// jsonServer.rewriter({ '/api/*': '/$1' })(server);
 const middlewares = jsonServer.defaults();
 
 // Set default middlewares (logger, static, cors and no-cache)
@@ -21,9 +22,11 @@ server.use(async (req, res, next) => {
 
 // Check headers if user authorized
 server.use((req, res, next) => {
-  if (!req.headers.authorization && !req.path.includes('login')) {
+  if (!req.headers.authentication && !req.path.includes('login')) {
     return res.status(401).jsonp({ error: 'Unauthorized', message: 'You are not authorized to access this resource' });
   }
+
+  // res.header('Allow', 'GET, POST, PUT, PATCH');
 
   next();
 });
@@ -47,8 +50,22 @@ server.post('/api/login', (req, res) => {
   return res.status(403).jsonp({ error: 'Unauthorized', message: 'User was not found' });
 });
 
+server.get('/api/profile', (req, res) => {
+  const db = JSON.parse(readFileSync(path.resolve(import.meta.dirname, 'db.json'), 'utf8'));
+  const { profile = undefined } = db;
+
+  if (profile) {
+    return res.status(200).jsonp(profile);
+  }
+
+  return res.status(204).jsonp({ error: 'No Content', message: 'Profile was not found' });
+});
+
 // Use default router
-server.use(router);
+// server.use(jsonServer.rewriter({
+//   '/api/*': '/$1',
+// }));
+server.use('/api', router);
 server.listen(1111, () => {
-  console.log('JSON Server is running');
+  console.log('JSON Server is running on port 1111');
 });
