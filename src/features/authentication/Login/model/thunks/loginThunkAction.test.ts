@@ -1,8 +1,9 @@
-import type { ILoginForm } from '@/entities/Session';
+import type { ISession } from '@/entities/Session';
+import type { ILoginForm } from '../types/types';
 
-import { loginThunkAction } from './loginThunkAction';
-import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
 import { ENV } from '@/shared/config/enviroment/env';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { loginThunkAction } from './loginThunkAction';
 
 describe('loginThunkAction for a Login feature', () => {
   test('should return the session data after a success login', async () => {
@@ -25,12 +26,12 @@ describe('loginThunkAction for a Login feature', () => {
       method: 'POST',
       body: JSON.stringify(credentials),
     });
-    const { data } = await result.json();
+    const { data } = await result.json(); /* eslint-disable-line */
     // console.log(data);
     expect(data).toEqual(responseData);
 
-    const thunk = new TestAsyncThunk<unknown, ILoginForm>(loginThunkAction);
-    const actionResponse = await thunk.callThunk(credentials);
+    const thunk = new TestAsyncThunk<ISession, ILoginForm>(loginThunkAction);
+    const actionResponse = await thunk.callThunk(credentials); /* eslint-disable-line */
     // console.log(thunk.dispatch.mock.calls);
     // console.log('actionResponse', actionResponse);
     // expect(actionResponse.meta.requestStatus).toBe('fulfilled');
@@ -39,6 +40,9 @@ describe('loginThunkAction for a Login feature', () => {
   });
 
   test('should return the error on the failed login', async () => {
+    // const dispatch = vi.fn();
+    // const getState = vi.fn();
+
     const responseData = {
       error: 'Unauthorized',
       message: 'User was not found',
@@ -56,12 +60,16 @@ describe('loginThunkAction for a Login feature', () => {
       method: 'POST',
       body: JSON.stringify(credentials),
     });
-    const { error } = await result.json();
+    const { error } = await result.json(); /* eslint-disable-line */
 
     expect(error).toEqual(responseData);
 
-    const thunk = new TestAsyncThunk<unknown, ILoginForm>(loginThunkAction);
-    const actionResponse = await thunk.callThunk(credentials);
+    // const action = loginThunkAction(credentials);
+    // const res = await action(dispatch, getState, undefined);
+    // console.log(res);
+    const thunk = new TestAsyncThunk<ISession, ILoginForm>(loginThunkAction);
+    const actionResponse = await thunk.callThunk(credentials); /* eslint-disable-line */
+    // console.log(dispatch.mock.calls[1][0].toString());
     // console.log(actionResponse);
     // expect(actionResponse.meta.requestStatus).toBe('rejected');
     // expect(thunk.dispatch).toHaveBeenCalledTimes(2);

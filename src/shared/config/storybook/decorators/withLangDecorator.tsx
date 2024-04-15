@@ -13,7 +13,6 @@ export const withLangDecorator: Decorator = (Story, context) => {
   // const { i18n } = useTranslation();
   // const [globals, updateGlobals] = useGlobals();
 
-  /* eslint-disable-next-line */
   useEffect(() => {
     /* eslint-disable-next-line */
     i18n.changeLanguage(locale);

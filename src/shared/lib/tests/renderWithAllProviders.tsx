@@ -1,12 +1,12 @@
 import type { PropsWithChildren, ReactElement } from 'react';
 import type { RenderOptions } from '@testing-library/react';
-import type { RootState } from '@/app/providers/StoreProvider';
+import type { RootState } from '@/app/providers/store';
 
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore } from '@/app/providers/StoreProvider/config/store';
+import { createStore } from '@/app/providers/store/config/store';
 
 interface IExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: Partial<RootState>;

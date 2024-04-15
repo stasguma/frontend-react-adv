@@ -1,13 +1,16 @@
-import type { FC, SyntheticEvent } from 'react';
-import type { ILoginForm } from '@/entities/Session';
+import type { FC } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { type ILoginForm, LoginFormSchema } from '../../model/types/types';
 
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { valibotResolver } from '@hookform/resolvers/valibot';
 
 import { selectError, selectIsLoading, selectIsLoadingSuccess } from '@/entities/Session';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { Button, Input, Modal, Typography } from '@/shared/ui';
-import { loginThunkAction } from '../../model/thunkActions/loginThunkAction';
+import { loginThunkAction } from '../../model/thunks/loginThunkAction';
 
 import classes from './LoginModal.module.scss';
 
@@ -25,6 +28,18 @@ export const LoginModal: FC<IProps> = (props) => {
   const isLoadingSuccess = useAppSelector(selectIsLoadingSuccess);
   const resError = useAppSelector(selectError);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+  } = useForm<ILoginForm>({
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+    resolver: valibotResolver(LoginFormSchema),
+  });
+
   const closeModal = useCallback(() => {
     const event = new KeyboardEvent('keydown', {
       key: 'Escape',
@@ -39,14 +54,17 @@ export const LoginModal: FC<IProps> = (props) => {
     }
   }, [isLoadingSuccess, closeModal]);
 
-  const submitHandler = useCallback(
-    (e: SyntheticEvent) => {
-      e.preventDefault();
+  // const submitHandler = useCallback(
+  //   (e: SyntheticEvent) => {
+  //     e.preventDefault();
 
-      const data = Object.fromEntries(new FormData(e.target as HTMLFormElement)) as unknown as ILoginForm;
-      void dispatch(loginThunkAction(data));
-    }, [dispatch]
-  );
+  //     const data = Object.fromEntries(new FormData(e.target as HTMLFormElement)) as unknown as ILoginForm;
+  //     void dispatch(loginThunkAction(data));
+  //   }, [dispatch]
+  // );
+  const submitHandler: SubmitHandler<ILoginForm> = useCallback((data) => {
+    dispatch(loginThunkAction(data));
+  }, [dispatch]);
 
   return (
     <Modal
@@ -55,26 +73,31 @@ export const LoginModal: FC<IProps> = (props) => {
       size="sm"
     >
       <h2>{t('Log In')}</h2>
-      <form className={classes['login-form']} onSubmit={submitHandler}>
+      <form className={classes['login-form']} onSubmit={handleSubmit(submitHandler)}>
         <Input
-          id="username"
+          register={() => register('username')}
           name="username"
-          placeholder="Enter the name"
-          label="Username"
+          id="username"
+          placeholder={t('Enter the name')}
+          label={t('Username')}
           autoFocus
+          errorEl={errors.username ? <Text color="danger">{errors.username?.message}</Text> : undefined}
         />
         <Input
-          id="password"
+          register={() => register('password')}
           name="password"
+          id="password"
           type="password"
-          label="Password"
-          placeholder="Enter the password"
+          label={t('Password')}
+          placeholder={t('Enter the password')}
+          errorEl={errors.password ? <Text color="danger">{errors.password?.message}</Text> : undefined}
         />
-        {resError ? <Text color="danger">{`${resError.data.error}. ${resError.data.message}`}</Text> : null}
+        {resError ? <Text color="danger">{`${resError?.data?.error}. ${resError?.data?.message}`}</Text> : null}
+
         <Button
           variant="filled"
           type="submit"
-          disabled={isLoading}
+          disabled={!isDirty || isLoading}
         >
           {t('Log In')}
         </Button>

@@ -5,7 +5,6 @@ import '../../src/app/styles/index.scss';
 import { withThemeDecorator } from '../../src/shared/config/storybook/decorators/withThemeDecorator';
 import { withLangDecorator } from '../../src/shared/config/storybook/decorators/withLangDecorator';
 import { withRouterDecorator } from '../../src/shared/config/storybook/decorators/withRouterDecorator';
-import { withStoreDecorator } from '../../src/shared/config/storybook/decorators/withStoreDecorator';
 
 const preview: Preview = {
   parameters: {

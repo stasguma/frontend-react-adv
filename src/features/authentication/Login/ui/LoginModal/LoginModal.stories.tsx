@@ -5,7 +5,7 @@ import { withStoreDecorator } from '@/shared/config/storybook/decorators/withSto
 
 // 👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof LoginModal> = {
-  title: 'Features/LoginModal',
+  title: 'Features/authentication/LoginModal',
   component: LoginModal,
   decorators: [withStoreDecorator()],
 };
