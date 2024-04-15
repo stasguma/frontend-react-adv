@@ -14,14 +14,9 @@ import jestDomPlugin from 'eslint-plugin-jest-dom';
 import storybookPlugin from 'eslint-plugin-storybook';
 import vitestPlugin from 'eslint-plugin-vitest';
 
-// console.log('tseslint: ', tseslint);
 // console.log('jestDomPlugin: ', jestDomPlugin.configs["flat/recommended"]);
-// console.log('react: ', reactPlugin);
 // console.log('react recommended: ', reactPlugin.configs.recommended);
 // console.log('reactHooksPlugin: ', reactHooksPlugin.configs.recommended);
-// console.log('reactJsxRuntime: ', reactJsxRuntime);
-// console.log('reactPlugin: ', reactPlugin);
-// console.log('reactRecommended: ', reactRecommended);
 
 const jsFiles = '**/*.?(*)js?(x)';
 const tsFiles = '**/*.ts?(x)'; // ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts']

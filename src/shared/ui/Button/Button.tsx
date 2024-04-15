@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 import { memo } from 'react';
 
@@ -17,6 +17,7 @@ const ButtonSizesMap = {
 } as const;
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
   className?: string;
   variant?: TButtonVariants;
   color?: TButtonColors;
@@ -40,7 +41,7 @@ export const Button = memo<IProps>(function Button(props) {
     <button
       className={
         classNames(classes.btn,
-          classes[`btn-${variant}`],
+          { [classes[`btn-${variant}`]]: variant !== 'base' },
           { [classes[`btn--${ButtonSizesMap[size]}`]]: variant !== 'base' },
           { [classes[`btn-${color}`]]: variant !== 'base' },
           { [classes['btn--full']]: full },
