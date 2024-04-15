@@ -1,17 +1,18 @@
-import type { IErrorResponse, TLoadingState } from '@/shared/types';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { TLoadingState, TObjectValues } from '@/shared/types';
 import type { Country, Currency } from '@/shared/consts';
 
-export interface Profile {
+export interface IProfile {
   username: string;
   email: string;
   city: string;
-  country: typeof Country;
-  currency: typeof Currency;
+  country: TObjectValues<typeof Country>;
+  currency: TObjectValues<typeof Currency>;
   avatarUrl: string;
 }
 
 export interface ProfileSchema {
   loading: TLoadingState;
-  data?: Profile;
-  error?: IErrorResponse;
+  data?: IProfile;
+  error?: FetchBaseQueryError;
 }
