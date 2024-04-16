@@ -52,10 +52,6 @@ export const EditProfileForm = memo<IProps>(function EditProfileForm(props) {
     dispatch(updateProfileThunkAction(data));
   }, [dispatch]);
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-
   return (
     <form className={classNames(classes.form, className)} onSubmit={handleSubmit(submitHandler)}>
       <Input

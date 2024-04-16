@@ -7,9 +7,6 @@ type TActionCreatorType<Return, Arg, Config extends AsyncThunkConfig> = AsyncThu
 // type TActionCreatorType<Return, Arg, Config extends AsyncThunkConfig> = (arg: Arg) => AsyncThunkAction<Return, Arg, Config>;
 // type TActionCreatorType<Return, Arg, ThunkApiConfig = { rejectValue: FetchBaseQueryError; }>
 //   = AsyncThunk<Return, Arg, Partial<ThunkApiConfig>>;
-// = ReturnType<typeof createAsyncThunk<Return, Arg, ThunkApiConfig>>;
-
-// type AppDispatch = ThunkDispatch<any, undefined, AnyAction> & Dispatch<any>
 
 export class TestAsyncThunk<Return, Arg, ThunkApiConfig extends AsyncThunkConfig = { rejectValue: FetchBaseQueryError; }> {
   dispatch: Dispatch;
