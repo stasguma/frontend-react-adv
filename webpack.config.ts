@@ -1,16 +1,14 @@
 import type webpack from 'webpack';
+import type { IBuildEnvironment, IBuildPaths, TBuildMode } from './config/build/types/config';
 import path from 'path';
 
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 
-import {
-  type IBuildEnvironment,
-  type IBuildPaths,
-  type TBuildMode,
-} from './config/build/types/config';
-
 export default (env: IBuildEnvironment): webpack.Configuration => {
   const mode: TBuildMode = env.development ? 'development' : 'production';
+  const isDev = mode === 'development';
+  const publicPath = env.assetPath ?? '/';
+  const PORT = env.port ?? 8080;
 
   const paths: IBuildPaths = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -18,11 +16,9 @@ export default (env: IBuildEnvironment): webpack.Configuration => {
     htmlTemplate: path.resolve(__dirname, 'public', 'index.html'),
     devServer: path.resolve(__dirname, 'public'),
     src: path.resolve(__dirname, 'src'),
+    publicPath
   };
 
-  const PORT = env.port ?? 8080;
-
-  const isDev = mode === 'development';
 
   const config: webpack.Configuration = buildWebpackConfig({
     mode,

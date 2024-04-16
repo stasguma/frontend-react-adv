@@ -22,7 +22,12 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState,
   reducers: {
-    clearSession: () => initialState,
+    clearSession: () => {
+      return {
+        ...initialState,
+        sessionInited: true,
+      };
+    },
     initSession: (state) => {
       const session = LocalStorage.getItem(LOCAL_STORAGE_SESSION_KEY) as ISession;
 

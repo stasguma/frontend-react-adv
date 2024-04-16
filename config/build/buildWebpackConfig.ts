@@ -22,6 +22,7 @@ export const buildWebpackConfig = function (
       path: paths.output,
       filename: isDev ? '[name].bundle.js' : '[name].[contenthash].bundle.js',
       clean: true,
+      publicPath: paths.publicPath,
     },
     module: {
       rules: loaders(options),

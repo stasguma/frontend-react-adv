@@ -2,6 +2,7 @@ export interface IBuildEnvironment {
   development?: boolean;
   production?: boolean;
   port?: number;
+  assetPath?: string;
 }
 
 export type TBuildMode = 'development' | 'production';
@@ -19,4 +20,5 @@ export interface IBuildPaths {
   htmlTemplate: string;
   devServer: string;
   src: string;
+  publicPath: string;
 }
