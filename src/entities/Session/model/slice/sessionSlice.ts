@@ -15,6 +15,7 @@ const initialState: SessionSchema = {
   token: undefined,
   isAuthenticated: false,
   error: undefined,
+  sessionInited: false,
 };
 
 export const sessionSlice = createSlice({
@@ -32,6 +33,8 @@ export const sessionSlice = createSlice({
         state.token = token;
         state.isAuthenticated = isAuthenticated;
       }
+
+      state.sessionInited = true;
     },
   },
   extraReducers: (builder) => {
@@ -67,9 +70,8 @@ export const { clearSession, initSession } = sessionSlice.actions;
 
 export const selectIsLoading = (state: RootState) => state.session.loading === 'pending';
 export const selectIsLoadingSuccess = (state: RootState) => state.session.loading === 'succeeded';
-export const selectUserId = (state: RootState) => state.session.id;
-export const selectUsername = (state: RootState) => state.session.username;
-export const selectToken = (state: RootState) => state.session.token;
+export const selectSessionData = (state: RootState) => state.session;
+export const selectIsSessionInited = (state: RootState) => state.session.sessionInited;
 export const selectIsAuth = (state: RootState) => state.session.isAuthenticated;
 export const selectError = (state: RootState) => state.session.error;
 

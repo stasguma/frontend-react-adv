@@ -11,4 +11,5 @@ export interface ISession {
 export interface SessionSchema extends ISession {
   loading: TLoadingState;
   error?: FetchBaseQueryError;
+  sessionInited: boolean;
 }

@@ -1,14 +1,20 @@
+import type { AppDispatch, RootState } from '@/app/providers/store';
 import { createAction, createListenerMiddleware } from '@reduxjs/toolkit';
 
 import { LocalStorage } from '@/shared/lib';
 import { LOCAL_STORAGE_SESSION_KEY } from '@/shared/consts/localStorage';
 
-export const authListenerMiddleware = createListenerMiddleware();
-
 const loginAction = createAction('authentication/login/fulfilled');
 
+export const authListenerMiddleware = createListenerMiddleware();
+
+export const authStartAppListening = authListenerMiddleware.startListening.withTypes<
+  RootState,
+  AppDispatch
+>();
+
 // authListenerMiddleware.startListening.withTypes<RootState, AppDispatch>();
-authListenerMiddleware.startListening({
+authStartAppListening({
   actionCreator: loginAction,
   effect: (action, listenerApi) => {
     // Run whatever additional side-effect-y logic you want here

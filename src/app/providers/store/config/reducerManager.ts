@@ -36,7 +36,7 @@ export function createReducerManager<S>({
 
     // Adds a new reducer with the specified key
     add: (key, reducer) => {
-      if (key !== undefined || reducers[key] !== undefined) {
+      if (Boolean(key) === false || reducers[key]) {
         return;
       }
 
@@ -49,7 +49,7 @@ export function createReducerManager<S>({
 
     // Removes a reducer with the specified key
     remove: (key) => {
-      if (key !== undefined || reducers[key] === undefined) {
+      if (Boolean(key) === false || !reducers[key]) {
         return;
       }
 

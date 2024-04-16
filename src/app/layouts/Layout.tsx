@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { useAppSelector } from '@/shared/model';
+import { selectIsSessionInited } from '@/entities/Session';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { PageLoader } from '@/widgets/PageLoader';
@@ -9,6 +11,8 @@ import { PageLoader } from '@/widgets/PageLoader';
 import classes from './Layout.module.scss';
 
 const Layout: FC = () => {
+  const isSessionInited = useAppSelector(selectIsSessionInited);
+
   return (
     <>
       <Navbar />
@@ -16,7 +20,7 @@ const Layout: FC = () => {
         <Sidebar />
         <main>
           <Suspense fallback={<PageLoader />}>
-            <Outlet />
+            {isSessionInited ? <Outlet /> : null}
           </Suspense>
         </main>
       </div>

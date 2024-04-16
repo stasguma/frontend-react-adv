@@ -3,11 +3,10 @@ export {
   sessionSlice,
   initSession,
   clearSession,
+  selectSessionData,
+  selectIsSessionInited,
   selectIsLoading,
   selectIsLoadingSuccess,
-  selectUserId,
-  selectUsername,
-  selectToken,
   selectIsAuth,
   selectError,
 } from './model/slice/sessionSlice';
