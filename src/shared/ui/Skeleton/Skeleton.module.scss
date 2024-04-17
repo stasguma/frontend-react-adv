@@ -1,0 +1,27 @@
+.skeleton {
+  display: flex;
+  background: 
+    linear-gradient(
+      to right,
+      hsl(0deg 0% 94% / 80%),
+      hsl(0deg 0% 84% / 60%) 5%,
+      hsl(0deg 0% 94% / 80%) 10%),
+      hsl(0deg 0% 94%);
+  background-size: 500% 100%;
+  border-radius: 4px;
+  animation: skeleton-loading 8s linear infinite;
+
+  &--circle {
+    border-radius: 50%;
+  }
+
+  &--row {
+    & + & {
+      margin-top: 6px;
+    }
+  }
+}
+
+@keyframes skeleton-loading {
+  to {background-position-x: -500%;}
+}
