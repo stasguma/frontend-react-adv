@@ -1,0 +1,14 @@
+.article-image-block {
+  margin-bottom: 1.25rem;
+
+  &__image {
+    width: 100%;
+    max-height: clamp(380px, 50vh, 500px);
+    object-fit: contain;
+  }
+
+  &__caption {
+    margin-top: .75rem;
+    text-align: center;
+  }
+}

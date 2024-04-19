@@ -1,0 +1,9 @@
+.article-code-block {
+  margin-bottom: 1.25rem;
+
+  &__code {
+    overflow-x: auto;
+    display: flex;
+    max-width: 100%;
+  }
+}
