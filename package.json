@@ -16,7 +16,6 @@
     "lint:scss": "pnpm dlx stylelint \"**/*.scss\"",
     "lint:scss:fix": "pnpm dlx stylelint \"**/*.scss\" --fix",
     "lint": "pnpm lint:jsts && pnpm lint:scss",
-    "test": "vitest",
     "test:unit": "vitest",
     "test:ui": "pnpm dlx chromatic --build-script-name=storybook:build",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",

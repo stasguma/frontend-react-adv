@@ -14,6 +14,7 @@ describe('sessionSlice', () => {
       token: undefined,
       isAuthenticated: false,
       error: undefined,
+      sessionInited: false,
     });
   });
 
@@ -25,6 +26,7 @@ describe('sessionSlice', () => {
       username: 'Tomas',
       token: 'Bearer asdasdasda',
       isAuthenticated: true,
+      sessionInited: true,
     };
 
     LocalStorage.setItem(LOCAL_STORAGE_SESSION_KEY, sessionData);
