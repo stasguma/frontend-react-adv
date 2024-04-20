@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { withStoreDecorator } from '@/shared/config/storybook/decorators/withStoreDecorator';
 import ArticlesPage from './ArticlesPage';
 
-// 👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof ArticlesPage> = {
   title: 'Pages/ArticlesPage',
   component: ArticlesPage,
+  decorators: [withStoreDecorator()],
 };
 
 export default meta;

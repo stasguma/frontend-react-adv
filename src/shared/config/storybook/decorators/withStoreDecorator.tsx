@@ -9,12 +9,12 @@ interface IArgs {
   asyncReducers?: Partial<ReducersMapObject<RootState>>;
 }
 
-export function withStoreDecorator({ initialState, asyncReducers }: IArgs = {}): Decorator {
-  return function withStoreDecorator(Story, context) {
-    return (
-      <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>
-        <Story {...context} />
-      </StoreProvider>
-    );
-  };
-};
+export const withStoreDecorator
+  = ({ initialState, asyncReducers }: IArgs = {}): Decorator<IArgs> =>
+    (Story, context) => {
+      return (
+        <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>
+          <Story {...context} />
+        </StoreProvider>
+      );
+    };

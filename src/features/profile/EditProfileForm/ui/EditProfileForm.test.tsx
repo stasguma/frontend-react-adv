@@ -3,7 +3,8 @@ import type { IProfileForm } from '../model/types/types';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import { ENV } from '@/shared/config/enviroment/env';
-import { TestAsyncThunk, renderWithAllProviders } from '@/shared/lib';
+import { TestAsyncThunk } from '@/shared/lib';
+import { renderWithAllProviders } from '@/shared/lib/tests/renderWithAllProviders';
 import { updateProfileThunkAction } from '@/features/profile/EditProfileForm/model/thunks/updateProfileThunkAction';
 import { EditProfileForm } from './EditProfileForm';
 
