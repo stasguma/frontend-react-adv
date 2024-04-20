@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithAllProviders } from '@/shared/lib';
+import { renderWithAllProviders } from '@/shared/lib/tests/renderWithAllProviders';
 import { SidebarItem } from './SidebarItem';
 import { SidebarItemList } from '../../model/consts/SidebarItemList';
 

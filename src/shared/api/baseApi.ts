@@ -1,12 +1,12 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { baseQueryWithRetry } from './baseQuery';
-import { PROFILE_TAG, SESSION_TAG } from './tagTypes';
+import { ARTICLE_TAG, PROFILE_TAG, SESSION_TAG } from './tagTypes';
 
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: baseQueryWithRetry,
-  tagTypes: [SESSION_TAG, PROFILE_TAG],
+  tagTypes: [SESSION_TAG, PROFILE_TAG, ARTICLE_TAG],
   endpoints: () => ({}),
 });
 

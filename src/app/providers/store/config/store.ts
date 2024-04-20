@@ -5,7 +5,6 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { baseApi } from '@/shared/api';
 import { sessionSlice } from '@/entities/Session';
-// import { profileSlice } from '@/entities/Profile';
 import { authListenerMiddleware } from '@/features/authentication/Login';
 import { createReducerManager } from './reducerManager';
 

@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 
 import { Sidebar } from '@/widgets/Sidebar';
-import { renderWithAllProviders } from '@/shared/lib';
+import { renderWithAllProviders } from '@/shared/lib/tests/renderWithAllProviders';
 
 describe('<Sidebar />', () => {
   test('should be rendered in dom', () => {

@@ -4,7 +4,6 @@ import type { RootState } from '@/app/providers/store';
 
 import { useEffect } from 'react';
 
-// import { useAppDispatch, useAppStore } from '@/app/providers/store/config/hooks';
 import { useAppDispatch, useAppStore } from '@/shared/model';
 
 // type TReducerEntries = [keyof RootState, Reducer];
@@ -21,7 +20,6 @@ interface IProps {
 export const DynamicModuleLoader: FC<IProps> = (props) => {
   const { reducers, children } = props;
   const store = useAppStore();
-  // const store = useStore() as ReturnType<typeof createStore>;
   const dispatch = useAppDispatch();
 
   useEffect(() => {

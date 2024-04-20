@@ -28,7 +28,7 @@ export const Navbar = memo<IProps>(function Navbar({ className }) {
   };
 
   return (
-    <header className="header">
+    <header className={classes.header}>
       <div className={classNames(classes.navbar, className)}>
         {isAuth
           ? <LogoutButton />

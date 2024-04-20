@@ -24,7 +24,7 @@ const Layout: FC = () => {
           </Suspense>
         </main>
       </div>
-      <div style={{ display: 'flex', flexFlow: 'row' }}>
+      {/* <div style={{ display: 'flex', flexFlow: 'row' }}>
         <div style={{ width: '100%', height: '100%' }}>
           <div className="p-orange-100">100</div>
           <div className="p-orange-200">200</div>
@@ -91,7 +91,7 @@ const Layout: FC = () => {
           <div className="p-gray-800">800</div>
           <div className="p-gray-900">900</div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore } from '@/app/providers/store/config/store';
+import { createStore } from '@/app/providers/store';
 
 interface IExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: Partial<RootState>;

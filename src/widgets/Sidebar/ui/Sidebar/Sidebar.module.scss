@@ -1,6 +1,9 @@
 @use "@/app/styles/variables" as vars;
 
 .sidebar {
+  position: fixed;
+  top: var(--navbar-height);
+
   display: flex;
   flex-flow: column;
 

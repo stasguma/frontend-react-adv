@@ -1,3 +1,7 @@
+import type { ProfileSchema } from '@/entities/Profile';
+import type { SessionSchema } from '@/entities/Session';
+import type { ArticleSchema } from '@/entities/Article';
+
 import type {
   Action,
   EnhancedStore,
@@ -5,13 +9,12 @@ import type {
   ReducersMapObject,
   combineReducers,
 } from '@reduxjs/toolkit';
-import type { ProfileSchema } from '@/entities/Profile';
-import type { SessionSchema } from '@/entities/Session';
 
 export interface StateSchema {
   baseApi: ProfileSchema;
   session: SessionSchema;
   profile: ProfileSchema;
+  article: ArticleSchema;
 }
 
 export interface ICreateStoreArgs<S = StateSchema> {
