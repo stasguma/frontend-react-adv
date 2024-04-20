@@ -1,0 +1,19 @@
+.article-card-skeleton {
+  &__categories {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &__title {
+    margin-top: 0.75rem;
+  }
+
+  &__views {
+    margin-top: 1.25rem;
+  }
+
+  &__meta {
+    margin-top: 0.25rem;
+  }
+}

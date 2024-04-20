@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Article } from './Article';
+import { ArticleCard } from './ArticleCard';
 
 // 👇 This default export determines where your story goes in the story list
-const meta: Meta<typeof Article> = {
-  title: 'Entities/Article/Article',
-  component: Article,
+const meta: Meta<typeof ArticleCard> = {
+  title: 'Entities/Article/ArticleCard',
+  component: ArticleCard,
 };
 
 export default meta;
-type Story = StoryObj<typeof Article>;
+type Story = StoryObj<typeof ArticleCard>;
 
 export const Default: Story = {
   decorators: [
     Story => (
-      <div style={{ width: '50%' }}>
+      <div style={{ display: 'grid', grid: 'auto / repeat(4, 1fr)', gap: '20px' }}>
         <Story />
       </div>
     ),

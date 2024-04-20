@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib';
 
@@ -9,6 +11,7 @@ interface IProps {
   height: string | number;
   rows?: number;
   circle?: boolean;
+  style?: CSSProperties;
 }
 
 export const Skeleton = memo<IProps>(function Skeleton(props) {
@@ -18,14 +21,38 @@ export const Skeleton = memo<IProps>(function Skeleton(props) {
     height,
     rows = 0,
     circle = false,
+    style,
   } = props;
 
   const populatedArray = Array.from(Array(rows).keys());
 
-  const createSkeleton = useCallback((key = 1) => (
+  const makeLastRowPartial = (id: number) => {
+    let symbol = '';
+    let calculatedValue: string | number = width;
+
+    if (rows !== id) {
+      return width;
+    }
+
+    if (typeof width === 'string') {
+      symbol = width.match(/\D/g)!.join('');
+
+      if (symbol) {
+        calculatedValue = `${Number.parseInt(width) * 0.7}${symbol}`;
+      }
+    }
+
+    if (typeof width === 'number') {
+      calculatedValue = width * 0.7;
+    }
+
+    return calculatedValue;
+  };
+
+  const createSkeleton = useCallback((id = 1) => (
     <span
       data-testid="skeleton"
-      key={key}
+      key={id}
       className={classNames(
         classes.skeleton,
         {
@@ -35,8 +62,9 @@ export const Skeleton = memo<IProps>(function Skeleton(props) {
         className
       )}
       style={{
-        width: rows === key ? Number(width) * 0.7 : width,
+        width: makeLastRowPartial(id),
         height,
+        ...style,
       }}
     />
   ), []);
