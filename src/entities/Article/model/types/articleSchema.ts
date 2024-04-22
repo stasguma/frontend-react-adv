@@ -1,6 +1,6 @@
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import type { TLoadingState, TObjectValues } from '@/shared/types';
 import type { EntityState } from '@reduxjs/toolkit';
+import type { TLoadingState, TObjectValues } from '@/shared/types';
 
 const BlockTypes = {
   TEXT: 'text',

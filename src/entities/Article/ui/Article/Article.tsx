@@ -17,10 +17,11 @@ interface IProps {
   className?: string;
   data: IArticle;
   commentsSlot?: ReactElement;
+  totalComments?: number;
 }
 
 export const Article = memo<IProps>(function Article(props) {
-  const { className, data, commentsSlot } = props;
+  const { className, data, commentsSlot, totalComments } = props;
   const { Title, Text } = Typography;
   const {
     title,
@@ -86,7 +87,18 @@ export const Article = memo<IProps>(function Article(props) {
       <div>
         {createBlocks()}
       </div>
-      {commentsSlot ? commentsSlot : null}
+      {commentsSlot
+        ? (
+          <section>
+            <Title variant="3">
+              Comments (
+              {totalComments}
+              )
+            </Title>
+            {commentsSlot}
+          </section>
+          )
+        : null}
     </article>
   );
 });

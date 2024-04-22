@@ -1,6 +1,8 @@
+import type { UserSchema } from '@/entities/User';
 import type { ProfileSchema } from '@/entities/Profile';
 import type { SessionSchema } from '@/entities/Session';
 import type { ArticleSchema } from '@/entities/Article';
+import type { CommentSchema } from '@/entities/Comment';
 
 import type {
   Action,
@@ -13,8 +15,10 @@ import type {
 export interface StateSchema {
   baseApi: ProfileSchema;
   session: SessionSchema;
+  user: UserSchema;
   profile: ProfileSchema;
   article: ArticleSchema;
+  comment: CommentSchema;
 }
 
 export interface ICreateStoreArgs<S = StateSchema> {

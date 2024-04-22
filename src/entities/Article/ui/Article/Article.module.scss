@@ -1,7 +1,12 @@
 .article {
   display: flex;
   flex-flow: column;
+
   max-width: 100%;
+  padding: 1.25rem;
+
+  background-color: var(--color-bg-layer-1);
+  border-radius: 4px;
 
   &__img-wrapper {
     // height: 190px;
