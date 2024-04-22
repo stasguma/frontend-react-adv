@@ -5,10 +5,12 @@ import { Suspense, memo } from 'react';
 import { DynamicModuleLoader } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
 import { articleSlice } from '@/entities/Article';
+import { commentSlice } from '@/entities/Comment';
 import { EntireArticle } from '@/widgets/EntireArticle';
 
 const reducers: TReducers = {
-  article: articleSlice.reducer,
+  [articleSlice.name]: articleSlice.reducer,
+  [commentSlice.name]: commentSlice.reducer,
 };
 
 const ArticlePage: FC = () => {

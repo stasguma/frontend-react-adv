@@ -1,4 +1,5 @@
 .article-wrapper {
   display: flex;
+  flex-flow: column;
   width: clamp(680px, 50%, 100%);
 }
