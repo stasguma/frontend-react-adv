@@ -8,7 +8,7 @@ import { articleSlice } from '@/entities/Article';
 import { ArticleList } from '@/widgets/ArticleList';
 
 const reducers: TReducers = {
-  article: articleSlice.reducer,
+  [articleSlice.name]: articleSlice.reducer,
 };
 
 const ArticlesPage: FC = () => {

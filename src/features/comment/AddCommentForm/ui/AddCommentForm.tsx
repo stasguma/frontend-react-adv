@@ -9,16 +9,15 @@ import { valibotResolver } from '@hookform/resolvers/valibot';
 import { classNames } from '@/shared/lib';
 import { useAppDispatch } from '@/shared/model';
 import { Button, Textarea, Typography } from '@/shared/ui';
-import { addCommentThunk } from '../model/thunks/addCommentThunk';
 
 import classes from './AddCommentForm.module.scss';
 
 interface IProps {
-  articleId: string;
+  onAddComment: (data: IAddCommentForm) => void;
 }
 
 export const AddCommentForm = memo<IProps>(function AddCommentForm(props) {
-  const { articleId } = props;
+  const { onAddComment } = props;
   const { Text } = Typography;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -31,14 +30,13 @@ export const AddCommentForm = memo<IProps>(function AddCommentForm(props) {
   } = useForm<IAddCommentForm>({
     defaultValues: {
       text: '',
-      articleId: articleId,
     },
 
     resolver: valibotResolver(AddCommentFormSchema),
   });
 
   const submitHandler: SubmitHandler<IAddCommentForm> = useCallback((data) => {
-    dispatch(addCommentThunk(data));
+    onAddComment(data);
     reset();
   }, [dispatch]);
 

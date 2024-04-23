@@ -3,7 +3,7 @@ import { ENV } from '@/shared/config/enviroment/env';
 
 export const userHandlers = [
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  http.get<any, number>(`${ENV.API_ENDPOINT}/users/:id`, async ({ request }) => {
+  http.get<any, number>(`${ENV.API_ENDPOINT}/users/:id`, () => {
     const successResponseData = {
       id: '1',
       username: 'admin',

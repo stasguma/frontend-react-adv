@@ -15,6 +15,7 @@ type Story = StoryObj<typeof EditProfileForm>;
 export const Default: Story = {
   args: {
     data: {
+      id: 2,
       username: 'Pespatron',
       email: 'pespatron@gmail.com',
       city: 'London',

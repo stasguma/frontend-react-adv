@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LoginModal } from './LoginModal';
 import { withStoreDecorator } from '@/shared/config/storybook/decorators/withStoreDecorator';
+import { LoginModal } from './LoginModal';
 
 // 👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof LoginModal> = {

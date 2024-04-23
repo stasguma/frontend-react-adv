@@ -5,23 +5,23 @@ import type { IUser } from '@/entities/User';
 
 export interface AddCommentDto {
   text: string;
-  articleId: string;
-  userId: string;
+  articleId: number;
+  userId: number;
   user: IUser;
   createdAt: number;
 }
 
 export interface IComment {
-  id: string;
+  id: number;
   text: string;
-  articleId: string;
-  userId: string;
+  articleId: number;
+  userId: number;
   createdAt: number;
   user?: IUser;
 }
 
 export interface CommentSchema {
   loading: TLoadingState;
-  data?: EntityState<IComment, string>;
+  data: EntityState<IComment, number>;
   error?: FetchBaseQueryError;
 }

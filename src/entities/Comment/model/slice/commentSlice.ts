@@ -1,4 +1,4 @@
-// import type { RootState } from '@/app/providers/store';
+import type { RootState } from '@/app/providers/store';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IComment, CommentSchema } from '../types/commentSchema';
 
@@ -39,5 +39,8 @@ export const commentSlice = createSlice({
 // export const { setProfileData } = commentSlice.actions;
 
 // export const selectProfileData = (state: RootState) => state.profile?.data;
+export const commentSelectors = commentAdapter.getSelectors<RootState>(
+  state => state.comment.data
+);
 
 export default commentSlice.reducer;

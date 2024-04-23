@@ -9,8 +9,8 @@ interface IArgs {
   asyncReducers?: Partial<ReducersMapObject<RootState>>;
 }
 
-export const withStoreDecorator
-  = ({ initialState, asyncReducers }: IArgs = {}): Decorator<IArgs> =>
+export const withStoreDecorator: <T>(args?: IArgs) => Decorator<T>
+  = ({ initialState, asyncReducers } = {}) =>
     (Story, context) => {
       return (
         <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>

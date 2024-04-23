@@ -14,6 +14,6 @@ type Story = StoryObj<typeof AddCommentForm>;
 
 export const Default: Story = {
   args: {
-
+    onAddComment: () => null,
   },
 };

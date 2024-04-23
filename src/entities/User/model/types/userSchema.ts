@@ -3,7 +3,7 @@ import type { EntityState } from '@reduxjs/toolkit';
 import type { TLoadingState, TRoles } from '@/shared/types';
 
 export interface IUser {
-  id: string;
+  id: number;
   username: string;
   avatarUrl: string;
   role: TRoles;
@@ -11,6 +11,6 @@ export interface IUser {
 
 export interface UserSchema {
   loading: TLoadingState;
-  data?: EntityState<IUser, string>;
+  data?: EntityState<IUser, number>;
   error?: FetchBaseQueryError;
 }

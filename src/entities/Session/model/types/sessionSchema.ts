@@ -2,7 +2,7 @@ import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import type { TLoadingState, TRoles } from '@/shared/types';
 
 export interface ISession {
-  id: string;
+  id: number;
   username: string;
   token: string;
   isAuthenticated: boolean;

@@ -1,25 +1,19 @@
-import type { IProfileForm } from '../types/types';
-import type { IProfile } from '@/entities/Profile';
+import type { IAddCommentForm } from '../types/types';
+import type { IComment } from '@/entities/Comment';
 
 import { TestAsyncThunk } from '@/shared/lib';
-import { updateProfileThunkAction } from './updateProfileThunkAction';
+import { addCommentThunk } from './addCommentThunk';
 
-describe('updateProfileThunkAction for the EditProfileForm feature', () => {
+describe('addCommentThunk for the AddCommentForm feature', () => {
   test('should update the profile data', async () => {
     const requestData = {
-      username: 'Pespatron',
-      email: 'pespatron@gmail.com',
-      country: 'Ukraine',
-      city: 'Kyiv',
-      currency: 'UAH',
+      text: 'Pespatron the best',
     };
 
     // const responseData = {
-    //   ...requestData,
-    //   avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
     // };
 
-    const thunk = new TestAsyncThunk<IProfile, IProfileForm>(updateProfileThunkAction);
+    const thunk = new TestAsyncThunk<IComment, IAddCommentForm>(addCommentThunk);
     const actionResponse = await thunk.callThunk(requestData); /* eslint-disable-line */
     // console.log(thunk.dispatch.mock.calls);
     // console.log('actionResponse', actionResponse);

@@ -11,7 +11,7 @@ const BlockTypes = {
 type TBlockTypes = TObjectValues<typeof BlockTypes>;
 
 interface IArticleBaseBlock {
-  id: string;
+  id: number;
   type: TBlockTypes;
 }
 
@@ -33,7 +33,7 @@ export interface IArticleCodeBlock extends IArticleBaseBlock {
 export type TArticleBlock = IArticleTextBlock | IArticleImageBlock | IArticleCodeBlock;
 
 export interface IArticle {
-  id: string;
+  id: number;
   title: string;
   imageUrl: string;
   readTime: number;
@@ -45,6 +45,6 @@ export interface IArticle {
 
 export interface ArticleSchema {
   loading: TLoadingState;
-  data?: EntityState<IArticle, string>;
+  data: EntityState<IArticle, number>;
   error?: FetchBaseQueryError;
 }
