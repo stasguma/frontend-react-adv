@@ -1,7 +1,5 @@
 import db from './db.json';
 
-const admin = db.users.find(u => u.username === 'admin');
-
 /** @type {import('mock-config-server').MockServerConfig} */
 const mockServerConfig = {
   port: 31299,
@@ -13,7 +11,7 @@ const mockServerConfig = {
         method: 'post',
         routes: [
           {
-            data: admin,
+            data: db.users,
           },
         ],
         interceptors: {
@@ -27,7 +25,7 @@ const mockServerConfig = {
               return { error: 'Unauthorized', message: 'User was not found' };
             }
 
-            return data;
+            return userFromDB;
           }
         }
       }

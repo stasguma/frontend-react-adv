@@ -19,5 +19,9 @@
   "Enter the name": "Ведіть ім'я",
   "Enter the password": "Введіть пароль",
   "Currency": "Валюта",
-  "articles": "Статті"
+  "articles": "Статті",
+  "Submit": "Надіслати",
+  "Leave your comment here": "Залиште свій відгук тут",
+  "Comments": "Коментарі",
+  "There are no comments yet": "Ще ніхто не залишив коментар"
 }

@@ -8,4 +8,5 @@ export { Modal } from './Modal/Modal';
 export { Portal } from './Portal/Portal';
 export { Select } from './Select/Select';
 export { Skeleton } from './Skeleton/Skeleton';
+export { Textarea } from './Textarea/Textarea';
 export { default as Typography } from './Typography';
