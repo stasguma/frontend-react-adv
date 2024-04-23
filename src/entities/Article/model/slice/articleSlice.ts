@@ -19,11 +19,7 @@ const initialState: ArticleSchema = {
 export const articleSlice = createSlice({
   name: 'article',
   initialState,
-  reducers: {
-    // setProfileData: (state, action: PayloadAction<IArticle>) => {
-    //   state.data = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addMatcher(articleApi.endpoints.getArticles.matchPending, (state) => {
@@ -38,9 +34,6 @@ export const articleSlice = createSlice({
         state.loading = 'failed';
         state.error = action.payload;
       });
-    // .addMatcher(loginThunkAction.settled, (state) => {
-    //   state.loading = 'idle';
-    // });
   },
 });
 

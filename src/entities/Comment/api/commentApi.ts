@@ -1,5 +1,7 @@
-import type { IComment } from '../model/types/commentSchema';
+import type { AddCommentDto, IComment } from '../model/types/commentSchema';
+
 import { COMMENT_TAG, baseApi } from '@/shared/api';
+import { sortByDateDto } from '../lib/sortByDateDto';
 
 export const commentApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -9,16 +11,16 @@ export const commentApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
       providesTags: [COMMENT_TAG],
-      // transformResponse: (response: { data: IComment; }, meta, arg) => response.data,
+      transformResponse: (response: IComment[]) => sortByDateDto(response),
     }),
-    addComment: builder.mutation<IComment, IComment>({
+    addComment: builder.mutation<IComment, AddCommentDto>({
       query: data => ({
         url: `comments`,
         method: 'POST',
         body: data,
       }),
       invalidatesTags: [COMMENT_TAG],
-      // transformResponse: (response: { data: IComment; }, meta, arg) => response.data,
+      // transformResponse: (response IComment[], meta, arg) => response,
     }),
   }),
 });

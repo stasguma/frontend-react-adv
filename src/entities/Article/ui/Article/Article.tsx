@@ -2,12 +2,11 @@ import type { IArticle } from '../../model/types/articleSchema';
 import type { ReactElement } from 'react';
 
 import { memo } from 'react';
-import { classNames } from '@/shared/lib';
+import { classNames, formatDate } from '@/shared/lib';
 import { Typography } from '@/shared/ui';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
-import { formatDate } from '../../lib/formatDate';
 
 import classes from './Article.module.scss';
 
@@ -17,11 +16,10 @@ interface IProps {
   className?: string;
   data: IArticle;
   commentsSlot?: ReactElement;
-  totalComments?: number;
 }
 
 export const Article = memo<IProps>(function Article(props) {
-  const { className, data, commentsSlot, totalComments } = props;
+  const { className, data, commentsSlot } = props;
   const { Title, Text } = Typography;
   const {
     title,
@@ -87,18 +85,7 @@ export const Article = memo<IProps>(function Article(props) {
       <div>
         {createBlocks()}
       </div>
-      {commentsSlot
-        ? (
-          <section>
-            <Title variant="3">
-              Comments (
-              {totalComments}
-              )
-            </Title>
-            {commentsSlot}
-          </section>
-          )
-        : null}
+      {commentsSlot ? commentsSlot : null}
     </article>
   );
 });

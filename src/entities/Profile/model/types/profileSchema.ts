@@ -3,6 +3,7 @@ import type { TLoadingState, TObjectValues } from '@/shared/types';
 import type { Country, Currency } from '@/shared/consts';
 
 export interface IProfile {
+  id: string;
   username: string;
   email: string;
   city: string;

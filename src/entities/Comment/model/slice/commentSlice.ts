@@ -1,11 +1,13 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 // import type { RootState } from '@/app/providers/store';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { IComment, CommentSchema } from '../types/commentSchema';
 
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { commentApi } from '../../api/commentApi';
 
-const commentAdapter = createEntityAdapter<IComment>();
+const commentAdapter = createEntityAdapter<IComment>({
+  sortComparer: (a, b) => b.createdAt - a.createdAt,
+});
 
 const initialState: CommentSchema = {
   loading: 'idle',
@@ -16,11 +18,7 @@ const initialState: CommentSchema = {
 export const commentSlice = createSlice({
   name: 'comment',
   initialState,
-  reducers: {
-    // setProfileData: (state, action: PayloadAction<IComment>) => {
-    //   state.data = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addMatcher(commentApi.endpoints.getCommentsByArticleId.matchPending, (state) => {

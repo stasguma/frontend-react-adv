@@ -1,8 +1,6 @@
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import type { EntityState } from '@reduxjs/toolkit';
-import type { TLoadingState } from '@/shared/types';
-
-type TRoles = 'admin' | 'user';
+import type { TLoadingState, TRoles } from '@/shared/types';
 
 export interface IUser {
   id: string;

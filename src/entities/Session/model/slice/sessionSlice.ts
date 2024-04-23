@@ -10,10 +10,7 @@ import { sessionApi } from '../../api/sessionApi';
 
 const initialState: SessionSchema = {
   loading: 'idle',
-  id: undefined,
-  username: undefined,
-  token: undefined,
-  isAuthenticated: false,
+  data: undefined,
   error: undefined,
   sessionInited: false,
 };
@@ -32,11 +29,7 @@ export const sessionSlice = createSlice({
       const session = LocalStorage.getItem(LOCAL_STORAGE_SESSION_KEY) as ISession;
 
       if (session !== null) {
-        const { id, username, token, isAuthenticated } = session;
-        state.id = id;
-        state.username = username;
-        state.token = token;
-        state.isAuthenticated = isAuthenticated;
+        state.data = session;
       }
 
       state.sessionInited = true;
@@ -49,11 +42,7 @@ export const sessionSlice = createSlice({
         state.error = undefined;
       })
       .addMatcher(sessionApi.endpoints.login.matchFulfilled, (state, action) => {
-        const { username, id, token } = action.payload;
-        state.id = id;
-        state.username = username;
-        state.token = token;
-        state.isAuthenticated = true;
+        state.data = { ...action.payload, isAuthenticated: true };
         // const newEntities = {}
         // action.payload.forEach(todo => {
         //   newEntities[todo.id] = todo
@@ -65,9 +54,6 @@ export const sessionSlice = createSlice({
         state.loading = 'failed';
         state.error = action.payload;
       });
-    // .addMatcher(loginThunkAction.settled, (state) => {
-    //   state.loading = 'idle';
-    // });
   },
 });
 
@@ -75,9 +61,9 @@ export const { clearSession, initSession } = sessionSlice.actions;
 
 export const selectIsLoading = (state: RootState) => state.session.loading === 'pending';
 export const selectIsLoadingSuccess = (state: RootState) => state.session.loading === 'succeeded';
-export const selectSessionData = (state: RootState) => state.session;
+export const selectSessionData = (state: RootState) => state.session.data;
 export const selectIsSessionInited = (state: RootState) => state.session.sessionInited;
-export const selectIsAuth = (state: RootState) => state.session.isAuthenticated;
+export const selectIsAuth = (state: RootState) => state.session.data?.isAuthenticated;
 export const selectError = (state: RootState) => state.session.error;
 
 export default sessionSlice.reducer;
