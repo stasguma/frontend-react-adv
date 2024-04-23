@@ -2,7 +2,8 @@ import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Article, ArticleSkeleton, useGetArticleByIdQuery } from '@/entities/Article';
-import { CommentList, useGetCommentsByArticleIdQuery } from '@/entities/Comment';
+import { CommentSection, useGetCommentsByArticleIdQuery } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/comment/AddCommentForm';
 
 import classes from './EntireArticle.module.scss';
 
@@ -30,8 +31,14 @@ export const EntireArticle = memo(function EntireArticle() {
         ? (
           <Article
             data={data}
-            commentsSlot={<CommentList data={commentsData} />}
-            totalComments={commentsData.length}
+            commentsSlot={(
+              <CommentSection
+                comments={commentsData}
+                addCommentSlot={
+                  <AddCommentForm articleId={id} />
+                }
+              />
+            )}
           />
           )
         : null}
