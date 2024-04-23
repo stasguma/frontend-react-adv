@@ -1,32 +1,37 @@
 import type { IComment } from '../../model/types/commentSchema';
 
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib';
+import { Typography } from '@/shared/ui';
 import { CommentCard } from '@/entities/Comment/ui/CommentCard/CommentCard';
 
 import classes from './CommentList.module.scss';
-import { Typography } from '@/shared/ui';
 
 interface IProps {
   className?: string;
-  data: IComment[];
+  comments: IComment[];
 }
 
 export const CommentList = memo<IProps>(function CommentList(props) {
   const { Paragraph } = Typography;
-  const { className, data = [] } = props;
+  const { t } = useTranslation();
+  const { className, comments = [] } = props;
 
-  if (!data.length) {
+  if (!comments.length) {
     return (
       <div className={classes['comment-list']}>
-        <Paragraph>There are no comments yet!</Paragraph>
+        <Paragraph className={classes['comment-list__empty']}>
+          {t('There are no comments yet')}
+          !
+        </Paragraph>
       </div>
     );
   }
 
   return (
     <div className={classNames(classes['comment-list'], className)}>
-      {data.map(comment => <CommentCard data={comment} />)}
+      {comments.map(comment => <CommentCard key={comment.id} data={comment} />)}
     </div>
   );
 });

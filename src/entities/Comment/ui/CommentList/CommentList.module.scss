@@ -1,4 +1,8 @@
 .comment-list {
   display: flex;
   flex-flow: column;
+
+  &__empty {
+    padding-block: 2.25rem;
+  }
 }
