@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_VERSION: 20.11.0
-  PNPM_VERSION: 8.10.2
+  PNPM_VERSION: 9.0.6
     
 jobs:
   cache-and-install:
