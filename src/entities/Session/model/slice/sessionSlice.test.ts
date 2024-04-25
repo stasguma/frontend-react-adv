@@ -9,10 +9,7 @@ describe('sessionSlice', () => {
     const state = sessionReducer(undefined, { type: 'unknown' });
     expect(state).toEqual({
       loading: 'idle',
-      id: undefined,
-      username: undefined,
-      token: undefined,
-      isAuthenticated: false,
+      data: undefined,
       error: undefined,
       sessionInited: false,
     });
@@ -22,17 +19,20 @@ describe('sessionSlice', () => {
     const prevState: DeepPartial<SessionSchema> = {};
 
     const sessionData = {
-      id: '1',
+      id: 1,
       username: 'Tomas',
       token: 'Bearer asdasdasda',
       isAuthenticated: true,
-      sessionInited: true,
+      role: 'admin',
     };
 
     LocalStorage.setItem(LOCAL_STORAGE_SESSION_KEY, sessionData);
 
     const state = sessionReducer(prevState as SessionSchema, initSession());
 
-    expect(state).toEqual(sessionData);
+    expect(state).toEqual({
+      data: sessionData,
+      sessionInited: true,
+    });
   });
 });
