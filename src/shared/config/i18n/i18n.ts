@@ -16,6 +16,9 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    backend: {
+      loadPath: __IS_DEV__ ? '/locales/{{lng}}/{{ns}}.json' : '../public/locales/{{lng}}/{{ns}}.json',
+    },
   });
 
 export default i18n;
