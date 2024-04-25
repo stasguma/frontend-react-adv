@@ -1,7 +1,7 @@
 @use "@/app/styles/variables" as vars;
 
 .sidebar {
-  position: fixed;
+  position: sticky;
   top: var(--navbar-height);
 
   display: flex;

@@ -7,10 +7,9 @@
 
 main {
   flex: 1 1 0%;
-  height: calc(100vh - var(--navbar-height));
   padding:
     calc(var(--navbar-height) + u.to-rem(20px))
     u.to-rem(20px)
     u.to-rem(20px)
-    calc(var(--sidebar-width) + u.to-rem(20px));
+    u.to-rem(20px);
 }
