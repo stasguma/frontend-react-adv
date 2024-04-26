@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import Dotenv from 'dotenv-webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
@@ -26,6 +27,17 @@ export const plugins = function (
     }),
     new Dotenv(),
   ];
+
+  if (!isDev) {
+    plugins.push(
+      /* eslint-disable-next-line */
+      new CopyPlugin({
+        patterns: [
+          { from: 'public/locales', to: 'locales' },
+        ],
+      })
+    );
+  }
 
   if (isDev) {
     plugins.push(new BundleAnalyzerPlugin({
