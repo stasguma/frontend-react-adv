@@ -13,7 +13,7 @@ export const loaders = function (
     test: /\.(woff2|woff)$/i,
     type: 'asset/resource',
     generator: {
-      filename: 'fonts/[path][name][ext]',
+      filename: 'fonts/[name][ext]',
     },
   };
 
@@ -21,7 +21,7 @@ export const loaders = function (
     test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
     generator: {
-      filename: 'images/[path][name][ext]',
+      filename: 'images/[name][ext]',
     },
   };
 

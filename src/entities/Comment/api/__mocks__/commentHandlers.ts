@@ -16,24 +16,26 @@ export const commentHandlers = [
 
     const successResponseData: IComment[] = [
       {
-        id: '1',
+        id: 1,
         text: 'a comment about post 1',
-        articleId: '1',
-        userId: '1',
+        articleId: 1,
+        userId: 1,
+        createdAt: new Date().getTime(),
         user: {
-          id: '1',
+          id: 1,
           username: 'admin',
           avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
           role: 'admin',
         },
       },
       {
-        id: '2',
+        id: 2,
         text: 'another comment about post 1',
-        articleId: '1',
-        userId: '1',
+        articleId: 1,
+        userId: 1,
+        createdAt: new Date().getTime(),
         user: {
-          id: '1',
+          id: 1,
           username: 'admin',
           avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
           role: 'admin',
