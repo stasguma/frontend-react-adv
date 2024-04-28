@@ -12,7 +12,7 @@ const reducers: TReducers = {
   profile: profileSlice.reducer,
 };
 
-const ProfilePage: FC = () => {
+const MyProfilePage: FC = () => {
   return (
     <Suspense fallback={<Loader />}>
       <DynamicModuleLoader reducers={reducers}>
@@ -22,4 +22,4 @@ const ProfilePage: FC = () => {
   );
 };
 
-export default memo(ProfilePage);
+export default memo(MyProfilePage);

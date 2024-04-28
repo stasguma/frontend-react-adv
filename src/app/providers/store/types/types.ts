@@ -27,7 +27,7 @@ export interface ICreateStoreArgs<S = StateSchema> {
 }
 
 export interface IReducerManager<S> {
-  getReducerMap: () => ReducersMapObject<S>;
+  getReducerMap: () => Partial<ReducersMapObject<S>>;
   reduce: (state: S, action: Action) => ReturnType<typeof combineReducers>;
   add: (key: keyof S, reducer: Reducer) => void;
   remove: (key: keyof S) => void;

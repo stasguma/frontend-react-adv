@@ -4,7 +4,8 @@ import type { TObjectValues } from '@/shared/types';
 import Layout from '@/app/layouts/Layout';
 import { HomePage } from '@/pages/HomePage';
 import { AboutPage } from '@/pages/AboutPage';
-import { ProfilePage } from '@/pages/ProfilePage';
+import { MyProfilePage } from '@/pages/MyProfilePage';
+import { UserProfilePage } from '@/pages/UserProfilePage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ArticlePage } from '@/pages/ArticlePage';
 import { Error404Page } from '@/pages/Error404Page';
@@ -15,7 +16,7 @@ const AppRouteNames = {
   ABOUT: 'about',
   PROFILE: 'profile',
   ARTICLES: 'articles',
-  ARTICLE: 'articleDetails',
+  ARTICLE: 'article',
   ERROR404: 'error404',
 } as const;
 
@@ -24,7 +25,7 @@ const AppRoutePaths = {
   ABOUT: '/about',
   PROFILE: '/profile',
   ARTICLES: '/articles',
-  ARTICLE: '/article/:id',
+  ARTICLE: '/article',
   ERROR404: '*',
 } as const;
 
@@ -55,14 +56,18 @@ const routerConfig: RouteObject[] = [
       },
       {
         path: AppRoutes.profile,
-        element: <PrivateGuard><ProfilePage /></PrivateGuard>,
+        element: <PrivateGuard><MyProfilePage /></PrivateGuard>,
+      },
+      {
+        path: AppRoutes.profile + '/:id',
+        element: <PrivateGuard><UserProfilePage /></PrivateGuard>,
       },
       {
         path: AppRoutes.articles,
         element: <PrivateGuard><ArticlesPage /></PrivateGuard>,
       },
       {
-        path: AppRoutes.articleDetails,
+        path: AppRoutes.article + '/:id',
         element: <PrivateGuard><ArticlePage /></PrivateGuard>,
       },
     ],

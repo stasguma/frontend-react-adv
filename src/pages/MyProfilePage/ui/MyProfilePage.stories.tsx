@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { withStoreDecorator } from '@/shared/config/storybook/decorators/withStoreDecorator';
-import ProfilePage from './ProfilePage';
+import MyProfilePage from './MyProfilePage';
 
-const meta: Meta<typeof ProfilePage> = {
-  title: 'Pages/ProfilePage',
-  component: ProfilePage,
+const meta: Meta<typeof MyProfilePage> = {
+  title: 'Pages/MyProfilePage',
+  component: MyProfilePage,
   decorators: [withStoreDecorator()],
 };
 
 export default meta;
-type Story = StoryObj<typeof ProfilePage>;
+type Story = StoryObj<typeof MyProfilePage>;
 
 export const Default: Story = {
   args: {},
