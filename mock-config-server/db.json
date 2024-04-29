@@ -7,16 +7,24 @@
 			"isAuthenticated": true,
 			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-IpnY",
 			"avatarUrl": "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg",
-			"role": "admin"
+			"role": "admin",
+			"email": "supaadmin@gmail.com",
+			"city": "London",
+			"country": "United Kingdom",
+			"currency": "EUR"
 		},
 		{
 			"id": 2,
 			"username": "pespatron",
 			"password": "pespatron",
 			"isAuthenticated": true,
-			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-IpnY",
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-AnNT",
 			"avatarUrl": "https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp",
-			"role": "user"
+			"role": "user",
+			"email": "pespatron@gmail.com",
+			"city": "Kyiv",
+			"country": "Ukraine",
+			"currency": "UAH"
 		}
 	],
 	"articles": [
@@ -151,14 +159,5 @@
 			},
 			"createdAt": 1704126900000
 		}
-	],
-	"profile": {
-		"id": 2,
-		"username": "pespatron",
-		"email": "pespatron@gmail.com",
-		"city": "London",
-		"country": "United Kingdom",
-		"currency": "EUR",
-		"avatarUrl": "https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp"
-	}
+	]
 }

@@ -18,6 +18,16 @@
     }
   }
 
+  &__username {
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   &__date {
     color: darkgray;
   }

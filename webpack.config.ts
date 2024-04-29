@@ -7,7 +7,7 @@ import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 export default (env: IBuildEnvironment): webpack.Configuration => {
   const mode: TBuildMode = env.development ? 'development' : 'production';
   const isDev = mode === 'development';
-  const publicPath = env.assetPath ?? 'auto';
+  const publicPath = env.assetPath ?? '/';
   const PORT = env.port ?? 8080;
 
   const paths: IBuildPaths = {

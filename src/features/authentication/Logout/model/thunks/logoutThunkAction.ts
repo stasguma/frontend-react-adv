@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { LOCAL_STORAGE_SESSION_KEY } from '@/shared/consts/localStorage';
 import { LocalStorage } from '@/shared/lib';
-import { isFetchBaseQueryError } from '@/shared/api';
+import { baseApi, isFetchBaseQueryError } from '@/shared/api';
 import { clearSession } from '@/entities/Session';
 
 export const logoutThunkAction = createAsyncThunk<
@@ -15,6 +15,7 @@ export const logoutThunkAction = createAsyncThunk<
     try {
       dispatch(clearSession());
       LocalStorage.removeItem(LOCAL_STORAGE_SESSION_KEY);
+      dispatch(baseApi.util.resetApiState());
     } catch (error) {
       const e = error as FetchBaseQueryError;
       if (isFetchBaseQueryError(error)) {

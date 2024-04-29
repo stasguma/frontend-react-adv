@@ -3,17 +3,23 @@ import { PROFILE_TAG, baseApi } from '@/shared/api';
 
 export const profileApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    profile: builder.query<IProfile, void>({
+    myProfile: builder.query<IProfile, void>({
       query: () => ({
-        url: `profile`,
+        url: `profile/my`,
         method: 'GET',
       }),
       providesTags: [PROFILE_TAG],
-      // transformResponse: (response: { data: IProfile; }, meta, arg) => response.data,
+    }),
+    profile: builder.query<IProfile, number>({
+      query: id => ({
+        url: `profile/${id}`,
+        method: 'GET',
+      }),
+      providesTags: [PROFILE_TAG],
     }),
     updateProfile: builder.mutation<IProfile, Partial<IProfile>>({
       query: data => ({
-        url: `profile`,
+        url: `profile/${data.id}`,
         method: 'PATCH',
         body: data,
       }),
@@ -23,4 +29,4 @@ export const profileApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useProfileQuery, useUpdateProfileMutation } = profileApi;
+export const { useMyProfileQuery, useProfileQuery, useUpdateProfileMutation } = profileApi;

@@ -21,11 +21,83 @@ const mockServerConfig = {
             const userFromDB = users.find(user => user.username === username && user.password === password);
 
             if(!userFromDB) {
-              setStatusCode(403);
-              return { error: 'Unauthorized', message: 'User was not found' };
+              setStatusCode(404);
+              return { error: 'Not Found', message: 'User was not found' };
             }
 
             return userFromDB;
+          }
+        }
+      },
+      {
+        path: '/profile/my',
+        method: 'get',
+        routes: [
+          {
+            data: db.users,
+          },
+        ],
+        interceptors: {
+          response: (data, {request, setStatusCode}) => {
+            // const { id } = request.params;
+            const extractedToken = request.header('Authorization').replace('Bearer ', '');
+            console.log('extractedToken', extractedToken)
+            const { users = [] } = db;
+            const userFromDB = users.find(user => user.token === extractedToken);
+
+            if(!userFromDB) {
+              setStatusCode(404);
+              return { error: 'Not Found', message: 'User was not found' };
+            }
+
+            return userFromDB;
+          }
+        }
+      },
+      {
+        path: '/profile/:id',
+        method: 'get',
+        routes: [
+          {
+            data: db.users,
+          },
+        ],
+        interceptors: {
+          response: (data, {request, setStatusCode}) => {
+            const { id } = request.params;
+            const { users = [] } = db;
+            const userFromDB = users.find(user => user.id === Number.parseInt(id));
+
+            if(!userFromDB) {
+              setStatusCode(404);
+              return { error: 'Not Found', message: 'User was not found' };
+            }
+
+            return userFromDB;
+          }
+        }
+      },
+      {
+        path: '/profile/:id',
+        method: 'patch',
+        routes: [
+          {
+            data: db.users,
+          },
+        ],
+        interceptors: {
+          response: (data, {request, setStatusCode}) => {
+            const reqData = request.body;
+            const { id } = request.params;
+            const { users = [] } = db;
+            const userFromDB = users.find(user => user.id === Number.parseInt(id));
+
+            if(!userFromDB) {
+              setStatusCode(404);
+              return { error: 'Not Found', message: 'User was not found' };
+            }
+
+            return Object.assign(userFromDB, reqData);
           }
         }
       }
@@ -41,10 +113,10 @@ const mockServerConfig = {
     request: (params) => {
       console.log('request')
     },
-    response: (data, {getHeader, request, response, setStatusCode}) => {
+    response: (data, {getHeader, getHeaders, request, setStatusCode}) => {
       console.log(data)
-      console.log(request.originalUrl)
-      if (!getHeader('authentication') && !request.originalUrl.includes('login')) {
+      console.log('originalUrl: ', request.originalUrl)
+      if (!request.header('Authorization') && !request.originalUrl.includes('login')) {
         setStatusCode(401);
         return { error: 'Unauthorized', message: 'You are not authorized to access this resource' };
       }

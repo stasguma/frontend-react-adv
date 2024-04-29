@@ -31,24 +31,14 @@ export const EditProfileForm = memo<IProps>(function EditProfileForm(props) {
     handleSubmit,
     formState: { errors, isDirty, isSubmitting },
   } = useForm<Partial<IProfileForm>>({
-    defaultValues: {
-      username: '',
-      email: '',
-      country: undefined,
-      city: '',
-      currency: undefined,
-    },
     values: {
-      username: data?.username,
-      email: data?.email,
-      country: data?.country,
-      city: data?.city,
-      currency: data?.currency,
+      ...data,
     },
     resolver: valibotResolver(ProfileFormSchema),
   });
 
   const submitHandler: SubmitHandler<Partial<IProfileForm>> = useCallback((data) => {
+    // @ts-expect-error: types for dispatch is incorrect, need to fix ts errors in a store.ts
     dispatch(updateProfileThunkAction(data));
   }, [dispatch]);
 

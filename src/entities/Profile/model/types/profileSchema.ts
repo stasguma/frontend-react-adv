@@ -1,5 +1,5 @@
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import type { TLoadingState, TObjectValues } from '@/shared/types';
+import type { TLoadingState, TObjectValues, TRoles } from '@/shared/types';
 import type { Country, Currency } from '@/shared/consts';
 
 export interface IProfile {
@@ -10,6 +10,7 @@ export interface IProfile {
   country: TObjectValues<typeof Country>;
   currency: TObjectValues<typeof Currency>;
   avatarUrl: string;
+  role: TRoles;
 }
 
 export interface ProfileSchema {
