@@ -1,4 +1,5 @@
 import type { IProfileForm } from '../model/types/types';
+import type { IProfile } from '@/entities/Profile';
 
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
@@ -48,17 +49,19 @@ describe('<EditProfileForm />', () => {
   test('should succeccfully update the form', async () => {
     renderWithAllProviders(<EditProfileForm />);
 
-    const requesData = {
+    const requesData: IProfileForm = {
+      id: 2,
       username: 'Pespatron',
       email: 'pespatron@gmail.com',
       country: 'Ukraine',
       city: 'Kyiv',
       currency: 'UAH',
+      role: 'user',
     };
 
     const responseData = {
       ...requesData,
-      avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
+      avatarUrl: 'https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp',
     };
 
     const usernameInput = screen.getByLabelText('Username');
@@ -73,7 +76,7 @@ describe('<EditProfileForm />', () => {
     fireEvent.input(cityInput, { target: { value: requesData.city } });
     fireEvent.input(currencyInput, { target: { value: requesData.currency } });
 
-    const result = await fetch(`${ENV.API_ENDPOINT}/profile`, {
+    const result = await fetch(`${ENV.API_ENDPOINT}/profile/my`, {
       headers: {
         'content-type': 'application/json',
       },
@@ -86,10 +89,9 @@ describe('<EditProfileForm />', () => {
 
     fireEvent.submit(screen.getByRole('button'));
 
-    // console.log(await screen.findAllByRole('alert'));
     await waitFor(() => expect(screen.queryAllByRole('alert')).toHaveLength(0));
 
-    const thunk = new TestAsyncThunk<unknown, IProfileForm>(updateProfileThunkAction);
+    const thunk = new TestAsyncThunk<IProfile, IProfileForm>(updateProfileThunkAction);
     const actionResponse = await thunk.callThunk(requesData); /* eslint-disable-line */
     // console.log(thunk.dispatch.mock.calls);
     // console.log('actionResponse', actionResponse);

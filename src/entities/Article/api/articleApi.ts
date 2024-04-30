@@ -9,7 +9,6 @@ export const articleApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
       providesTags: [ARTICLE_TAG],
-      // transformResponse: (response: { data: IArticle; }, meta, arg) => response.data,
     }),
     getArticleById: builder.query<IArticle, number | string>({
       query: id => ({
@@ -17,17 +16,7 @@ export const articleApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
       providesTags: [ARTICLE_TAG],
-      // transformResponse: (response: { data: IArticle; }, meta, arg) => response.data,
     }),
-    // updateArticle: builder.mutation<IArticle, Args>({
-    //   query: data => ({
-    //     url: `sendSome`,
-    //     method: 'POST',
-    //     body: data,
-    //   }),
-    //   invalidatesTags: [ARTICLE_TAG],
-    //   // transformResponse: (response: { data: IArticle; }, meta, arg) => response.data,
-    // }),
   }),
 });
 

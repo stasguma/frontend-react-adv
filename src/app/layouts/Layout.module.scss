@@ -2,14 +2,9 @@
 
 .page-wrapper {
   display: flex;
-  min-height: 100vh;
 }
 
 main {
   flex: 1 1 0%;
-  padding:
-    calc(var(--navbar-height) + u.to-rem(20px))
-    u.to-rem(20px)
-    u.to-rem(20px)
-    u.to-rem(20px);
+  padding: u.to-rem(20px);
 }

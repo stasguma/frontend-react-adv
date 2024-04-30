@@ -13,13 +13,7 @@ import classes from './Sidebar.module.scss';
 
 import MenuIcon from '@/shared/assets/icons/menu.svg';
 
-interface IProps {
-  className?: string;
-}
-
-export const Sidebar = memo<IProps>(function Sidebar(props) {
-  const { className } = props;
-
+export const Sidebar = memo(function Sidebar() {
   const isAuth = useAppSelector(selectIsAuth);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
 
@@ -45,7 +39,7 @@ export const Sidebar = memo<IProps>(function Sidebar(props) {
   return (
     <div
       data-testid="sidebar"
-      className={classNames(classes.sidebar, className, {
+      className={classNames(classes.sidebar, {
         'is-collapsed': isCollapsed,
       })}
     >

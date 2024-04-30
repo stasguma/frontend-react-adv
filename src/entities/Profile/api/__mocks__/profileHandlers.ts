@@ -5,19 +5,35 @@ import { ENV } from '@/shared/config/enviroment/env';
 
 export const profileHandlers = [
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  http.get<any, any, { data: IProfile; }>(`${ENV.API_ENDPOINT}/profile/my`, () => {
+  http.get<any, any, IProfile>(`${ENV.API_ENDPOINT}/profile/my`, () => {
     const successResponseData: IProfile = {
-      id: 1,
-      username: 'Typicode',
-      email: 'typicode@gmail.com',
-      city: 'London',
-      country: 'United Kingdom',
-      currency: 'EUR',
-      avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
-      role: 'admin',
+      id: 2,
+      username: 'Pespatron',
+      email: 'pespatron@gmail.com',
+      city: 'Kyiv',
+      country: 'Ukraine',
+      currency: 'UAH',
+      avatarUrl: 'https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp',
+      role: 'user',
     };
 
-    return HttpResponse.json({ data: successResponseData }, { status: 200 });
+    return HttpResponse.json(successResponseData, { status: 200 });
+  }),
+
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  http.get<any, any, IProfile>(`${ENV.API_ENDPOINT}/profile/:id`, () => {
+    const successResponseData: IProfile = {
+      id: 2,
+      username: 'Pespatron',
+      email: 'pespatron@gmail.com',
+      city: 'Kyiv',
+      country: 'Ukraine',
+      currency: 'UAH',
+      avatarUrl: 'https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp',
+      role: 'user',
+    };
+
+    return HttpResponse.json(successResponseData, { status: 200 });
   }),
 
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -25,14 +41,14 @@ export const profileHandlers = [
     // const requestData = await request.json();
 
     const successResponseData: IProfile = {
-      id: 1,
-      username: 'Typicode',
-      email: 'typicode@gmail.com',
-      city: 'London',
-      country: 'United Kingdom',
-      currency: 'EUR',
-      avatarUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
-      role: 'admin',
+      id: 2,
+      username: 'Pespatron',
+      email: 'pespatron@gmail.com',
+      city: 'Kyiv',
+      country: 'Ukraine',
+      currency: 'UAH',
+      avatarUrl: 'https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp',
+      role: 'user',
     };
 
     return HttpResponse.json({ data: successResponseData }, { status: 200 });
