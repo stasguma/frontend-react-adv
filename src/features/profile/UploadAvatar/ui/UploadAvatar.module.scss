@@ -1,3 +1,9 @@
-.upload-btn {
-  margin-top: 10px;
+.upload-avatar {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &__btn {
+    margin-top: 10px;
+  }
 }

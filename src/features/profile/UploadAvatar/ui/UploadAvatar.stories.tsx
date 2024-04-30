@@ -16,4 +16,11 @@ export const Default: Story = {
   args: {
     imageUrl: 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/1c/9c.jpg',
   },
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };

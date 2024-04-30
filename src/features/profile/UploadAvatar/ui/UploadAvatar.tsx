@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { classNames } from '@/shared/lib';
 import { Avatar, Button } from '@/shared/ui';
 
 import classes from './UploadAvatar.module.scss';
-import { classNames } from '@/shared/lib';
 
 interface IProps {
   imageUrl: string;
@@ -17,22 +17,20 @@ export const UploadAvatar = memo<IProps>(function UploadAvatar(props) {
   const { t } = useTranslation();
 
   return (
-    <div className={classNames(className)}>
+    <div className={classNames(classes['upload-avatar'], className)}>
       <Avatar
         imageUrl={imageUrl}
         size="xl"
         alt="Avatar"
       />
-      <div>
-        <Button
-          className={classes['upload-btn']}
-          variant="filled"
-          color="primary"
-          full
-        >
-          {t('Upload')}
-        </Button>
-      </div>
+      <Button
+        className={classes['upload-avatar__btn']}
+        variant="filled"
+        color="primary"
+        full
+      >
+        {t('Upload')}
+      </Button>
     </div>
   );
 });

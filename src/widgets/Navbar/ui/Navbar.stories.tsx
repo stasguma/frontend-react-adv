@@ -12,7 +12,7 @@ const meta: Meta<typeof Navbar> = {
 export default meta;
 type Story = StoryObj<typeof Navbar>;
 
-export const NotLoggedIn: Story = {
+export const LoggedOut: Story = {
   args: {},
   decorators: [withStoreDecorator()],
 };
@@ -23,10 +23,14 @@ export const LoggedIn: Story = {
     withStoreDecorator({
       initialState: {
         session: {
-          id: '1',
-          username: 'Stas',
-          token: 'Bearer asdasdadasdasdasdasd',
-          isAuthenticated: true,
+          data: {
+            id: 2,
+            username: 'pespatron',
+            isAuthenticated: true,
+            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-AnNT',
+            avatarUrl: 'https://static.espreso.tv/uploads/photobank/240000_241000/240133_photo5201982866597200294_new_960x380_0.webp',
+            role: 'user',
+          },
         },
       },
     }),
