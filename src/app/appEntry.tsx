@@ -9,9 +9,7 @@ import { StoreProvider } from '@/app/providers/store';
 import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
 import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { PageError } from '@/widgets/PageError';
-// import { enableMocking } from './mocks/initMocking';
 
-// void enableMocking().then(() => {
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <StoreProvider>
@@ -23,4 +21,3 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     </StoreProvider>
   </StrictMode>
 );
-// });

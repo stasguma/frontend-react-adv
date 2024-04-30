@@ -40,8 +40,7 @@ const mockServerConfig = {
         interceptors: {
           response: (data, {request, setStatusCode}) => {
             // const { id } = request.params;
-            const extractedToken = request.header('Authorization').replace('Bearer ', '');
-            console.log('extractedToken', extractedToken)
+            const extractedToken = request.header('Authorization')?.replace('Bearer ', '');
             const { users = [] } = db;
             const userFromDB = users.find(user => user.token === extractedToken);
 

@@ -22,7 +22,6 @@ vi.mock('react-i18next', () => ({
 
 afterAll(() => server.close());
 beforeAll(() => server.listen({
-  // onUnhandledRequest: 'warn'
   onUnhandledRequest(request) {
     console.log('Unhandled %s %s', request.method, request.url);
   },
