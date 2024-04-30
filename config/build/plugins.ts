@@ -30,7 +30,6 @@ export const plugins = function (
 
   if (!isDev) {
     plugins.push(
-      /* eslint-disable-next-line */
       new CopyPlugin({
         patterns: [
           { from: 'public/locales', to: 'locales' },

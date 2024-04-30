@@ -2,7 +2,7 @@
   "name": "adv-frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.tsx",
+  "main": "src/app/appEntry.tsx",
   "type": "module",
   "scripts": {
     "start": "pnpm dev",
@@ -84,6 +84,7 @@
     "mini-css-extract-plugin": "^2.7.7",
     "mock-config-server": "^3.5.0",
     "msw": "^2.2.13",
+    "msw-storybook-addon": "^2.0.0",
     "path": "^0.12.7",
     "sass": "^1.69.7",
     "sass-loader": "^13.3.3",
@@ -120,5 +121,10 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
     "valibot": "^0.30.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

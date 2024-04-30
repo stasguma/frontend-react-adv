@@ -11,7 +11,7 @@ export default (env: IBuildEnvironment): webpack.Configuration => {
   const PORT = env.port ?? 8080;
 
   const paths: IBuildPaths = {
-    entry: path.resolve(__dirname, 'src', 'index.tsx'),
+    entry: path.resolve(__dirname, 'src', 'app', 'appEntry.tsx'),
     output: path.resolve(__dirname, 'build'),
     htmlTemplate: path.resolve(__dirname, 'public', 'index.html'),
     devServer: path.resolve(__dirname, 'public'),
