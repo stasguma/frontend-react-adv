@@ -23,9 +23,10 @@ export const ProfileSettings = memo<IProps>(function ProfileSettings(props) {
   return (
     <div className={classNames(classes['profile-settings'], className)}>
       <Title variant="3">{t('My Profile')}</Title>
-      <div className={classNames(classes['profile-settings__section'])}>
-        {!isLoading && isSuccess
-          ? (
+
+      {!isLoading && isSuccess
+        ? (
+          <div className={classNames(classes['profile-settings__section'])}>
             <div className="row">
               <div className="col-auto">
                 <UploadAvatar imageUrl={data?.avatarUrl ?? ''} />
@@ -34,9 +35,9 @@ export const ProfileSettings = memo<IProps>(function ProfileSettings(props) {
                 <EditProfileForm data={data} />
               </div>
             </div>
-            )
-          : null}
-      </div>
+          </div>
+          )
+        : null}
     </div>
   );
 });

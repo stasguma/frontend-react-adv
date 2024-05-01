@@ -12,25 +12,35 @@ An open source frontend application built using the **React** ⚛️ and **Featu
 
 ## Live demo
 
-- [Application]()
+- [Application](https://frontend-react-adv.onrender.com/)
 - [Storybook](https://main--65c1748bed8d59893ba6a94f.chromatic.com/)
 
 ## About project
 
-This project will be an example of how to create a large-scale large project with clean code. Project based on a Feature-Sliced Design methodology.
+This project will be an example of how to create a large-scale large project with clean code. Project based on a Feature-Sliced Design methodology. Currently it doesn't have much functionality.
+In the future it will have all the basic features that most projects have.
 
 ## Features
 
-- Fully Typed (API adapters, catched error with type guards, form and env variables validators by valibot)
+- Typed (API adapters, form variables validators by valibot)
 - Developing by Feature-Sliced Design (Layers isolation and composition, Public API, DDD)
 - Fully API emulation with `Mock Config Server`
-- Storybook stories
+- Tested with `Vitest`, `Testing Library`
+- Storybook stories (Can change theme and language)
+- Mock API calls for tests and storybook with `Mock Service Worker`
+- Dark mode (Capability to easily implement a new theme)
+- Localization with `i18next`
+- Code splitting or lazy loading (Lazy load react components and redux store (reducers))
+- Linting TS and styles with `ESlint`, `Stylelint`
+- Regression testing with `Chromatic`
+- CI using GitHub Actions linting and testing on `push` and `pull request` actions
 
 # Roadmap
 
 App business logic:
 
-- [ ] Profile pages
+- [x] Profile pages
+- [ ] Upload avatar feature 
 
 Technologies:
 
@@ -40,6 +50,7 @@ Other:
 
 - [ ] Fix FSD errors
 - [ ] Fix TODO into code
+- [ ] Create a nice looking design
 
 ## Running locally
 
@@ -73,7 +84,7 @@ npm run dev
 yarn dev
 ```
 
-or start Storybook stand
+or start Storybook
 
 ```bash
 pnpm storybook
