@@ -17,8 +17,9 @@ An open source frontend application built using the **React** ⚛️ and **Featu
 
 ## About project
 
-This project will be an example of how to create a large-scale large project with clean code. Project based on a Feature-Sliced Design methodology. Currently it doesn't have much functionality.
-In the future it will have all the basic features that most projects have.
+This project will be an example of how to create a large-scale project with clean code. Project based on a Feature-Sliced Design methodology. Currently it doesn't have much functionality. In the future it will have all the basic features that most projects have.
+
+Don't pay too much attention to the design, that's not the point of this project. Maybe in the future it'll be enhanced.
 
 ## Features
 
