@@ -7,6 +7,15 @@ const mockServerConfig = {
     baseUrl: '/api',
     configs: [
       {
+        path: '/uptime',
+        method: 'get',
+        routes: [
+          {
+            data: { success: 'ok' },
+          },
+        ],
+      },
+      {
         path: '/login',
         method: 'post',
         routes: [
@@ -112,10 +121,14 @@ const mockServerConfig = {
     request: (params) => {
       console.log('request')
     },
-    response: (data, {getHeader, getHeaders, request, setStatusCode}) => {
+    response: (data, {request, setStatusCode}) => {
       console.log(data)
       console.log('originalUrl: ', request.originalUrl)
-      if (!request.header('Authorization') && !request.originalUrl.includes('login')) {
+      if (
+        !request.header('Authorization')
+        && !request.originalUrl.includes('login')
+        && !request.originalUrl.includes('uptime')
+      ) {
         setStatusCode(401);
         return { error: 'Unauthorized', message: 'You are not authorized to access this resource' };
       }

@@ -10,5 +10,5 @@ export {
   selectIsAuth,
   selectError,
 } from './model/slice/sessionSlice';
-export { sessionApi } from './api/sessionApi';
+export { sessionApi, useUptimeQuery } from './api/sessionApi';
 export { sessionHandlers } from './api/__mocks__/sessionHandlers';

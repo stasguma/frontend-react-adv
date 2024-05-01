@@ -13,7 +13,16 @@ export const sessionApi = baseApi.injectEndpoints({
       invalidatesTags: [SESSION_TAG],
       // transformResponse: (response: { data: ILoginResponse; }, meta, arg) => response.data,
     }),
+    /** this endpoint only need cuz of backend service go down after 15 min idle on render.com */
+    uptime: builder.query<void, null>({
+      query: () => ({
+        url: `uptime`,
+        method: 'GET',
+      }),
+      providesTags: [SESSION_TAG],
+      // transformResponse: (response: { data: ILoginResponse; }, meta, arg) => response.data,
+    }),
   }),
 });
 
-export const { useLoginMutation } = sessionApi;
+export const { useLoginMutation, useUptimeQuery } = sessionApi;
