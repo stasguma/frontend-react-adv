@@ -12,7 +12,7 @@ An open source frontend application built using the **React** ⚛️ and **Featu
 
 ## Live demo
 
-- [Application](https://frontend-react-adv.onrender.com/)
+- [Application](https://frontend-react-adv.onrender.com/) (login: admin; password: supadupapass)
 - [Storybook](https://main--65c1748bed8d59893ba6a94f.chromatic.com/)
 
 ## About project
@@ -23,7 +23,7 @@ Don't pay too much attention to the design, that's not the point of this project
 
 ## Features
 
-- Typed (API adapters, form variables validators by valibot)
+- Typed (API adapters, form variables validators by `Valibot`)
 - Developing by Feature-Sliced Design (Layers isolation and composition, Public API, DDD)
 - Fully API emulation with `Mock Config Server`
 - Tested with `Vitest`, `Testing Library`

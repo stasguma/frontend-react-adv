@@ -3,7 +3,7 @@
 		{
 			"id": "1",
 			"username": "admin",
-			"password": "gggg",
+			"password": "supadupapass",
 			"isAuthenticated": true,
 			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5vdCBHb29kIEZvciBZb3UiLCJpYXQiOjE1MTYyMzkwMjJ9.PuT8C27aM6eEWFws3c4Negisv_wWtmlT4Eg9Gn-IpnY"
 		}

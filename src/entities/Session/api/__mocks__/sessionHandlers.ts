@@ -16,7 +16,7 @@ export const sessionHandlers = [
     };
     const errorResponseData = { error: 'Unauthorized', message: 'User was not found' };
 
-    if (username === 'admin' && password !== 'gggg') {
+    if (username === 'admin' && password !== 'supadupapass') {
       return HttpResponse.json({ error: errorResponseData }, { status: 403 });
     }
 

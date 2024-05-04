@@ -15,7 +15,7 @@ describe('loginThunkAction for a Login feature', () => {
 
     const credentials = {
       username: 'admin',
-      password: 'gggg',
+      password: 'supadupapass',
     };
 
     const thunk = new TestAsyncThunk<ISession, ILoginForm>(loginThunkAction);
