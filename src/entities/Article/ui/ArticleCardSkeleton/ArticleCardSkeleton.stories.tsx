@@ -10,7 +10,7 @@ const meta: Meta<typeof ArticleCardSkeleton> = {
 export default meta;
 type Story = StoryObj<typeof ArticleCardSkeleton>;
 
-export const Default: Story = {
+export const Grid: Story = {
   decorators: [
     Story => (
       <div style={{ display: 'grid', grid: 'auto / repeat(4, 1fr)', gap: '20px' }}>
@@ -18,5 +18,20 @@ export const Default: Story = {
       </div>
     ),
   ],
-  args: {},
+  args: {
+    viewType: 'grid',
+  },
+};
+
+export const List: Story = {
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex', flexFlow: 'column', gap: '40px', width: '50%' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    viewType: 'list',
+  },
 };

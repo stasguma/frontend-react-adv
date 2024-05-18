@@ -1,43 +1,18 @@
 import { memo } from 'react';
-import { Skeleton } from '@/shared/ui';
 
-import classes from './ArticleCardSkeleton.module.scss';
+import { ArticleGridCardSkeleton } from '../ArticleGridCardSkeleton/ArticleGridCardSkeleton';
+import { ArticleListCardSkeleton } from '../ArticleListCardSkeleton/ArticleListCardSkeleton';
 
-export const ArticleCardSkeleton = memo(function ArticleCardSkeleton() {
-  const populatedArray = Array.from(Array(4).keys());
+interface IProps {
+  viewType: 'grid' | 'list';
+}
 
-  return (
-    <div className={classes['article-card-skeleton']}>
-      <div>
-        <Skeleton
-          width="100%"
-          height={190}
-        />
-        <div className={classes['article-card-skeleton__categories']}>
-          {populatedArray.map(c => (
-            <Skeleton
-              key={c}
-              width={70}
-              height={24}
-            />
-          ))}
-        </div>
-        <div>
-          <div className={classes['article-card-skeleton__title']}>
-            <Skeleton
-              width="100%"
-              height={30}
-              rows={2}
-            />
-          </div>
-          <div className={classes['article-card-skeleton__views']}>
-            <Skeleton width={80} height={18} />
-          </div>
-          <div className={classes['article-card-skeleton__meta']}>
-            <Skeleton width={160} height={18} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+export const ArticleCardSkeleton = memo<IProps>(function ArticleCardSkeleton(props) {
+  const { viewType } = props;
+
+  if (viewType === 'grid') {
+    return <ArticleGridCardSkeleton />;
+  }
+
+  return <ArticleListCardSkeleton />;
 });
