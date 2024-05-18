@@ -1,6 +1,8 @@
 export type { ArticleSchema } from './model/types/articleSchema';
 export {
   articleSlice,
+  toggleViewType,
+  selectViewType,
   articleSelectors,
 } from './model/slice/articleSlice';
 export {

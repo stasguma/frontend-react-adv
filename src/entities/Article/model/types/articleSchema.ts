@@ -46,5 +46,6 @@ export interface IArticle {
 export interface ArticleSchema {
   loading: TLoadingState;
   data: EntityState<IArticle, number>;
+  viewType: 'list' | 'grid';
   error?: FetchBaseQueryError;
 }

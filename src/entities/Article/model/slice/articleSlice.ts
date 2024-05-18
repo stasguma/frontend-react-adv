@@ -3,6 +3,8 @@ import type { RootState } from '@/app/providers/store';
 import type { IArticle, ArticleSchema } from '../types/articleSchema';
 
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { LOCAL_STORAGE_VIEW_TYPE_KEY } from '@/shared/consts/localStorage';
+import { LocalStorage } from '@/shared/lib';
 import { articleApi } from '../../api/articleApi';
 
 export const articleAdapter = createEntityAdapter<IArticle>({
@@ -13,13 +15,20 @@ export const articleAdapter = createEntityAdapter<IArticle>({
 const initialState: ArticleSchema = {
   loading: 'idle',
   data: articleAdapter.getInitialState(),
+  viewType: LocalStorage.getItem(LOCAL_STORAGE_VIEW_TYPE_KEY) as ArticleSchema['viewType'] ?? 'grid',
   error: undefined,
 };
 
 export const articleSlice = createSlice({
   name: 'article',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleViewType: (state) => {
+      const viewType = state.viewType === 'grid' ? 'list' : 'grid';
+      state.viewType = viewType;
+      LocalStorage.setItem(LOCAL_STORAGE_VIEW_TYPE_KEY, viewType);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(articleApi.endpoints.getArticles.matchPending, (state) => {
@@ -50,9 +59,9 @@ export const articleSlice = createSlice({
   },
 });
 
-// export const { setProfileData } = articleSlice.actions;
+export const { toggleViewType } = articleSlice.actions;
 
-// export const selectProfileData = (state: RootState) => state.article?.data;
+export const selectViewType = (state: RootState) => state.article?.viewType;
 export const articleSelectors = articleAdapter.getSelectors<RootState>(
   state => state.article.data
 );

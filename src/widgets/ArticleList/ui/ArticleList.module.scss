@@ -1,14 +1,21 @@
 @use '@/app/styles/utils' as u;
 
-.articles-grid {
-  display: grid;
-  grid: auto / repeat(4, 1fr);
-  gap: u.to-rem(20px)
-}
-
 .articles-list {
-  display: flex;
-  flex-flow: column;
-  gap: u.to-rem(40px);
-  width: 50%;
+  &__actions {
+    display: flex;
+    margin-bottom: u.to-rem(20px);
+  }
+
+  &__grid {
+    display: grid;
+    grid: auto / repeat(4, 1fr);
+    gap: u.to-rem(20px)
+  }
+  
+  &__list {
+    display: flex;
+    flex-flow: column;
+    gap: u.to-rem(40px);
+    width: 50%;
+  }
 }
