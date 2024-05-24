@@ -273,4 +273,18 @@ $theme-colors: (
     "light": $orange,
     "dark": $orange-2
   ),
+  "skeleton-bg": (
+    "light": (linear-gradient(
+      to right,
+      hsl(0deg 0% 94% / 80%),
+      hsl(0deg 0% 84% / 60%) 5%,
+      hsl(0deg 0% 94% / 80%) 10%),
+      hsl(0deg 0% 94%)),
+    "dark": (linear-gradient(
+      to right,
+      hsl(234deg 11% 18% / 80%),
+      hsl(234deg 11% 38% / 60%) 5%,
+      hsl(234deg 11% 18% / 80%) 10%),
+      hsl(234deg 11% 18%)),
+  )
 );

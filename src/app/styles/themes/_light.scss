@@ -85,6 +85,7 @@
   --color-textarea-border-hover:          var(--color-input-border-hover);
   --color-textarea-border-focus:          var(--color-input-border-focus);
   --color-textarea-border-active:         var(--color-input-border-active);
+  --color-skeleton-bg:                    #{fn.pick-color($theme-colors, 'skeleton-bg')};
 
   color-scheme: light;
 }
