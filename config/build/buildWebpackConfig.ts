@@ -1,5 +1,5 @@
 import type webpack from 'webpack';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import { EsbuildPlugin } from 'esbuild-loader';
 
 import { devServer } from './devServer';
 import { loaders } from './loaders';
@@ -31,7 +31,12 @@ export const buildWebpackConfig = function (
     plugins: plugins(options),
     optimization: {
       runtimeChunk: 'single',
-      minimizer: [new CssMinimizerPlugin()],
+      minimizer: [
+        new EsbuildPlugin({
+          target: 'es2015',
+          css: true,
+        }),
+      ],
     },
   };
 };

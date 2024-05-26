@@ -14,6 +14,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "isolatedModules": true,
     "lib": ["DOM", "ES2022", "DOM.Iterable"],
     "strictNullChecks": true,
     "strict": true,

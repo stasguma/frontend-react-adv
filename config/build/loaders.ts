@@ -27,29 +27,14 @@ export const loaders = function (
 
   const svgLoader = initSvgLoader();
 
-  const babelLoader = {
-    test: /\.(js|ts)(x)?$/,
+  const esbuildLoader = {
+    // Match `.js`, `.jsx`, `.ts` or `.tsx` files
+    test: /\.[jt]sx?$/,
     exclude: /node_modules/,
-    use: [
-      {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-        },
-      },
-    ],
-  };
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
-    use: [
-      {
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
-        },
-      },
-    ],
+    loader: 'esbuild-loader',
+    options: {
+      target: 'es2015',
+    },
   };
 
   const cssLoader = initCssLoader({ isDev });
@@ -58,8 +43,7 @@ export const loaders = function (
     fontLoader,
     imageLoader,
     svgLoader,
-    babelLoader,
-    typescriptLoader,
+    esbuildLoader,
     cssLoader,
   ];
 };
