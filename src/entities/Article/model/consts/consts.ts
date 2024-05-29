@@ -1,0 +1,4 @@
+export const FETCH_ARTICLES_GRID_LIMIT = 16;
+export const FETCH_ARTICLES_LIST_LIMIT = 8;
+export const SKELETON_ITEMS_FOR_GRID_TYPE = 8;
+export const SKELETON_ITEMS_FOR_LIST_TYPE = 2;

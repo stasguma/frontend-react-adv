@@ -4,7 +4,7 @@
   transition: box-shadow .2s;
 
   &:hover {
-    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 8px black;
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 8px var(--color-text);
   }
 
   &__img-wrapper {

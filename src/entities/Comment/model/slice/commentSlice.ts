@@ -4,6 +4,7 @@ import type { IComment, CommentSchema } from '../types/commentSchema';
 
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { commentApi } from '../../api/commentApi';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 const commentAdapter = createEntityAdapter<IComment>({
   sortComparer: (a, b) => b.createdAt - a.createdAt,
@@ -29,7 +30,7 @@ export const commentSlice = createSlice({
         state.loading = 'succeeded';
         commentAdapter.setAll(state.data, action.payload);
       })
-      .addMatcher(commentApi.endpoints.getCommentsByArticleId.matchRejected, (state, action) => {
+      .addMatcher(commentApi.endpoints.getCommentsByArticleId.matchRejected, (state, action: PayloadAction<FetchBaseQueryError>) => {
         state.loading = 'failed';
         state.error = action.payload;
       });

@@ -12,9 +12,9 @@ export const EntireArticle = memo(function EntireArticle() {
   const { id = '1' } = useParams();
   const dispatch = useAppDispatch();
 
-  const { data: articleData, isLoading, isSuccess } = useGetArticleByIdQuery(id);
+  const { data: article, isLoading, isSuccess } = useGetArticleByIdQuery(id);
   const {
-    data: commentsData,
+    data: comments,
     isLoading: isLoadingComments,
     isSuccess: isSuccessComments,
   } = useGetCommentsByArticleIdQuery(id);
@@ -36,10 +36,10 @@ export const EntireArticle = memo(function EntireArticle() {
       {isSuccess && isSuccessComments
         ? (
           <Article
-            data={articleData}
+            data={article}
             commentsSlot={(
               <CommentSection
-                comments={commentsData}
+                comments={comments}
                 addCommentSlot={
                   <AddCommentForm onAddComment={addCommentHandler} />
                 }

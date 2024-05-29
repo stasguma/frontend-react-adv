@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { IArticle } from '../../model/types/articleSchema';
 
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 // import { Skeleton } from '@/shared/ui';
@@ -19,13 +19,15 @@ interface IProps {
   data: IArticle;
 }
 
-export const ArticleGridCard = memo<IProps>(function ArticleGridCard(props) {
+type Ref = HTMLDivElement;
+
+export const ArticleGridCard = memo(forwardRef<Ref, IProps>(function ArticleGridCard(props, ref) {
   const { className, data } = props;
   const { Title, Text } = Typography;
   const { id, title, imageUrl, views, readTime, categories, createdAt } = data;
 
   return (
-    <div className={classNames(classes['article-card'], className)}>
+    <div ref={ref} className={classNames(classes['article-card'], className)}>
       <Link to={`/article/${id}`}>
         <picture className={classes['article-card__img-wrapper']}>
           <source srcSet={imageUrl} type="image/webp" />
@@ -63,4 +65,4 @@ export const ArticleGridCard = memo<IProps>(function ArticleGridCard(props) {
       </div>
     </div>
   );
-});
+}));

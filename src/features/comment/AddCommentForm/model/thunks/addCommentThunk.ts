@@ -25,7 +25,7 @@ export const addCommentThunk = createAsyncThunk<
         ...reqData,
         articleId: articleData.id,
         userId: sessionData!.id,
-        user: sessionData as IUser,
+        user: sessionData as unknown as IUser,
         createdAt: new Date().getTime(),
       };
 

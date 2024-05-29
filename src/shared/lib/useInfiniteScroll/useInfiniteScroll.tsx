@@ -17,7 +17,7 @@ export function useInfiniteScroll({ onLoadMore, scrollContainerRef }: IUseInfini
     if (entry?.isIntersecting) {
       onLoadMore();
     }
-  }, [onLoadMore]);
+  }, [entry]);
 
   return { ref };
 }

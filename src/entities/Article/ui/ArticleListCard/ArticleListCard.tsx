@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { IArticle, IArticleTextBlock } from '../../model/types/articleSchema';
 
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 // import { Skeleton } from '@/shared/ui';
@@ -19,14 +19,16 @@ interface IProps {
   data: IArticle;
 }
 
-export const ArticleListCard = memo<IProps>(function ArticleListCard(props) {
+type Ref = HTMLDivElement;
+
+export const ArticleListCard = memo(forwardRef<Ref, IProps>(function ArticleListCard(props, ref) {
   const { className, data } = props;
   const { Title, Text } = Typography;
   const { id, title, imageUrl, views, readTime, categories, createdAt, blocks } = data;
   const excerpt = (blocks.find(b => b.type === 'text') as IArticleTextBlock).paragraphs[0];
 
   return (
-    <div className={classNames(classes['article-list-card'], className)}>
+    <div ref={ref} className={classNames(classes['article-list-card'], className)}>
       <Link to={`/article/${id}`}>
         <picture className={classes['article-list-card__img-wrapper']}>
           <source srcSet={imageUrl} type="image/webp" />
@@ -69,4 +71,4 @@ export const ArticleListCard = memo<IProps>(function ArticleListCard(props) {
       </div>
     </div>
   );
-});
+}));

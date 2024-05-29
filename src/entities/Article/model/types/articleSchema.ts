@@ -32,6 +32,8 @@ export interface IArticleCodeBlock extends IArticleBaseBlock {
 
 export type TArticleBlock = IArticleTextBlock | IArticleImageBlock | IArticleCodeBlock;
 
+export type TViewTypes = 'list' | 'grid';
+
 export interface IArticle {
   id: number;
   title: string;
@@ -46,6 +48,9 @@ export interface IArticle {
 export interface ArticleSchema {
   loading: TLoadingState;
   data: EntityState<IArticle, number>;
-  viewType: 'list' | 'grid';
+  viewType: TViewTypes;
+  page: number;
+  limit: number;
+  hasMore: boolean;
   error?: FetchBaseQueryError;
 }

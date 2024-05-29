@@ -7,8 +7,11 @@ export const commentApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     getCommentsByArticleId: builder.query<IComment[], string | number>({
       query: id => ({
-        url: `comments?articleId=${id}`,
+        url: `comments`,
         method: 'GET',
+        params: {
+          articleId: id,
+        },
       }),
       providesTags: [COMMENT_TAG],
       transformResponse: (response: IComment[]) => sortByDateDto(response),
@@ -20,7 +23,6 @@ export const commentApi = baseApi.injectEndpoints({
         body: data,
       }),
       invalidatesTags: [COMMENT_TAG],
-      // transformResponse: (response IComment[], meta, arg) => response,
     }),
   }),
 });

@@ -4,6 +4,7 @@ import type { TLoadingState, TRoles } from '@/shared/types';
 export interface ISession {
   id: number;
   username: string;
+  email: string;
   token: string;
   isAuthenticated: boolean;
   avatarUrl: string;

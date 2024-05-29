@@ -1,3 +1,4 @@
+import type { BaseQueryFn } from '@reduxjs/toolkit/query/react';
 import type { RootState } from '@/app/providers/store';
 
 import { fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
@@ -16,3 +17,11 @@ const baseQuery = fetchBaseQuery({
 });
 
 export const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 });
+
+export const baseQueryWithDelay = function (delay = 500): BaseQueryFn {
+  return async (args, api, extraOptions) => {
+    await new Promise(resolve => setTimeout(resolve, delay));
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */
+    return baseQuery(args, api, extraOptions);
+  };
+};

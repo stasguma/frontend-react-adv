@@ -1,14 +1,34 @@
 import type { IArticle } from '../model/types/articleSchema';
+import type { ArticleDto, ILink } from './types';
+
 import { ARTICLE_TAG, baseApi } from '@/shared/api';
+import { mapArticles } from '../lib/mapArticles';
+
+interface IArticleReq {
+  page: number;
+  limit: number;
+}
+
+interface IArticlesRes {
+  data: IArticle[];
+  links: ILink;
+}
 
 export const articleApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getArticles: builder.query<IArticle[], void>({
-      query: () => ({
+    getArticles: builder.query<IArticlesRes, IArticleReq>({
+      query: ({ page, limit }) => ({
         url: `articles`,
         method: 'GET',
+        params: {
+          // _sort: 'createdAt',
+          // _order: 'desc',
+          _limit: limit,
+          _page: page,
+        },
       }),
       providesTags: [ARTICLE_TAG],
+      transformResponse: (response: ArticleDto) => mapArticles(response),
     }),
     getArticleById: builder.query<IArticle, number | string>({
       query: id => ({
