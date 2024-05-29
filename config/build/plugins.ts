@@ -1,10 +1,10 @@
-import webpack from 'webpack';
+import webpack, { DefinePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import Dotenv from 'dotenv-webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import { EsbuildPlugin } from 'esbuild-loader';
+// import { EsbuildPlugin } from 'esbuild-loader';
 
 import { type IBuildOptions } from './types/config';
 
@@ -22,11 +22,13 @@ export const plugins = function (
       filename: isDev ? 'css/[name].css' : 'css/[name].[contenthash:8].css',
       chunkFilename: isDev ? 'css/[id].css' : 'css/[id].[contenthash:8].css',
     }),
-    new EsbuildPlugin({
-      define: {
-        __IS_DEV__: JSON.stringify(isDev),
-        // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      },
+    // new EsbuildPlugin({
+    //   define: {
+    //     __IS_DEV__: JSON.stringify(isDev),
+    //   },
+    // }),
+    new DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev),
     }),
     new Dotenv(),
   ];

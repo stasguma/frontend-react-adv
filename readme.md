@@ -102,6 +102,7 @@ yarn storybook
 - the `cross-env` package needs for a workaround, because the `ts-node` package has a bug with esm type modules and crashes during initialization. It needs to wait for fix it. ([Issue 1](https://github.com/TypeStrong/ts-node/issues/1997#issuecomment-1915868832)) ([Issue 2](https://github.com/webpack/webpack-cli/issues/2458#issuecomment-1915865909))
 - we should name the file `babel.config.cjs` with the extension `cjs` and not `js`, because of [esm bug](https://stackoverflow.com/questions/61146112/error-while-loading-config-you-appear-to-be-using-a-native-ecmascript-module-c).
 - `json-server` has a [bug](https://github.com/typicode/json-server/issues/1500) on the last version (`v1.0.0-alpha.23`) so we use `0.17.4` version instead. (temporary replace package on [Mock Config Server](https://github.com/siberiacancode/mock-config-server/))
+- Defining global variables by the `esbuild-loader` is not working for some reason. So far, using a default `DefinePlugin` by webpack. ([esbuild-loader docs](https://github.com/privatenumber/esbuild-loader?tab=readme-ov-file#defining-constants)), ([source](https://github.com/stasguma/frontend-react-adv/blob/main/config/build/plugins.ts#L25))
 
 ## License
 

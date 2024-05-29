@@ -34,6 +34,7 @@ export const loaders = function (
     loader: 'esbuild-loader',
     options: {
       target: 'es2015',
+      // minify: !isDev,
     },
   };
 
