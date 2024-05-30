@@ -1,11 +1,22 @@
 import type { IArticle } from '../../model/types/articleSchema';
+import type { ArticleDto } from '../types';
 
 import { HttpResponse, http } from 'msw';
 import { ENV } from '@/shared/config/enviroment/env';
 
 export const articleHandlers = [
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  http.get<any, undefined, IArticle[]>(`${ENV.API_ENDPOINT}/articles`, () => {
+  http.get<any, undefined, ArticleDto>(`${ENV.API_ENDPOINT}/articles`, () => {
+    const _links = {
+      count: 2,
+      current: 1,
+      first: 'http://localhost:31299/api/articles?_limit=16&_page=1',
+      last: 'http://localhost:31299/api/articles?_limit=16&_page=1',
+      next: '',
+      pages: 1,
+      prev: null,
+    };
+
     const successResponseData: IArticle[] = [
       {
         id: 1,
@@ -99,7 +110,7 @@ export const articleHandlers = [
       },
     ];
 
-    return HttpResponse.json(successResponseData, { status: 200 });
+    return HttpResponse.json({ results: successResponseData, _link: _links }, { status: 200 });
   }),
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   http.get<any, undefined, IArticle>(`${ENV.API_ENDPOINT}/articles/:id`, () => {

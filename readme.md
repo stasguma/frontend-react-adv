@@ -35,6 +35,8 @@ Don't pay too much attention to the design, that's not the point of this project
 - Linting TS and styles with `ESlint`, `Stylelint`
 - Regression testing with `Chromatic`
 - CI using GitHub Actions linting and testing on `push` and `pull request` actions
+- Infinite scrolling for list of articles
+- Using the `esbuild` for bundling
 
 # Roadmap
 

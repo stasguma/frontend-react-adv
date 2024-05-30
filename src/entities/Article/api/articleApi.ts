@@ -9,7 +9,7 @@ interface IArticleReq {
   limit: number;
 }
 
-interface IArticlesRes {
+export interface IArticlesRes {
   data: IArticle[];
   links: ILink;
 }
