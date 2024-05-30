@@ -3,6 +3,9 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
+  define: {
+  __IS_DEV__: true
+  },
   plugins: [
     tsconfigPaths(),
     svgr({
@@ -27,5 +30,5 @@ export default defineConfig({
       reporter: ['text', 'html'],
     },
     include: ['src/**/*.test.{js,ts}?(x)'],
-  }
+  },
 });

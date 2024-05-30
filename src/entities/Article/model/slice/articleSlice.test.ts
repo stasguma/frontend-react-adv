@@ -8,6 +8,10 @@ describe('articleSlice', () => {
       loading: 'idle',
       data: { ids: [], entities: {} },
       error: undefined,
+      hasMore: true,
+      page: 1,
+      limit: 16,
+      viewType: 'grid',
     };
     const state = articleReducer(undefined, { type: 'unknown' });
     expect(state).toEqual(initialState);
